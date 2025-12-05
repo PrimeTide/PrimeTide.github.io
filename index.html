@@ -130,7 +130,7 @@
 
         .property-info-current {
             font-size: 13px;
-            margin-bottom: 8px;
+            margin-bottom: 0;
         }
 
         .info-block {
@@ -169,17 +169,6 @@
             font-size: 12px;
             color: #cbd5e1;
             margin-top: 6px;
-        }
-
-        .logo-text {
-            font-size: 13px;
-            color: #cbd5e1;
-            margin-top: 16px;
-        }
-
-        .logo-text span.mark {
-            font-weight: 600;
-            color: #e5e7eb;
         }
 
         /* Form card */
@@ -324,14 +313,14 @@
                     without you lifting a finger.
                 </p>
 
-                <!-- Property info + current selection -->
+                <!-- Property info -->
                 <div class="property-info">
                     <div class="property-info-header">
                         <span class="icon">🏡</span>
                         <div class="property-info-title">Demo properties</div>
                     </div>
-                    <div id="currentPropertyText" class="property-info-current">
-                        Currently selected: 123 Mountain View Dr, Boulder CO
+                    <div class="property-info-current">
+                        Use the property dropdown in the form to see how inquiries can be tied to different listings.
                     </div>
                 </div>
 
@@ -341,9 +330,10 @@
                         <li>
                             <span class="bullet">➊</span>
                             <span>
-                                The details are sent through an automation built on
-                                Make.com, an industry-standard platform for connecting
-                                apps and workflows.
+                                The details are sent through an automation
+                                <span style="opacity:0.9;">
+                                    (built on Make.com, an industry-standard platform for connecting apps and workflows).
+                                </span>
                             </span>
                         </li>
                         <li>
@@ -367,11 +357,6 @@
                         automation can keep you ahead of every new inquiry.
                     </p>
                 </div>
-
-                <p class="logo-text">
-                    Built as a demo by <span class="mark">your automation front-end</span>.
-                    Imagine this fully branded for your brokerage and listings.
-                </p>
             </div>
 
             <!-- Right: Form -->
@@ -379,7 +364,7 @@
                 <div class="form-title">See the automation in action</div>
                 <div class="form-subtitle">
                     Pretend you are a buyer interested in a home. Choose a property,
-                    submit the form, and watch what happens behind the scenes.
+                    submit the form, and experience the type of follow-up your leads would receive.
                 </div>
 
                 <form id="inquiryForm">
@@ -400,7 +385,7 @@
                             </option>
                         </select>
                         <div class="small-hint">
-                            This is the listing the buyer is inquiring about.
+                            Select the property you are interested in so the inquiry is tied to the right listing.
                         </div>
                     </div>
 
@@ -446,7 +431,7 @@
                             id="message"
                             name="message"
                             rows="4"
-                            placeholder="For example, ask about showings, pricing, or neighborhood details."
+                            placeholder="For example, ask about showings, pricing, or neighborhood details. I look forward to getting back to you."
                         ></textarea>
                     </div>
 
@@ -466,22 +451,44 @@
     </div>
 
     <script>
-        // Keep the left-hand "Currently selected" text in sync with the dropdown
-        const propertySelect = document.getElementById("property");
-        const currentPropertyText = document.getElementById("currentPropertyText");
-
-        function updateCurrentPropertyText() {
-            currentPropertyText.textContent =
-                "Currently selected: " + propertySelect.value;
-        }
-
-        propertySelect.addEventListener("change", updateCurrentPropertyText);
-        // Initialize on load
-        updateCurrentPropertyText();
-
         document.getElementById("inquiryForm").addEventListener("submit", async function (e) {
             e.preventDefault();
 
             const button = this.querySelector("button[type='submit']");
             const statusText = document.getElementById("statusText");
-            const thanks = docu
+            const thanks = document.getElementById("thanks");
+
+            const data = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                message: document.getElementById("message").value,
+                property: document.getElementById("property").value
+            };
+
+            button.disabled = true;
+            statusText.textContent = "Sending data to your automation...";
+
+            try {
+                await fetch("https://hook.us2.make.com/8vl8pvp817hib9w1e3rz3efg8eiw2sly", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+
+                document.getElementById("inquiryForm").reset();
+
+                thanks.style.display = "block";
+                statusText.textContent =
+                    "If everything is connected, you should see the lead details come through shortly.";
+            } catch (error) {
+                console.error(error);
+                statusText.textContent =
+                    "Something went wrong sending the request. Please try again, or check your Make.com scenario.";
+            } finally {
+                button.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
