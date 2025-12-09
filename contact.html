@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Daedalus Systems – Contact</title>
+  <title>Daedalus Systems – Contact & Live Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
@@ -16,9 +16,9 @@
       --dusty-rose: #A8808E;
 
       /* Backgrounds */
-      --bg-page: #F4EFE7;
-      --bg-surface: #F9F6F2;
-      --bg-soft: #F1ECE4;
+      --bg-page: #F4EFE7;    /* main background */
+      --bg-surface: #F9F6F2; /* cards, header */
+      --bg-soft: #F1ECE4;    /* subtle sections */
 
       /* Text */
       --text-main: #2B1F20;
@@ -40,11 +40,12 @@
       --btn-secondary-bg-hover: #435F75;
       --btn-secondary-text: #F9F6F2;
 
-      --link: #50718B;
+      --link: var(--steel-blue);
       --link-hover: #3F5A70;
-      --link-visited: #615576;
+      --link-visited: var(--purple-slate);
     }
 
+    /* Basic reset */
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -68,6 +69,7 @@
       color: var(--link-hover);
     }
 
+    /* PAGE WRAPPER */
     .page {
       max-width: 1120px;
       margin: 0 auto;
@@ -208,7 +210,7 @@
       background: var(--bg-soft);
     }
 
-    /* HERO / LAYOUT */
+    /* MAIN HERO CARD */
     .hero-card {
       background: var(--bg-surface);
       border-radius: 24px;
@@ -243,6 +245,10 @@
       color: var(--text-main);
     }
 
+    .hero-highlight {
+      color: var(--bright-bronze);
+    }
+
     .hero-body {
       font-size: 0.98rem;
       line-height: 1.5;
@@ -251,59 +257,66 @@
       margin: 0 0 1.1rem;
     }
 
-    .hero-list {
-      font-size: 0.88rem;
-      color: var(--text-body);
-      padding-left: 1.1rem;
-      margin: 0 0 1rem;
-    }
-
-    .hero-list li {
-      margin-bottom: 0.3rem;
-    }
-
-    .hero-note {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
-    }
-
-    /* FORM CARD */
-    .form-card {
-      background: var(--bg-soft);
-      border-radius: 18px;
-      border: 1px solid var(--border-subtle);
-      padding: 1.25rem 1.2rem 1.1rem;
-      font-size: 0.9rem;
-    }
-
-    .form-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-      color: var(--text-main);
-    }
-
-    .form-subtitle {
-      font-size: 0.82rem;
-      color: var(--text-muted);
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
       margin-bottom: 0.9rem;
     }
 
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.2rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      align-items: center;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #16A34A;
+      box-shadow: 0 0 0 6px rgba(22,163,74,0.18);
+    }
+
+    /* FORM PANEL */
+    .form-panel {
+      border-radius: 18px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border-subtle);
+      padding: 1.25rem 1.2rem 1.3rem;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    }
+
+    .form-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark-iron);
+      margin-bottom: 0.25rem;
+    }
+
+    .form-subtitle {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
     form {
-      margin-top: 0.25rem;
+      margin-top: 0.2rem;
+    }
+
+    label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 0.2rem;
     }
 
     .field-group {
       margin-bottom: 0.75rem;
-    }
-
-    label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--text-main);
-      margin-bottom: 0.25rem;
     }
 
     input,
@@ -316,7 +329,7 @@
       font-size: 0.9rem;
       color: var(--text-body);
       outline: none;
-      background: #F9F6F2;
+      background: #FDFBF8;
       transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
     }
 
@@ -324,72 +337,71 @@
     textarea:focus,
     select:focus {
       border-color: var(--steel-blue);
-      box-shadow: 0 0 0 1px rgba(80, 113, 139, 0.25);
+      box-shadow: 0 0 0 1px rgba(80,113,139,0.18);
       background: #FFFFFF;
     }
 
     textarea {
       resize: vertical;
-      min-height: 80px;
+      min-height: 90px;
     }
 
     .small-hint {
       font-size: 0.75rem;
-      color: var(--text-muted);
+      color: var(--text-subtle);
       margin-top: 0.2rem;
     }
 
-    .submit-row {
-      margin-top: 0.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      align-items: flex-start;
-    }
-
-    .primary-submit {
-      /* button styling reusing palette */
-      border-radius: 999px;
-      padding: 0.55rem 1.3rem;
-      border: none;
-      background: var(--btn-primary-bg);
-      color: var(--btn-primary-text);
-      font-size: 0.9rem;
-      font-weight: 550;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.16);
-      transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.1s ease;
-    }
-
-    .primary-submit:hover {
-      background: var(--btn-primary-bg-hover);
-    }
-
-    .primary-submit:active {
-      transform: translateY(1px);
-      box-shadow: none;
-    }
-
-    .primary-submit:disabled {
-      opacity: 0.7;
-      cursor: default;
-      box-shadow: none;
+    .submit-btn {
+      margin-top: 0.4rem;
     }
 
     #thanks {
+      margin-top: 0.6rem;
       font-size: 0.82rem;
       color: #15803D;
-      margin: 0.3rem 0 0;
       display: none;
     }
 
     .status-text {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--text-muted);
+      margin-top: 0.4rem;
       min-height: 1rem;
+    }
+
+    /* SUB-SECTION BELOW HERO */
+    .sub-grid {
+      margin-top: 1.25rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .info-card {
+      background: var(--bg-soft);
+      border-radius: 18px;
+      border: 1px solid var(--border-subtle);
+      padding: 1rem 1rem 1.1rem;
+      font-size: 0.86rem;
+      color: var(--text-body);
+    }
+
+    .info-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: var(--dark-iron);
+    }
+
+    .info-tag {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      background: rgba(80,36,30,0.08);
+      color: var(--dark-iron);
+      margin-bottom: 0.4rem;
     }
 
     /* FOOTER */
@@ -438,7 +450,7 @@
 <body>
   <div class="page">
 
-    <!-- HEADER -->
+    <!-- HEADER (shared across pages) -->
     <header class="site-header">
       <div class="brand">
         <div class="brand-mark"></div>
@@ -457,39 +469,55 @@
       </nav>
 
       <div class="nav-cta">
-        <button class="btn btn-secondary">Book a 15-min consult</button>
+        <button class="btn btn-secondary" onclick="window.location.href='contact.html'">
+          Book a 15-min consult
+        </button>
       </div>
     </header>
 
-    <!-- MAIN -->
+    <!-- MAIN HERO CONTENT -->
     <main>
       <section class="hero-card">
-        <!-- LEFT: explanation / demo text -->
+        <!-- LEFT: main message -->
         <div>
-          <div class="eyebrow">Live demo</div>
-          <h1 class="hero-title">Try the lead capture workflow as a buyer would.</h1>
+          <div class="eyebrow">See Talos in action</div>
+          <h1 class="hero-title">
+            Send a test inquiry and watch a <span class="hero-highlight">handled lead</span> appear.
+          </h1>
           <p class="hero-body">
-            [[Placeholder.]] Use this page to experience what your buyers would see:
-            choose a property, submit the form, and watch the automation send details
-            into your scenario.
+            This isn’t a mockup. When you fill out the form on this page, Talos will treat it like a real
+            buyer inquiry: capture the details, send them through an automation scenario, and deliver them
+            into the inbox and tools on the other side.
           </p>
-          <ul class="hero-list">
-            <li>Pick a demo property from the dropdown.</li>
-            <li>Enter sample contact details and a question.</li>
-            <li>Submit to trigger your Make.com scenario.</li>
-          </ul>
-          <p class="hero-note">
-            [[Later, this section can explain exactly what happens behind the scenes:
-            how leads are captured, routed, and scored.]]
+          <p class="hero-body">
+            On a short follow-up call, we’ll walk through what happened behind the scenes and talk about how
+            the same approach could fit your current tools—whether you’re using Follow Up Boss, Wise Agent,
+            LionDesk, or something similar.
           </p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="document.getElementById('name').focus();">
+              Start the live lead demo
+            </button>
+            <button class="btn btn-ghost" onclick="window.location.href='packages.html'">
+              Review packages
+            </button>
+          </div>
+
+          <div class="hero-meta">
+            <span class="status-dot"></span>
+            <span>Demo built on real automation infrastructure (Make.com).</span>
+            <span>•</span>
+            <span>No obligation—use this just to see what’s possible.</span>
+          </div>
         </div>
 
-        <!-- RIGHT: form -->
-        <aside class="form-card">
-          <div class="form-title">See the automation in action</div>
+        <!-- RIGHT: form panel -->
+        <aside class="form-panel">
+          <div class="form-title">Live lead capture demo</div>
           <div class="form-subtitle">
-            Pretend you are a buyer interested in a home. Choose a property,
-            submit the form, and experience the type of follow-up your leads would receive.
+            Pretend you’re a buyer curious about a property. Choose a listing, submit the form, and then
+            check what shows up in your inbox and phone.
           </div>
 
           <form id="inquiryForm">
@@ -510,7 +538,7 @@
                 </option>
               </select>
               <div class="small-hint">
-                Select the property you are interested in so the inquiry is tied to the right listing.
+                Pick any example listing—you’ll see how the inquiry can be tied to that specific property.
               </div>
             </div>
 
@@ -534,6 +562,9 @@
                 placeholder="you@example.com"
                 required
               />
+              <div class="small-hint">
+                Used to send you the “agent side” of the demo—what a real lead notification could look like.
+              </div>
             </div>
 
             <div class="field-group">
@@ -546,7 +577,7 @@
                 required
               />
               <div class="small-hint">
-                Used for the demo text message, if your scenario supports it.
+                Optional in a real build, but useful here if you’d like to see a sample text-style follow-up.
               </div>
             </div>
 
@@ -556,26 +587,58 @@
                 id="message"
                 name="message"
                 rows="4"
-                placeholder="For example, ask about showings, pricing, or neighborhood details."
+                placeholder="Ask about showings, pricing, neighborhood details, or anything you’d usually ask an agent."
               ></textarea>
             </div>
 
-            <div class="submit-row">
-              <button type="submit" class="primary-submit">
-                <span>⚡</span>
-                <span>Run the demo</span>
-              </button>
-              <p id="thanks">
-                Thanks. The automation has been triggered. Check your inbox and phone.
-              </p>
-              <div class="status-text" id="statusText"></div>
-            </div>
+            <button type="submit" class="btn btn-primary submit-btn">
+              Run the demo
+            </button>
+
+            <p id="thanks">
+              Thanks—Talos has picked up your inquiry. If everything is connected correctly, you’ll see the
+              lead details come through shortly.
+            </p>
+
+            <div class="status-text" id="statusText"></div>
           </form>
         </aside>
       </section>
+
+      <!-- SUB-SECTION: info cards -->
+      <section class="sub-grid">
+        <article class="info-card">
+          <div class="info-tag">01 · What happens behind the scenes</div>
+          <div class="info-title">From form fill to organized lead.</div>
+          <p>
+            Your submission is sent through an automation scenario (built on Make.com) that could log the lead,
+            notify an agent, tag the source, and prepare the next best actions. On a call, we’ll walk through
+            how this could map into your exact CRM and workflow.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="info-tag">02 · Your tools, not ours</div>
+          <div class="info-title">We work inside your existing stack.</div>
+          <p>
+            In a real build, Talos connects to the tools you already trust—CRMs like Follow Up Boss, Wise Agent,
+            or LionDesk, your calendar, email, and lead sources. We don’t ask you to move platforms; we wire
+            your current ones together.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="info-tag">03 · Next conversation</div>
+          <div class="info-title">From demo to practical plan.</div>
+          <p>
+            If the demo feels promising, we’ll map a simple starter system for your business: what to automate
+            first, which tier fits you best, and how quickly you could see relief in your day-to-day workload.
+          </p>
+        </article>
+      </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (shared across pages) -->
     <footer class="site-footer">
       <div>© <span id="year"></span> Daedalus Systems. All rights reserved.</div>
       <div>
@@ -590,6 +653,7 @@
     // keep year current
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // live demo form handler (Make.com webhook)
     document.getElementById("inquiryForm").addEventListener("submit", async function (e) {
       e.preventDefault();
 
@@ -606,7 +670,8 @@
       };
 
       button.disabled = true;
-      statusText.textContent = "Sending data to your automation...";
+      button.textContent = "Running demo...";
+      statusText.textContent = "Sending your inquiry through the automation scenario…";
 
       try {
         await fetch("https://hook.us2.make.com/8vl8pvp817hib9w1e3rz3efg8eiw2sly", {
@@ -615,17 +680,18 @@
           body: JSON.stringify(data)
         });
 
-        document.getElementById("inquiryForm").reset();
+        (document.getElementById("inquiryForm") as HTMLFormElement).reset?.();
 
         thanks.style.display = "block";
         statusText.textContent =
-          "If everything is connected, you should see the lead details come through shortly.";
+          "If everything is wired correctly, you’ll see lead details come through via email and/or text shortly.";
       } catch (error) {
         console.error(error);
         statusText.textContent =
-          "Something went wrong sending the request. Please try again, or check your Make.com scenario.";
+          "Something went wrong sending the request. If this keeps happening, the Make.com scenario may need a quick check.";
       } finally {
         button.disabled = false;
+        button.textContent = "Run the demo";
       }
     });
   </script>
