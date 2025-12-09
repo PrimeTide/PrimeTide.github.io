@@ -245,6 +245,10 @@
       color: var(--text-main);
     }
 
+    .hero-highlight {
+      color: var(--bright-bronze);
+    }
+
     .hero-body {
       font-size: 0.98rem;
       line-height: 1.5;
@@ -269,11 +273,100 @@
       align-items: center;
     }
 
-    /* SUB-SECTION GRID */
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #16A34A;
+      box-shadow: 0 0 0 6px rgba(22,163,74,0.18);
+    }
+
+    /* RIGHT COLUMN – SIDE PANEL */
+    .side-panel {
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 10% 0, rgba(206,118,35,0.14), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(80,36,30,0.18), transparent 55%),
+        var(--bg-soft);
+      border: 1px solid var(--border-subtle);
+      padding: 1.35rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .side-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark-iron);
+      margin-bottom: 0.2rem;
+    }
+
+    .side-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .mini-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      margin-bottom: 0.25rem;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border-subtle), transparent);
+      margin: 0.3rem 0 0.6rem;
+    }
+
+    .color-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5rem;
+    }
+
+    .swatch {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(249,246,242,0.95);
+      font-size: 0.74rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .swatch-color {
+      height: 36px;
+    }
+
+    .swatch-body {
+      padding: 0.4rem 0.55rem 0.5rem;
+    }
+
+    .swatch-name {
+      font-weight: 550;
+      margin-bottom: 0.05rem;
+      color: var(--text-body);
+    }
+
+    .swatch-hex {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      color: var(--text-muted);
+    }
+
+    .side-footnote {
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+    }
+
+    /* SUB-SECTION BELOW HERO */
     .sub-grid {
       margin-top: 1.25rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 1rem;
     }
 
@@ -286,6 +379,13 @@
       color: var(--text-body);
     }
 
+    .info-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: var(--dark-iron);
+    }
+
     .info-tag {
       display: inline-block;
       padding: 0.15rem 0.55rem;
@@ -294,43 +394,6 @@
       background: rgba(80,36,30,0.08);
       color: var(--dark-iron);
       margin-bottom: 0.4rem;
-    }
-
-    .info-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-      color: var(--dark-iron);
-    }
-
-    .info-body {
-      margin: 0.2rem 0 0.5rem;
-    }
-
-    .info-list {
-      padding-left: 1.1rem;
-      margin: 0.2rem 0 0.5rem;
-    }
-
-    /* FINAL CTA BLOCK */
-    .cta-block {
-      margin-top: 1.5rem;
-      background: var(--bg-surface);
-      border-radius: 20px;
-      border: 1px solid var(--border-subtle);
-      padding: 1.25rem 1.2rem 1.4rem;
-      font-size: 0.9rem;
-    }
-
-    .cta-block h2 {
-      margin: 0 0 0.5rem;
-      font-size: 1.1rem;
-      color: var(--text-main);
-    }
-
-    .cta-block p {
-      margin: 0 0 0.9rem;
-      color: var(--text-body);
     }
 
     /* FOOTER */
@@ -379,7 +442,7 @@
 <body>
   <div class="page">
 
-    <!-- HEADER -->
+    <!-- HEADER (shared across pages) -->
     <header class="site-header">
       <div class="brand">
         <div class="brand-mark"></div>
@@ -402,92 +465,110 @@
       </div>
     </header>
 
-    <!-- MAIN -->
+    <!-- MAIN HERO CONTENT -->
     <main>
-      <!-- HERO CARD -->
       <section class="hero-card">
+        <!-- LEFT: main message -->
         <div>
-          <div class="eyebrow">Solutions</div>
-          <h1 class="hero-title">What we automate for agents and teams.</h1>
+          <div class="eyebrow">What we automate for solo agents</div>
+          <h1 class="hero-title">
+            Give your business a quieter, <span class="hero-highlight">smarter operations layer</span>.
+          </h1>
           <p class="hero-body">
-            [[Placeholder.]] This hero will eventually explain that Daedalus Systems connects
-            your forms, inbox, calendar, and CRM so your follow-up feels instant and
-            organized instead of chaotic.
+            Daedalus Systems connects the tools you already use—your website forms, portals, email,
+            calendar, and CRM—and turns them into a coordinated system. Talos, your automation steward,
+            watches for the important moments: a new lead, a quiet prospect, a deal moving stages.
+          </p>
+          <p class="hero-body">
+            Instead of you juggling reminders and copy-pasting messages, the system handles the busywork:
+            replying, logging, tagging, and nudging you when it’s time for a real conversation. No new app
+            to learn. No ripping out your CRM. Just a workflow that finally moves with you.
           </p>
 
           <div class="hero-actions">
-            <a href="contact.html" class="btn btn-primary">[[Talk about your workflows]]</a>
-            <a href="pricing.html" class="btn btn-ghost">[[View packages]]</a>
+            <button class="btn btn-primary">See packages & pricing</button>
+            <button class="btn btn-ghost">Book a workflow mapping call</button>
           </div>
 
           <div class="hero-meta">
-            <span>[[Built around the tools you already use.]]</span>
+            <span class="status-dot"></span>
+            <span>Lead capture · Follow-up · CRM hygiene · Daily operations.</span>
             <span>•</span>
-            <span>[[No “one-size-fits-all” funnels.]]</span>
+            <span>Built around CRMs like Follow Up Boss, Wise Agent, and LionDesk.</span>
           </div>
         </div>
+
+        <!-- RIGHT: side info panel -->
+        <aside class="side-panel">
+          <div>
+            <div class="mini-label">Starting point</div>
+            <div class="divider"></div>
+            <div class="side-title">We begin with the way you already work.</div>
+            <p class="side-text">
+              Every agent has their own rhythm—how leads arrive, how notes are kept, how follow-up really
+              happens on a busy day. We map your actual process first, then design automations that support
+              it instead of fighting it.
+            </p>
+          </div>
+
+          <div>
+            <div class="mini-label">Typical toolset</div>
+            <p class="side-text">
+              Talos connects to the ecosystem you already rely on:
+            </p>
+            <ul class="side-text" style="padding-left: 1.1rem; margin: 0.25rem 0 0;">
+              <li>Lead sources: site forms, portals, paid lead providers.</li>
+              <li>Communication: email, SMS tools, calendar.</li>
+              <li>CRM: Follow Up Boss, Wise Agent, LionDesk, or similar.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="mini-label">Ongoing partnership</div>
+            <p class="side-footnote">
+              As your business shifts—new lead sources, new goals, more volume—we adjust the system with you.
+              You don’t have to touch integrations or automations. You simply run a business that feels more
+              organized and less exhausting to manage.
+            </p>
+          </div>
+        </aside>
       </section>
 
-      <!-- SOLUTIONS GRID -->
+      <!-- SUB-SECTION: three info cards -->
       <section class="sub-grid">
-        <!-- Lead capture & first response -->
         <article class="info-card">
-          <div class="info-tag">01 · Lead capture</div>
-          <div class="info-title">First response & intake</div>
-          <p class="info-body">
-            [[Placeholder.]] Automations that catch new leads from forms, portals, and email,
-            send a fast, on-brand reply, and log the details in the right place.
+          <div class="info-tag">01 · Lead capture & first response</div>
+          <div class="info-title">No more “Sorry I missed this” emails.</div>
+          <p>
+            New inquiries from your website, portals, or referral forms are captured instantly and greeted with an
+            on-brand message that sounds like you. Key details are collected, logged into your CRM, and routed to the
+            right place so you never wonder where that lead came from.
           </p>
-          <ul class="info-list">
-            <li>[[Website / landing page inquiries → organized records.]]</li>
-            <li>[[Instant text or email responses to new leads.]]</li>
-            <li>[[Basic questions answered automatically before you step in.]]</li>
-          </ul>
         </article>
 
-        <!-- Follow-up & nurture -->
         <article class="info-card">
-          <div class="info-tag">02 · Follow-up</div>
-          <div class="info-title">Follow-up & light nurture</div>
-          <p class="info-body">
-            [[Placeholder.]] Sequences and reminders that keep conversations warm without
-            you having to remember every single touchpoint.
+          <div class="info-tag">02 · Follow-up & nurture</div>
+          <div class="info-title">Gentle, consistent touchpoints—on autopilot.</div>
+          <p>
+            When a prospect goes quiet, Talos doesn’t. Timed follow-ups, check-ins, and reminders keep you top-of-mind
+            without feeling robotic. You decide the tone and timing; we turn it into a reliable sequence that runs
+            without you babysitting it.
           </p>
-          <ul class="info-list">
-            <li>[[Timed follow-ups when someone goes quiet.]]</li>
-            <li>[[Reminders for calls or check-ins.]]</li>
-            <li>[[Light touch campaigns for older leads.]]</li>
-          </ul>
         </article>
 
-        <!-- CRM & operations -->
         <article class="info-card">
-          <div class="info-tag">03 · Operations</div>
-          <div class="info-title">CRM & operations automation</div>
-          <p class="info-body">
-            [[Placeholder.]] Automations that keep your CRM, tasks, and internal notes
-            updated so nothing falls through the cracks.
+          <div class="info-tag">03 · CRM & daily operations</div>
+          <div class="info-title">A pipeline that stays clean and actionable.</div>
+          <p>
+            Contacts, deals, and tasks are created and updated automatically based on what’s happening in your business.
+            Duplicates are reduced, stages stay current, and your task list reflects what truly needs your attention
+            today—not what you happen to remember.
           </p>
-          <ul class="info-list">
-            <li>[[Auto-created and updated contacts/deals.]]</li>
-            <li>[[Task creation when deals hit new stages.]]</li>
-            <li>[[Internal notifications when certain conditions are met.]]</li>
-          </ul>
         </article>
-      </section>
-
-      <!-- FINAL CTA -->
-      <section class="cta-block">
-        <h2>Map your ideal workflow</h2>
-        <p>
-          [[Placeholder.]] Eventually this will invite visitors to walk through how they
-          work today and identify 2–3 automations that would make the biggest difference.
-        </p>
-        <a href="contact.html" class="btn btn-primary">[[Book a workflow mapping call]]</a>
       </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (shared across pages) -->
     <footer class="site-footer">
       <div>© <span id="year"></span> Daedalus Systems. All rights reserved.</div>
       <div>
@@ -499,6 +580,7 @@
   </div>
 
   <script>
+    // keep year current
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
