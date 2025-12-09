@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Daedalus Systems – About</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      /* Core palette */
+      --steel-blue: #50718B;
+      --dark-iron: #50241E;
+      --bright-bronze: #CE7623;
+      --clay: #B28770;
+      --purple-slate: #615576;
+      --dusty-rose: #A8808E;
+
+      /* Backgrounds */
+      --bg-page: #F4EFE7;
+      --bg-surface: #F9F6F2;
+      --bg-soft: #F1ECE4;
+
+      /* Text */
+      --text-main: #2B1F20;
+      --text-body: #3D2B2C;
+      --text-muted: #7A6662;
+      --text-subtle: #A1918A;
+      --text-on-dark: #F9F6F2;
+
+      /* Borders */
+      --border-subtle: #E3D9CC;
+      --border-strong: #C8B8A5;
+
+      /* Buttons & links */
+      --btn-primary-bg: var(--bright-bronze);
+      --btn-primary-bg-hover: #B9621F;
+      --btn-primary-text: #F9F6F2;
+
+      --btn-secondary-bg: var(--steel-blue);
+      --btn-secondary-bg-hover: #435F75;
+      --btn-secondary-text: #F9F6F2;
+
+      --link: var(--steel-blue);
+      --link-hover: #3F5A70;
+      --link-visited: var(--purple-slate);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-page);
+      color: var(--text-body);
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 2.5rem;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* HEADER */
+    .site-header {
+      background: var(--bg-surface);
+      border-radius: 20px;
+      border: 1px solid var(--border-subtle);
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      position: sticky;
+      top: 0.75rem;
+      z-index: 20;
+      backdrop-filter: blur(8px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 25% 20%, #F9F6F2 0, #F9F6F2 25%, var(--bright-bronze) 26%, var(--dark-iron) 75%);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.09);
+    }
+
+    .brand-title {
+      font-weight: 650;
+      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: var(--dark-iron);
+    }
+
+    .brand-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex: 1;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.1s ease;
+    }
+
+    .nav-link:hover {
+      background: var(--bg-soft);
+      color: var(--text-body);
+      border-color: var(--border-subtle);
+      transform: translateY(-1px);
+    }
+
+    .nav-link.is-active {
+      background: var(--steel-blue);
+      color: var(--text-on-dark);
+      border-color: transparent;
+    }
+
+    .nav-cta {
+      white-space: nowrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      padding: 0.55rem 1.2rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 550;
+      cursor: pointer;
+      transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.1s ease, border-color 0.18s ease;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+
+    .btn-primary {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.16);
+    }
+
+    .btn-primary:hover {
+      background: var(--btn-primary-bg-hover);
+    }
+
+    .btn-secondary {
+      background: var(--btn-secondary-bg);
+      color: var(--btn-secondary-text);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+
+    .btn-secondary:hover {
+      background: var(--btn-secondary-bg-hover);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-body);
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg-soft);
+    }
+
+    /* RADICALLY DIFFERENT HERO LAYOUT – LEFT RAIL + STORY */
+    .hero-card {
+      background: var(--bg-surface);
+      border-radius: 24px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+      padding: 1.8rem 1.6rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 2.4fr);
+      gap: 2.2rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .hero-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* LEFT RAIL */
+    .left-rail {
+      border-right: 1px solid var(--border-subtle);
+      padding-right: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 900px) {
+      .left-rail {
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+        padding-right: 0;
+        padding-bottom: 1.3rem;
+      }
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--purple-slate);
+      margin-bottom: 0.45rem;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      line-height: 1.16;
+      margin: 0 0 0.2rem;
+      color: var(--text-main);
+    }
+
+    .hero-highlight {
+      color: var(--bright-bronze);
+    }
+
+    .hero-subline {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0.3rem 0 0.8rem;
+      max-width: 18rem;
+    }
+
+    .rail-meta {
+      display: grid;
+      gap: 0.55rem;
+      font-size: 0.82rem;
+    }
+
+    .rail-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .rail-icon-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--steel-blue);
+      box-shadow: 0 0 0 5px rgba(80,113,139,0.18);
+      flex-shrink: 0;
+    }
+
+    .rail-label {
+      font-weight: 550;
+      color: var(--dark-iron);
+    }
+
+    .rail-value {
+      color: var(--text-muted);
+    }
+
+    .rail-block {
+      padding: 0.75rem 0.85rem;
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 0 0, rgba(206,118,35,0.14), transparent 60%),
+        var(--bg-soft);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.82rem;
+      color: var(--text-body);
+    }
+
+    .rail-block-title {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--dark-iron);
+      margin-bottom: 0.25rem;
+    }
+
+    .rail-block-note {
+      font-size: 0.78rem;
+      color: var(--text-subtle);
+      margin-top: 0.35rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+
+    /* RIGHT: LONG-FORM STORY / SECTIONS */
+    .story-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-body);
+    }
+
+    .story-section {
+      position: relative;
+      padding-left: 1.1rem;
+    }
+
+    .story-section::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.35rem;
+      width: 3px;
+      height: 1.6rem;
+      border-radius: 999px;
+      background: linear-gradient(to bottom, var(--bright-bronze), var(--clay));
+      opacity: 0.85;
+    }
+
+    .story-heading {
+      font-size: 0.92rem;
+      font-weight: 650;
+      color: var(--dark-iron);
+      margin-bottom: 0.25rem;
+    }
+
+    .story-body {
+      margin: 0;
+    }
+
+    .story-body + .story-body {
+      margin-top: 0.45rem;
+    }
+
+    .quote-block {
+      margin: 0.3rem 0 0;
+      padding: 0.75rem 0.9rem;
+      border-left: 3px solid var(--steel-blue);
+      background: rgba(80,113,139,0.04);
+      border-radius: 10px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .quote-emphasis {
+      color: var(--dark-iron);
+      font-weight: 550;
+    }
+
+    .inline-list {
+      margin: 0.35rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.9rem;
+    }
+
+    .inline-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .story-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1.2rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #16A34A;
+      box-shadow: 0 0 0 6px rgba(22,163,74,0.18);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(244,239,231,0.9);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* FOOTER */
+    .site-footer {
+      margin-top: 1.5rem;
+      padding: 1.25rem 1.25rem 0.75rem;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .site-footer a {
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 700px) {
+      .site-header {
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+
+      .main-nav {
+        order: 3;
+        justify-content: flex-start;
+      }
+
+      .nav-cta {
+        order: 2;
+      }
+
+      .hero-card {
+        padding: 1.5rem 1.2rem;
+      }
+
+      .site-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <div>
+          <div class="brand-title">Daedalus Systems</div>
+          <div class="brand-subtitle">Automation atelier for real estate</div>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Overview</a>
+        <a href="solutions.html" class="nav-link">Solutions</a>
+        <a href="packages.html" class="nav-link">Packages</a>
+        <a href="about.html" class="nav-link is-active">About</a>
+        <a href="demo.html" class="nav-link">Demo</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <button class="btn btn-secondary">Book a 15-min consult</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-card">
+        <!-- LEFT RAIL -->
+        <aside class="left-rail">
+          <div>
+            <div class="eyebrow">Daedalus & Talos</div>
+            <h1 class="hero-title">
+              A modern workshop for <span class="hero-highlight">crafted intelligence</span>.
+            </h1>
+            <p class="hero-subline">
+              Built for solo agents who care about their craft — and can’t afford to drop good leads on the floor.
+            </p>
+          </div>
+
+          <div class="rail-meta">
+            <div class="rail-meta-item">
+              <span class="rail-icon-dot"></span>
+              <div>
+                <div class="rail-label">Based in Boulder, Colorado</div>
+                <div class="rail-value">Working with agents across the Front Range and similar markets.</div>
+              </div>
+            </div>
+
+            <div class="rail-meta-item">
+              <span class="rail-icon-dot" style="background: var(--bright-bronze); box-shadow: 0 0 0 5px rgba(206,118,35,0.18);"></span>
+              <div>
+                <div class="rail-label">Person, then system</div>
+                <div class="rail-value">We learn how you actually work before building anything automated.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rail-block">
+            <div class="rail-block-title">What “Daedalus Systems” means</div>
+            <p>
+              In the myth, Daedalus is the craftsperson behind the inventions. Talos is the living, tireless construct.
+              Here, it’s the same: you work with the person in the workshop, Talos does the repetitive labor.
+            </p>
+            <p class="rail-block-note">
+              You’re never handed off to a ticket queue or a generic support script.
+            </p>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary">Talk about your current workflow</button>
+            <button class="btn btn-ghost">See how Talos responds to a lead</button>
+          </div>
+        </aside>
+
+        <!-- RIGHT COLUMN: STORY -->
+        <div class="story-column">
+          <section class="story-section">
+            <h2 class="story-heading">A workshop, not a software company</h2>
+            <p class="story-body">
+              Most “solutions” ask you to move your business into their box: new logins, new dashboards,
+              new rules for how you’re supposed to work. The result is familiar — overflowing inboxes, half-used
+              CRMs, and leads you meant to call back but never quite did.
+            </p>
+            <p class="story-body">
+              Daedalus Systems starts from the opposite direction. We treat your existing tools and habits as
+              the raw material, then build automations that make them lighter to use, not harder. Talos is the
+              intelligence woven into what you already have — not a shiny platform you have to learn.
+            </p>
+          </section>
+
+          <section class="story-section">
+            <h2 class="story-heading">Why Talos exists</h2>
+            <p class="story-body">
+              Good agents don’t lose business because they’re bad at relationships. They lose it because they’re
+              human: in a showing, with family, driving, or simply tired at the end of a long day when a new lead
+              decides to reach out.
+            </p>
+            <div class="quote-block">
+              <span class="quote-emphasis">Talos is here to do the inhuman parts</span> — the midnight replies, the
+              instant answers, the patient follow-up — so you can stay focused on the conversations that truly need
+              a human voice.
+            </div>
+          </section>
+
+          <section class="story-section">
+            <h2 class="story-heading">How we approach your systems</h2>
+            <p class="story-body">
+              Before anything is automated, we walk through your current workflow: where leads come from, how you
+              like to respond, what your follow-up rhythm looks like, and which tools you actually trust.
+            </p>
+            <ul class="inline-list">
+              <li>We map your lead entry points: portals, website, email, phone.</li>
+              <li>We understand your voice: tone, boundaries, what you will and won’t promise.</li>
+              <li>We clean up the path into your CRM, so every contact has context from day one.</li>
+            </ul>
+            <p class="story-body">
+              Only then do we start weaving Talos in — first in small, safe ways, then more deeply as you see how
+              it behaves in your real world.
+            </p>
+            <div class="story-meta-row">
+              <span class="pill">
+                <span class="status-dot"></span>
+                Built one-to-one, not from a template
+              </span>
+              <span class="pill">Integrates with Follow Up Boss, Wise Agent, LionDesk, and more</span>
+            </div>
+          </section>
+
+          <section class="story-section">
+            <h2 class="story-heading">What partnership looks like</h2>
+            <p class="story-body">
+              After launch, we don’t disappear. You’ll notice places where Talos could ask a better question,
+              capture one more detail, or route a lead a little differently. Those observations are gold — and
+              they’re exactly what we use to tune the system over time.
+            </p>
+            <p class="story-body">
+              Think of it as an ongoing conversation between you, Daedalus, and Talos: you describe how you want
+              your business to feel, we shape the workflows, and Talos quietly carries them out at scale.
+            </p>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div>© <span id="year"></span> Daedalus Systems. All rights reserved.</div>
+      <div>
+        <a href="#">Privacy</a> ·
+        <a href="#">Terms</a> ·
+        <a href="contact.html">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
