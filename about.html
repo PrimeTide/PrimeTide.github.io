@@ -42,7 +42,7 @@
 
       --link: #50718B;
       --link-hover: #3F5A70;
-      --link-visited: #615576;
+      --link-visited: var(--purple-slate);
     }
 
     /* Basic reset */
@@ -245,6 +245,10 @@
       color: var(--text-main);
     }
 
+    .hero-highlight {
+      color: var(--bright-bronze);
+    }
+
     .hero-body {
       font-size: 0.98rem;
       line-height: 1.5;
@@ -269,11 +273,65 @@
       align-items: center;
     }
 
-    /* SUB-SECTION GRID */
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #16A34A;
+      box-shadow: 0 0 0 6px rgba(22,163,74,0.18);
+    }
+
+    /* RIGHT COLUMN – SIDE PANEL */
+    .side-panel {
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 10% 0, rgba(206,118,35,0.14), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(80,36,30,0.18), transparent 55%),
+        var(--bg-soft);
+      border: 1px solid var(--border-subtle);
+      padding: 1.35rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .side-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark-iron);
+      margin-bottom: 0.2rem;
+    }
+
+    .side-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .mini-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      margin-bottom: 0.25rem;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border-subtle), transparent);
+      margin: 0.3rem 0 0.6rem;
+    }
+
+    .side-footnote {
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+    }
+
+    /* SUB-SECTION BELOW HERO */
     .sub-grid {
       margin-top: 1.25rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 1rem;
     }
 
@@ -286,6 +344,13 @@
       color: var(--text-body);
     }
 
+    .info-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: var(--dark-iron);
+    }
+
     .info-tag {
       display: inline-block;
       padding: 0.15rem 0.55rem;
@@ -294,38 +359,6 @@
       background: rgba(80,36,30,0.08);
       color: var(--dark-iron);
       margin-bottom: 0.4rem;
-    }
-
-    .info-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-      color: var(--dark-iron);
-    }
-
-    .info-body {
-      margin: 0.2rem 0 0.5rem;
-    }
-
-    /* FINAL CTA BLOCK */
-    .cta-block {
-      margin-top: 1.5rem;
-      background: var(--bg-surface);
-      border-radius: 20px;
-      border: 1px solid var(--border-subtle);
-      padding: 1.25rem 1.2rem 1.4rem;
-      font-size: 0.9rem;
-    }
-
-    .cta-block h2 {
-      margin: 0 0 0.5rem;
-      font-size: 1.1rem;
-      color: var(--text-main);
-    }
-
-    .cta-block p {
-      margin: 0 0 0.9rem;
-      color: var(--text-body);
     }
 
     /* FOOTER */
@@ -374,7 +407,7 @@
 <body>
   <div class="page">
 
-    <!-- HEADER -->
+    <!-- HEADER (shared across pages) -->
     <header class="site-header">
       <div class="brand">
         <div class="brand-mark"></div>
@@ -397,77 +430,125 @@
       </div>
     </header>
 
-    <!-- MAIN -->
+    <!-- MAIN HERO CONTENT -->
     <main>
-      <!-- HERO CARD -->
       <section class="hero-card">
+        <!-- LEFT: main message -->
         <div>
-          <div class="eyebrow">About</div>
-          <h1 class="hero-title">The workshop behind your automations.</h1>
+          <div class="eyebrow">Why Daedalus</div>
+          <h1 class="hero-title">
+            Modern automations, built with the care of a <span class="hero-highlight">working atelier</span>.
+          </h1>
           <p class="hero-body">
-            [[Placeholder.]] This section will eventually explain that Daedalus Systems
-            is a small, craft-focused automation studio that builds systems around
-            how real people actually work.
+            In the old stories, Daedalus wasn’t just an inventor. He was a craftsman who understood the
+            people he built for—how they moved, what they feared, what they needed their tools to do when
+            the pressure was real.
+          </p>
+          <p class="hero-body">
+            Daedalus Systems carries that same spirit into the way solo agents run their businesses today.
+            Talos—the automation that sits behind your lead flow and daily operations—isn’t a generic bot.
+            It’s a system shaped around your habits, your tools, and the way you actually work when your
+            day is full.
+          </p>
+          <p class="hero-body">
+            We don’t hand you software and wish you luck. We step into the workshop with you, design your
+            automations together, and then quietly maintain them so they keep serving you as your business
+            grows.
           </p>
 
           <div class="hero-actions">
-            <a href="contact.html" class="btn btn-primary">[[Talk about your business]]</a>
-            <a href="services.html" class="btn btn-ghost">[[See what we automate]]</a>
+            <button class="btn btn-primary" onclick="window.location.href='contact.html'">
+              Talk about your workflow
+            </button>
+            <button class="btn btn-ghost" onclick="window.location.href='solutions.html'">
+              See what we automate
+            </button>
           </div>
 
           <div class="hero-meta">
-            <span>[[Human-first, tech-supported approach.]]</span>
+            <span class="status-dot"></span>
+            <span>Human-centered automation for real estate.</span>
             <span>•</span>
-            <span>[[Built for long-term relationships, not quick hacks.]]</span>
+            <span>A partner in your operations, not another platform.</span>
           </div>
         </div>
+
+        <!-- RIGHT: side info panel -->
+        <aside class="side-panel">
+          <div>
+            <div class="mini-label">Philosophy</div>
+            <div class="divider"></div>
+            <div class="side-title">Tools should bend to you, not the other way around.</div>
+            <p class="side-text">
+              Most automation asks you to change everything: new logins, new dashboards, new habits. We take
+              a different path. Your existing tools—your CRM, email, calendar, lead sources—become the raw
+              materials. We refine how they work together so your day feels calmer, not more crowded.
+            </p>
+          </div>
+
+          <div>
+            <div class="mini-label">How we work</div>
+            <p class="side-text">
+              Our job is not to sell you on “more tech.” It’s to understand:
+            </p>
+            <ul class="side-text" style="padding-left: 1.1rem; margin: 0.25rem 0 0;">
+              <li>Where leads slip through the cracks.</li>
+              <li>Where you feel buried in admin and follow-up.</li>
+              <li>Which tools you already like and trust.</li>
+            </ul>
+            <p class="side-text" style="margin-top: 0.5rem;">
+              Then we design a system that carries those weak points for you—quietly, consistently, and in
+              your voice.
+            </p>
+          </div>
+
+          <div>
+            <div class="mini-label">Relationship</div>
+            <p class="side-footnote">
+              You’re not renting access to a platform. You’re building a relationship with someone who treats
+              your operations like an instrument to be tuned—tested, adjusted, and improved over time so it
+              keeps sounding right as you take on more volume and bigger goals.
+            </p>
+          </div>
+        </aside>
       </section>
 
-      <!-- ABOUT GRID -->
+      <!-- SUB-SECTION: three info cards -->
       <section class="sub-grid">
-        <!-- Story -->
         <article class="info-card">
-          <div class="info-tag">01 · Story</div>
-          <div class="info-title">Where Daedalus comes from</div>
-          <p class="info-body">
-            [[Placeholder.]] This card can later tell the story behind the name—Daedalus,
-            the craftsman, and the idea of building systems instead of just tools.
+          <div class="info-tag">01 · Origin</div>
+          <div class="info-title">Born from real-world bottlenecks.</div>
+          <p>
+            Daedalus Systems grew out of watching solo agents try to run everything themselves—lead intake,
+            showings, negotiations, follow-up, marketing, and admin—while their tools sat underused or
+            badly connected. The goal was simple: build a quiet layer of intelligence that lets them feel
+            less scattered and more in control.
           </p>
         </article>
 
-        <!-- Philosophy -->
         <article class="info-card">
-          <div class="info-tag">02 · Philosophy</div>
-          <div class="info-title">How we think about automation</div>
-          <p class="info-body">
-            [[Placeholder.]] This card can summarize core beliefs: automation as relief,
-            tools that bend to the business, and keeping human relationships at the center.
+          <div class="info-tag">02 · Craft</div>
+          <div class="info-title">One system at a time, not a template factory.</div>
+          <p>
+            We don’t force you into rigid funnels or pre-made “agent in a box” systems. Each build starts
+            with a blank schematic of your actual workflow. From there, we design and test automations that
+            feel natural to use—and we’re willing to iterate until they truly fit.
           </p>
         </article>
 
-        <!-- Fit -->
         <article class="info-card">
-          <div class="info-tag">03 · Fit</div>
-          <div class="info-title">Who we’re a good match for</div>
-          <p class="info-body">
-            [[Placeholder.]] This card can describe the kinds of agents and teams that
-            tend to get the most value out of working with you.
+          <div class="info-tag">03 · Partnership</div>
+          <div class="info-title">An ongoing steward for your operations.</div>
+          <p>
+            As you take on more listings, add new lead sources, or shift your focus, your systems shouldn’t
+            lag behind. With Daedalus Systems, you have someone watching that layer with you—adapting, tuning,
+            and expanding it so your business can grow without feeling heavier.
           </p>
         </article>
-      </section>
-
-      <!-- FINAL CTA -->
-      <section class="cta-block">
-        <h2>See if we’re the right fit</h2>
-        <p>
-          [[Placeholder.]] Later this can invite visitors to a short conversation about
-          how they work today and whether a crafted automation system would make sense.
-        </p>
-        <a href="contact.html" class="btn btn-primary">[[Book a short intro call]]</a>
       </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (shared across pages) -->
     <footer class="site-footer">
       <div>© <span id="year"></span> Daedalus Systems. All rights reserved.</div>
       <div>
@@ -479,6 +560,7 @@
   </div>
 
   <script>
+    // keep year current
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
