@@ -1,1 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Daedalus Systems – Control Panel View</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --steel-blue: #50718B;
+      --dark-iron: #50241E;
+      --bright-bronze: #CE7623;
+      --clay: #B28770;
+      --purple-slate: #615576;
+      --dusty-rose: #A8808E;
+
+      --bg-page: #F4EFE7;
+      --bg-shell: #F9F6F2;
+      --bg-soft: #F1ECE4;
+      --bg-chip: #E9DED2;
+
+      --text-main: #271A1C;
+      --text-body: #3C282A;
+      --text-muted: #8A756F;
+      --text-subtle: #AB978E;
+
+      --border-soft: #E3D9CC;
+      --border-strong: #C7B7A6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, rgba(80,113,139,0.16), transparent 55%),
+                  var(--bg-page);
+      color: var(--text-body);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .app-shell {
+      max-width: 1160px;
+      margin: 1.4rem auto 2.4rem;
+      padding: 0 1.3rem;
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .top-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .top-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background:
+        linear-gradient(135deg, var(--bright-bronze), var(--dark-iron));
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .top-title {
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 650;
+      color: var(--dark-iron);
+    }
+
+    .top-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      font-size: 0.83rem;
+    }
+
+    .top-pill {
+      border-radius: 999px;
+      padding: 0.3rem 0.9rem;
+      background: rgba(249,246,242,0.9);
+      border: 1px solid rgba(227,217,204,0.9);
+      color: var(--text-muted);
+    }
+
+    .top-btn {
+      border-radius: 999px;
+      padding: 0.4rem 1.1rem;
+      border: 1px solid var(--steel-blue);
+      color: var(--steel-blue);
+      background: rgba(249,246,242,0.95);
+      cursor: pointer;
+      font-size: 0.83rem;
+    }
+
+    .top-btn:hover {
+      background: rgba(80,113,139,0.08);
+    }
+
+    /* SHELL PANEL */
+    .panel {
+      background: var(--bg-shell);
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.16);
+      padding: 1.4rem 1.4rem 1.6rem;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 1.2rem;
+      min-height: 560px;
+    }
+
+    /* PANEL HEADER */
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .panel-title-block {
+      max-width: 32rem;
+    }
+
+    .panel-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--purple-slate);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .panel-heading {
+      font-size: 1.5rem;
+      line-height: 1.2;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+    }
+
+    .panel-heading span {
+      color: var(--bright-bronze);
+    }
+
+    .panel-body {
+      font-size: 0.9rem;
+      color: var(--text-body);
+    }
+
+    .panel-context {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      max-width: 16rem;
+      text-align: right;
+    }
+
+    /* SECONDARY NAV */
+    .panel-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      border-radius: 12px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border-soft);
+      padding: 0.4rem 0.6rem 0.4rem 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    .panel-tabs {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .panel-tab {
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .panel-tab.active {
+      background: #F9F6F2;
+      border-color: var(--border-soft);
+      color: var(--steel-blue);
+      font-weight: 550;
+    }
+
+    .panel-status {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-subtle);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #16A34A;
+      box-shadow: 0 0 0 5px rgba(22,163,74,0.24);
+    }
+
+    /* MAIN GRID */
+    .panel-main {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 1rem;
+      min-height: 0;
+    }
+
+    @media (max-width: 900px) {
+      .panel-main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* LEFT COLUMN – METRICS + FLOW */
+    .metrics-block {
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-shell);
+      padding: 0.8rem 0.9rem;
+      margin-bottom: 0.9rem;
+      font-size: 0.78rem;
+    }
+
+    .metrics-row {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .metric-pill {
+      flex: 1;
+      min-width: 120px;
+      border-radius: 10px;
+      background: var(--bg-soft);
+      padding: 0.5rem 0.6rem;
+      border: 1px solid var(--border-soft);
+      display: grid;
+      gap: 0.12rem;
+    }
+
+    .metric-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+    }
+
+    .metric-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark-iron);
+    }
+
+    .metric-note {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .flow-board {
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      background: radial-gradient(circle at 0 0, rgba(80,113,139,0.12), transparent 60%),
+                  var(--bg-shell);
+      padding: 0.8rem 0.9rem 0.9rem;
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .flow-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .flow-title {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--dark-iron);
+    }
+
+    .flow-filter {
+      font-size: 0.76rem;
+      color: var(--text-subtle);
+    }
+
+    .flow-scroller {
+      margin-top: 0.4rem;
+      padding-bottom: 0.2rem;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(80,36,30,0.3) transparent;
+    }
+
+    .flow-scroller::-webkit-scrollbar {
+      height: 6px;
+    }
+    .flow-scroller::-webkit-scrollbar-thumb {
+      background: rgba(80,36,30,0.3);
+      border-radius: 999px;
+    }
+
+    .flow-row {
+      display: flex;
+      gap: 0.7rem;
+      min-width: 640px;
+    }
+
+    .flow-card {
+      flex: 1;
+      min-width: 0;
+      border-radius: 10px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border-soft);
+      padding: 0.65rem 0.7rem 0.7rem;
+      display: grid;
+      gap: 0.22rem;
+    }
+
+    .flow-step-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-subtle);
+    }
+
+    .flow-step-main {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--dark-iron);
+    }
+
+    .flow-step-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .flow-step-time {
+      font-size: 0.7rem;
+      color: var(--steel-blue);
+    }
+
+    /* RIGHT COLUMN – INSPECTOR / NOTES */
+    .inspector {
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-soft);
+      padding: 0.9rem 0.85rem;
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .inspector-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .inspector-title {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--dark-iron);
+    }
+
+    .chip {
+      border-radius: 999px;
+      padding: 0.18rem 0.6rem;
+      background: var(--bg-chip);
+      border: 1px solid var(--border-strong);
+      font-size: 0.72rem;
+      color: var(--dark-iron);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .chip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--bright-bronze);
+    }
+
+    .inspector-body p {
+      margin-bottom: 0.35rem;
+      line-height: 1.5;
+    }
+
+    .note-list {
+      list-style: none;
+      margin-top: 0.2rem;
+    }
+
+    .note-list li {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .note-bullet {
+      margin-top: 0.4rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 999px;
+      background: var(--steel-blue);
+      flex-shrink: 0;
+    }
+
+    .inspector-footer {
+      border-top: 1px dashed var(--border-soft);
+      padding-top: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .mini-btn {
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      padding: 0.28rem 0.8rem;
+      font-size: 0.75rem;
+      background: var(--bg-shell);
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .mini-btn.primary {
+      border-color: var(--steel-blue);
+      color: var(--steel-blue);
+    }
+
+    .hint-text {
+      font-size: 0.74rem;
+      color: var(--text-subtle);
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 0.9rem;
+      font-size: 0.78rem;
+      color: var(--text-subtle);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    @media (max-width: 700px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- TOP BAR -->
+    <header class="top-bar">
+      <div class="top-brand">
+        <div class="top-mark"></div>
+        <div>
+          <div class="top-title">Daedalus Systems</div>
+          <div class="top-sub">Control panel for your real estate automations</div>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <span class="top-pill">View live demo</span>
+        <span class="top-pill">Boulder, CO</span>
+        <button class="top-btn">Book a 15-minute consult</button>
+      </div>
+    </header>
+
+    <!-- MAIN PANEL -->
+    <section class="panel">
+      <!-- HEADER -->
+      <div class="panel-header">
+        <div class="panel-title-block">
+          <div class="panel-eyebrow">Talos activity overview</div>
+          <h1 class="panel-heading">
+            Every lead enters as noise, Talos turns it into a
+            <span>clear next action</span>.
+          </h1>
+          <p class="panel-body">
+            Imagine this panel as a live view of how Talos is handling your real inquiries:
+            from first reply to CRM update. Instead of another abstract pitch, this is what
+            the system is actually doing for you, quietly, every day.
+          </p>
+        </div>
+        <div class="panel-context">
+          Built for solo agents first. No extra logins; everything you see here is wired into
+          the tools you already use—email, text, and your CRM of choice.
+        </div>
+      </div>
+
+      <!-- SECONDARY NAV -->
+      <div class="panel-nav">
+        <div class="panel-tabs">
+          <button class="panel-tab active">Lead intake</button>
+          <button class="panel-tab">Follow-up</button>
+          <button class="panel-tab">Pipeline hygiene</button>
+          <button class="panel-tab">Custom workflows</button>
+        </div>
+        <div class="panel-status">
+          <span class="status-dot"></span>
+          <span>Talos demo mode · Boulder agent profile</span>
+        </div>
+      </div>
+
+      <!-- MAIN GRID -->
+      <div class="panel-main">
+        <!-- LEFT COLUMN -->
+        <div>
+          <div class="metrics-block">
+            <div class="metrics-row">
+              <div class="metric-pill">
+                <div class="metric-label">Leads handled this week</div>
+                <div class="metric-value">27</div>
+                <div class="metric-note">All replied to in under 45 seconds.</div>
+              </div>
+              <div class="metric-pill">
+                <div class="metric-label">You personally called</div>
+                <div class="metric-value">9</div>
+                <div class="metric-note">Focused on real conversations, not chasing forms.</div>
+              </div>
+              <div class="metric-pill">
+                <div class="metric-label">Lost to “no reply”</div>
+                <div class="metric-value">0</div>
+                <div class="metric-note">Talos always sends the first hello.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-board">
+            <div class="flow-header">
+              <div class="flow-title">Example intake flow for a new website lead</div>
+              <div class="flow-filter">View: Buyer inquiry · Website form</div>
+            </div>
+
+            <div class="flow-scroller">
+              <div class="flow-row">
+                <article class="flow-card">
+                  <div class="flow-step-label">Step 01</div>
+                  <div class="flow-step-main">Lead submits your existing form</div>
+                  <div class="flow-step-meta">
+                    Talos listens behind the scenes—no change to your website, no additional embed required.
+                  </div>
+                  <div class="flow-step-time">Time: 0–2 seconds</div>
+                </article>
+
+                <article class="flow-card">
+                  <div class="flow-step-label">Step 02</div>
+                  <div class="flow-step-main">Instant reply from your brand</div>
+                  <div class="flow-step-meta">
+                    A warm, on-brand message acknowledges the inquiry, sets expectations, and asks one or two targeted questions.
+                  </div>
+                  <div class="flow-step-time">Time: 2–15 seconds</div>
+                </article>
+
+                <article class="flow-card">
+                  <div class="flow-step-label">Step 03</div>
+                  <div class="flow-step-main">Talos captures key details</div>
+                  <div class="flow-step-meta">
+                    Budget, timing, location, and whether they’re already working with an agent—all recorded in the background.
+                  </div>
+                  <div class="flow-step-time">Time: 1–3 minutes (as they reply)</div>
+                </article>
+
+                <article class="flow-card">
+                  <div class="flow-step-label">Step 04</div>
+                  <div class="flow-step-main">Your CRM is updated</div>
+                  <div class="flow-step-meta">
+                    A contact record is created or updated with tags, notes, and tasks that match your pipeline stages.
+                  </div>
+                  <div class="flow-step-time">Time: instant after Talos has the data</div>
+                </article>
+
+                <article class="flow-card">
+                  <div class="flow-step-label">Step 05</div>
+                  <div class="flow-step-main">You receive a concise summary</div>
+                  <div class="flow-step-meta">
+                    Instead of raw form data, you see a short narrative of who they are, what they need, and what Talos recommends you do next.
+                  </div>
+                  <div class="flow-step-time">Time: within minutes</div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <aside class="inspector">
+          <div class="inspector-header">
+            <div class="inspector-title">Inspect one lead’s journey</div>
+            <span class="chip">
+              <span class="chip-dot"></span>
+              Demo: Boulder buyer lead
+            </span>
+          </div>
+
+          <div class="inspector-body">
+            <p>
+              In a call, we walk through a real or sample lead from your business and design
+              the exact intake script Talos will use. Every question and response gets tuned
+              to match your voice and boundaries.
+            </p>
+            <ul class="note-list">
+              <li>
+                <span class="note-bullet"></span>
+                <div>We never promise things you wouldn’t personally commit to.</div>
+              </li>
+              <li>
+                <span class="note-bullet"></span>
+                <div>All messages are clearly from your brand, not a mysterious bot persona.</div>
+              </li>
+              <li>
+                <span class="note-bullet"></span>
+                <div>You approve the tone and wording before anything goes live.</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="inspector-body">
+            <p>
+              From there, we connect Talos to your CRM—Follow Up Boss, Wise Agent, LionDesk,
+              or another system—and define exactly how leads should be tagged, routed, and
+              surfaced for you.
+            </p>
+          </div>
+
+          <div class="inspector-footer">
+            <div>
+              <button class="mini-btn primary">See the demo lead in action</button>
+              <button class="mini-btn">Download a sample summary email</button>
+            </div>
+            <div class="hint-text">
+              You see this clarity before committing to a full build.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div>© <span id="year"></span> Daedalus Systems. All rights reserved.</div>
+      <div>Built as a one-person workshop in Boulder, Colorado.</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
