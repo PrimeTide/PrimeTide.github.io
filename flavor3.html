@@ -268,12 +268,12 @@
 /* AMBIENT SIDE CIRCUIT PANELS */
 .ambient-left,
 .ambient-right {
-  position: fixed;
+  position: absolute;   /* was fixed */
   top: 0;
   bottom: 0;
-  width: 220px;              /* how far the circuitry creeps in */
+  width: 220px;         /* you can tweak this later */
   pointer-events: none;
-  z-index: 2;                /* above section backgrounds, below nothing else */
+  z-index: 0;           /* behind header/sections/footer */
 }
 
 /* Left side panel */
@@ -289,9 +289,9 @@
 
 /* SVG styling */
 .circuit-svg {
-  width: 220px;
+  width: 100%;      /* fill the 220px panel */
   height: 100%;
-  opacity: 0.35;             /* tweak this if you want stronger/weaker */
+  opacity: 0.35;    /* tweak stronger/weaker here */
 }
 
 
