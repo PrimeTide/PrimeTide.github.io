@@ -271,9 +271,9 @@
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 260px;              /* how far the circuitry creeps in */
+  width: 220px;              /* how far the circuitry creeps in */
   pointer-events: none;
-  z-index: 0;
+  z-index: 2;                /* above section backgrounds, below nothing else */
 }
 
 /* Left side panel */
@@ -289,10 +289,11 @@
 
 /* SVG styling */
 .circuit-svg {
-  width: 260px;
+  width: 220px;
   height: 100%;
-  opacity: 0.45;             /* global subtlety control */
+  opacity: 0.35;             /* tweak this if you want stronger/weaker */
 }
+
 
 /* Circuit strokes & nodes */
 .circuit-main {
@@ -359,8 +360,6 @@ footer {
     }
   </style>
 </head>
-
-<body>
 
 <body>
 
