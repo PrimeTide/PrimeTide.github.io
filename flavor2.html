@@ -114,4 +114,512 @@
       font-size: 1rem;
       max-width: 42rem;
       margin: 0 auto 1.7rem;
-      color: rgba(250,245
+      color: rgba(250,245,238,0.9);
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.65rem 1.6rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      font-weight: 550;
+    }
+
+    .btn-primary { background: #FAF5EE; color: #321916; }
+    .btn-primary:hover { background: #F4E5CF; }
+
+    .btn-ghost {
+      background: transparent;
+      color: #FAF5EE;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(250,245,238,0.08);
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: rgba(250,245,238,0.7);
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* WHO IT'S FOR */
+    .stripe-mid {
+      padding: 3rem 1.4rem;
+      background: var(--bg-light);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .stripe-inner { max-width: 900px; margin: 0 auto; }
+
+    .stripe-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .stripe-title {
+      font-size: 1.25rem;
+      margin-bottom: 1.2rem;
+      color: var(--dark-iron);
+    }
+
+    /* Vertical "Who this is for" list */
+    .who-list {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      max-width: 720px;
+    }
+
+    .who-item {
+      display: grid;
+      grid-template-columns: 12px 1fr;
+      gap: 0.9rem;
+      align-items: flex-start;
+    }
+
+    .who-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--bright-bronze);
+      margin-top: 0.45rem;
+      box-shadow: 0 0 0 4px rgba(206,118,35,0.18);
+    }
+
+    .who-body {
+      font-size: 0.93rem;
+      color: var(--text-dark);
+      line-height: 1.55;
+    }
+
+    .who-body strong {
+      color: var(--dark-iron);
+    }
+
+    /* HOW IT FEELS */
+    .stripe-soft {
+      background: var(--bg-mid);
+      padding: 2.8rem 1.4rem;
+    }
+
+    .soft-grid {
+      margin-top: 1.9rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 1.1rem;
+    }
+
+    .soft-item {
+      padding: 1rem 1.1rem;
+      border-radius: 14px;
+      background: #F9F6F2;
+      border: 1px solid var(--border-soft);
+      font-size: 0.88rem;
+    }
+
+    /* FINAL CTA */
+    .stripe-final {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      padding: 2.7rem 1.4rem 2.3rem;
+    }
+
+    .stripe-final-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .final-text-main {
+      font-size: 1.08rem;
+      font-weight: 550;
+      margin-bottom: 0.2rem;
+    }
+
+    .final-text-sub {
+      font-size: 0.9rem;
+      color: rgba(250,245,238,0.82);
+      max-width: 28rem;
+    }
+
+    .final-actions {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1rem 1.4rem 1.4rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    /* AMBIENT SIDE CIRCUIT PANELS – overlay on top, non-blocking */
+    .ambient-left,
+    .ambient-right {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 220px;         /* how far the circuitry creeps in */
+      pointer-events: none; /* don’t block clicks */
+      z-index: 10;          /* above content */
+    }
+
+    .ambient-left { left: 0; }
+
+    .ambient-right {
+      right: 0;
+      transform: scaleX(-1); /* mirror */
+    }
+
+    .circuit-svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      opacity: 0.35;        /* tweak for stronger/weaker */
+    }
+
+    .circuit-main {
+      stroke: var(--steel-blue);
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .circuit-secondary {
+      stroke: var(--dusty-rose);
+      stroke-width: 1.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.7;
+    }
+
+    .circuit-tertiary {
+      stroke: var(--clay);
+      stroke-width: 1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.6;
+    }
+
+    .circuit-node {
+      fill: var(--bright-bronze);
+      opacity: 0.9;
+    }
+
+    .circuit-node-soft {
+      fill: var(--purple-slate);
+      opacity: 0.5;
+    }
+
+    @media (max-width: 900px) {
+      .ambient-left,
+      .ambient-right {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="top-bar">
+    <div class="logo-row">
+      <div class="logo-mark"></div>
+      <div>
+        <div class="logo-text-main">Daedalus Systems</div>
+        <div class="logo-text-sub">Automation atelier for real estate</div>
+      </div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link is-active">Overview</a>
+      <a href="solutions.html" class="nav-link">Solutions</a>
+      <a href="packages.html" class="nav-link">Packages</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="demo.html" class="nav-link">Demo</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+
+    <button class="top-cta">Talk with Daedalus</button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-stripe">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">For solo agents and small teams</div>
+
+      <h1 class="hero-title">
+        We make your existing systems
+        <span>work as one</span>.
+      </h1>
+
+      <p class="hero-body">
+        Most CRMs are powerful. Most workflows are broken. Talos sits between your tools,
+        quietly repairing the handoffs—so your forms, inbox, calendar, and CRM finally move
+        as a single system.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary">See the live lead journey</button>
+        <button class="btn btn-ghost">Book a short consult</button>
+      </div>
+
+      <div class="hero-meta">
+        <span>Works with Follow Up Boss, Wise Agent, LionDesk & more</span>
+        <span>No platform switching · No long-term contracts</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR – VERTICAL LIST -->
+  <section class="stripe-mid">
+    <div class="stripe-inner">
+      <div class="stripe-label">Who this is for</div>
+
+      <h2 class="stripe-title">
+        You don’t need more software. You need your existing tools to stop fighting each other.
+      </h2>
+
+      <div class="who-list">
+        <div class="who-item">
+          <div class="who-dot"></div>
+          <div class="who-body">
+            <strong>You already have “enough” tools.</strong><br />
+            A CRM, a website, email, maybe a text platform — but they don’t move in sync.
+          </div>
+        </div>
+
+        <div class="who-item">
+          <div class="who-dot"></div>
+          <div class="who-body">
+            <strong>You lose momentum in the handoffs.</strong><br />
+            Leads come in, but follow-up splinters across inboxes, forms, and half-used automations.
+          </div>
+        </div>
+
+        <div class="who-item">
+          <div class="who-dot"></div>
+          <div class="who-body">
+            <strong>You don’t want another dashboard to manage.</strong><br />
+            You want fewer places to check, not one more place to babysit.
+          </div>
+        </div>
+
+        <div class="who-item">
+          <div class="who-dot"></div>
+          <div class="who-body">
+            <strong>You care about tone, timing, and trust.</strong><br />
+            You’re open to automation — as long as it doesn’t feel robotic or reckless.
+          </div>
+        </div>
+
+        <div class="who-item">
+          <div class="who-dot"></div>
+          <div class="who-body">
+            <strong>You want leverage without losing control.</strong><br />
+            You want the system to carry weight — without making promises on your behalf.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT FEELS -->
+  <section class="stripe-soft">
+    <div class="stripe-inner" style="text-align:center;">
+      <h2 class="stripe-title">What it feels like when the system is finally aligned</h2>
+
+      <div class="soft-grid">
+        <div class="soft-item">
+          <strong>Your mornings</strong><br />
+          You open your CRM to a small, clean list of real opportunities. Not noise.
+        </div>
+        <div class="soft-item">
+          <strong>Your showings</strong><br />
+          While you’re in appointments, Talos answers new inquiries in your voice.
+        </div>
+        <div class="soft-item">
+          <strong>Your evenings</strong><br />
+          You review summaries—not catch up on forgotten messages.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="stripe-final">
+    <div class="stripe-final-inner">
+      <div>
+        <div class="final-text-main">Curious what Talos would change in your week?</div>
+        <div class="final-text-sub">
+          In a short call, we map your current tools, identify friction, and outline a simple first automation.
+          No slides. No buzzwords. Just clarity.
+        </div>
+      </div>
+
+      <div class="final-actions">
+        <button class="btn btn-primary">Schedule your 15-minute call</button>
+        <button class="btn btn-ghost">Send a quick question instead</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div>© <span id="year"></span> Daedalus Systems</div>
+    <div>Boulder, CO · Built as a one-person workshop</div>
+  </footer>
+
+  <!-- Side circuitry overlay (added at the end so it stays on top) -->
+  <div class="ambient-left">
+    <svg
+      class="circuit-svg"
+      viewBox="0 0 260 800"
+      preserveAspectRatio="xMidYMid meet"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <g fill="none">
+        <!-- Main vertical spine -->
+        <path
+          class="circuit-main"
+          d="M250 10 V140 H210 V230 H170 V340 H140 V460 H190 V560 H220 V720"
+        />
+
+        <!-- Secondary branches -->
+        <path
+          class="circuit-secondary"
+          d="
+            M230 60 H190 V130 H150 V190
+            M230 260 H200 V310 H160
+            M230 420 H200 V380 H160 V330
+            M230 620 H200 V580 H160
+          "
+        />
+
+        <!-- Tertiary, finer traces -->
+        <path
+          class="circuit-tertiary"
+          d="
+            M215 100 H175 V80
+            M215 160 H185 V200
+            M215 300 H185 V280
+            M215 360 H175 V390
+            M215 500 H185 V540
+            M215 660 H175 V640
+          "
+        />
+
+        <!-- Nodes / connection points -->
+        <circle class="circuit-node" cx="250" cy="10"  r="3" />
+        <circle class="circuit-node" cx="210" cy="140" r="3" />
+        <circle class="circuit-node" cx="170" cy="230" r="3" />
+        <circle class="circuit-node" cx="140" cy="340" r="3" />
+        <circle class="circuit-node" cx="190" cy="460" r="3" />
+        <circle class="circuit-node" cx="220" cy="560" r="3" />
+        <circle class="circuit-node" cx="220" cy="720" r="3" />
+
+        <!-- Softer, background nodes -->
+        <circle class="circuit-node-soft" cx="200" cy="90"  r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="180" r="2.5" />
+        <circle class="circuit-node-soft" cx="200" cy="280" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="360" r="2.5" />
+        <circle class="circuit-node-soft" cx="200" cy="520" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="600" r="2.5" />
+      </g>
+    </svg>
+  </div>
+
+  <div class="ambient-right">
+    <svg
+      class="circuit-svg"
+      viewBox="0 0 260 800"
+      preserveAspectRatio="xMidYMid meet"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <g fill="none">
+        <!-- Main vertical spine -->
+        <path
+          class="circuit-main"
+          d="M250 10 V140 H210 V230 H170 V340 H140 V460 H190 V560 H220 V720"
+        />
+
+        <!-- Secondary branches -->
+        <path
+          class="circuit-secondary"
+          d="
+            M230 60 H190 V130 H150 V190
+            M230 260 H200 V310 H160
+            M230 420 H200 V380 H160 V330
+            M230 620 H200 V580 H160
+          "
+        />
+
+        <!-- Tertiary, finer traces -->
+        <path
+          class="circuit-tertiary"
+          d="
+            M215 100 H175 V80
+            M215 160 H185 V200
+            M215 300 H185 V280
+            M215 360 H175 V390
+            M215 500 H185 V540
+            M215 660 H175 V640
+          "
+        />
+
+        <!-- Nodes / connection points -->
+        <circle class="circuit-node" cx="250" cy="10"  r="3" />
+        <circle class="circuit-node" cx="210" cy="140" r="3" />
+        <circle class="circuit-node" cx="170" cy="230" r="3" />
+        <circle class="circuit-node" cx="140" cy="340" r="3" />
+        <circle class="circuit-node" cx="190" cy="460" r="3" />
+        <circle class="circuit-node" cx="220" cy="560" r="3" />
+        <circle class="circuit-node" cx="220" cy="720" r="3" />
+
+        <!-- Softer, background nodes -->
+        <circle class="circuit-node-soft" cx="200" cy="90"  r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="180" r="2.5" />
+        <circle class="circuit-node-soft" cx="200" cy="280" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="360" r="2.5" />
+        <circle class="circuit-node-soft" cx="200" cy="520" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="600" r="2.5" />
+      </g>
+    </svg>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
