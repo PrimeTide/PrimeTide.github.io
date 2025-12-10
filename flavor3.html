@@ -265,48 +265,78 @@
       max-width: 28rem;
     }
 
-        /* AMBIENT SIDE PANELS */
-    /* AMBIENT SIDE PANELS – MORE DEFINED */
+/* AMBIENT SIDE CIRCUIT PANELS */
 .ambient-left,
 .ambient-right {
   position: fixed;
   top: 0;
-  width: 26vw;
-  max-width: 360px;
-  height: 100vh;
+  bottom: 0;
+  width: 260px;              /* how far the circuitry creeps in */
   pointer-events: none;
   z-index: 0;
 }
 
-/* Left: cooler steel / slate */
+/* Left side panel */
 .ambient-left {
   left: 0;
-  background:
-    radial-gradient(circle at 25% 30%, rgba(80,113,139,0.40), transparent 60%),
-    linear-gradient(to bottom,
-      rgba(80,36,30,0.10),
-      transparent 40%,
-      transparent 60%,
-      rgba(80,36,30,0.10)
-    );
-  opacity: 0.95;
 }
 
-/* Right: warmer clay / dusty rose */
+/* Right side panel – mirror the same SVG */
 .ambient-right {
   right: 0;
-  background:
-    radial-gradient(circle at 75% 60%, rgba(168,128,142,0.38), transparent 60%),
-    linear-gradient(to bottom,
-      rgba(178,135,112,0.10),
-      transparent 45%,
-      transparent 65%,
-      rgba(178,135,112,0.12)
-    );
-  opacity: 0.95;
+  transform: scaleX(-1);     /* reuse the same SVG, flipped */
 }
 
-/* Hide ambient panels on small screens */
+/* SVG styling */
+.circuit-svg {
+  width: 260px;
+  height: 100%;
+  opacity: 0.45;             /* global subtlety control */
+}
+
+/* Circuit strokes & nodes */
+.circuit-main {
+  stroke: var(--steel-blue);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.circuit-secondary {
+  stroke: var(--dusty-rose);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.7;
+}
+
+.circuit-tertiary {
+  stroke: var(--clay);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.6;
+}
+
+.circuit-node {
+  fill: var(--bright-bronze);
+  opacity: 0.9;
+}
+
+.circuit-node-soft {
+  fill: var(--purple-slate);
+  opacity: 0.5;
+}
+
+/* Keep content above the circuits */
+header,
+section,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hide on small screens */
 @media (max-width: 900px) {
   .ambient-left,
   .ambient-right {
@@ -332,10 +362,224 @@
 
 <body>
 
-<div class="ambient-left"></div>
-<div class="ambient-right"></div>
+<body>
+
+  <div class="ambient-left">
+    <svg
+      class="circuit-svg"
+      viewBox="0 0 260 800"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+    >
+      <g fill="none">
+        <!-- Main vertical spine -->
+        <path
+          class="circuit-main"
+          d="
+            M250 10
+            V140
+            H210
+            V230
+            H170
+            V340
+            H140
+            V460
+            H190
+            V560
+            H220
+            V720
+          "
+        />
+
+        <!-- Secondary branches -->
+        <path
+          class="circuit-secondary"
+          d="
+            M230 60
+            H190
+            V130
+            H150
+            V190
+
+            M230 260
+            H200
+            V310
+            H160
+
+            M230 420
+            H200
+            V380
+            H160
+            V330
+
+            M230 620
+            H200
+            V580
+            H160
+          "
+        />
+
+        <!-- Tertiary, finer traces -->
+        <path
+          class="circuit-tertiary"
+          d="
+            M215 100
+            H175
+            V80
+
+            M215 160
+            H185
+            V200
+
+            M215 300
+            H185
+            V280
+
+            M215 360
+            H175
+            V390
+
+            M215 500
+            H185
+            V540
+
+            M215 660
+            H175
+            V640
+          "
+        />
+
+        <!-- Nodes / connection points -->
+        <circle class="circuit-node" cx="250" cy="10" r="3" />
+        <circle class="circuit-node" cx="210" cy="140" r="3" />
+        <circle class="circuit-node" cx="170" cy="230" r="3" />
+        <circle class="circuit-node" cx="140" cy="340" r="3" />
+        <circle class="circuit-node" cx="190" cy="460" r="3" />
+        <circle class="circuit-node" cx="220" cy="560" r="3" />
+        <circle class="circuit-node" cx="220" cy="720" r="3" />
+
+        <!-- Softer, background nodes -->
+        <circle class="circuit-node-soft" cx="200" cy="90" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="180" r="2.5" />
+        <circle class="circuit-node-soft" cx="200" cy="280" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="360" r="2.5" />
+        <circle class="circuit-node-soft" cx="200" cy="520" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="600" r="2.5" />
+      </g>
+    </svg>
+  </div>
+
+  <div class="ambient-right">
+    <!-- We reuse the same SVG, mirrored via CSS scaleX(-1) -->
+    <svg
+      class="circuit-svg"
+      viewBox="0 0 260 800"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+    >
+      <g fill="none">
+        <!-- Main vertical spine -->
+        <path
+          class="circuit-main"
+          d="
+            M250 10
+            V140
+            H210
+            V230
+            H170
+            V340
+            H140
+            V460
+            H190
+            V560
+            H220
+            V720
+          "
+        />
+
+        <!-- Secondary branches -->
+        <path
+          class="circuit-secondary"
+          d="
+            M230 60
+            H190
+            V130
+            H150
+            V190
+
+            M230 260
+            H200
+            V310
+            H160
+
+            M230 420
+            H200
+            V380
+            H160
+            V330
+
+            M230 620
+            H200
+            V580
+            H160
+          "
+        />
+
+        <!-- Tertiary, finer traces -->
+        <path
+          class="circuit-tertiary"
+          d="
+            M215 100
+            H175
+            V80
+
+            M215 160
+            H185
+            V200
+
+            M215 300
+            H185
+            V280
+
+            M215 360
+            H175
+            V390
+
+            M215 500
+            H185
+            V540
+
+            M215 660
+            H175
+            V640
+          "
+        />
+
+        <!-- Nodes / connection points -->
+        <circle class="circuit-node" cx="250" cy="10" r="3" />
+        <circle class="circuit-node" cx="210" cy="140" r="3" />
+        <circle class="circuit-node" cx="170" cy="230" r="3" />
+        <circle class="circuit-node" cx="140" cy="340" r="3" />
+        <circle class="circuit-node" cx="190" cy="460" r="3" />
+        <circle class="circuit-node" cx="220" cy="560" r="3" />
+        <circle class="circuit-node" cx="220" cy="720" r="3" />
+
+        <!-- Softer, background nodes -->
+        <circle class="circuit-node-soft" cx="200" cy="90" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="180" r="2.5" />
+        <circle class="circuit-node-soft" cx="200" cy="280" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="360" r="2.5" />
+        <circle class="circuit-node-soft" cx="200" cy="520" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="600" r="2.5" />
+      </g>
+    </svg>
+  </div>
+
+  <header class="top-bar">
+
+
+
   
-<header class="top-bar">
   <div class="logo-row">
     <div class="logo-mark"></div>
     <div>
