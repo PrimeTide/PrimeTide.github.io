@@ -283,34 +283,36 @@
     }
 
 
-    /* AMBIENT SIDE CIRCUIT PANELS – subtle background circuitry */
+    /* AMBIENT CIRCUIT BACKGROUNDS (PNG METHOD) */
 .ambient-left,
 .ambient-right {
-  position: absolute;      /* scrolls with the page */
+  position: fixed;
   top: 0;
   bottom: 0;
-  width: 220px;            /* how far the circuitry creeps in */
-  pointer-events: none;    /* don’t block clicks */
-  z-index: 0;              /* behind main content */
+  width: 260px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.22; /* global strength */
 }
 
 .ambient-left {
   left: 0;
+  background-image: url("circuits-left.png");
+  background-repeat: repeat-y;
+  background-size: contain;
+  background-position: left top;
 }
 
 .ambient-right {
   right: 0;
-  transform: scaleX(-1);   /* mirror */
+  background-image: url("circuits-left.png");
+  background-repeat: repeat-y;
+  background-size: contain;
+  background-position: right top;
+  transform: scaleX(-1);
 }
 
-.circuit-svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  opacity: 0.35;           /* tweak for stronger/weaker */
-}
-
-/* Ensure main content sits above the circuitry */
+/* Keep all content above */
 header,
 section,
 footer {
@@ -318,52 +320,21 @@ footer {
   z-index: 1;
 }
 
-    
+/* Hide on mobile */
+@media (max-width: 900px) {
+  .ambient-left,
+  .ambient-right {
+    display: none;
+  }
+}
 
-    .circuit-main {
-      stroke: var(--steel-blue);
-      stroke-width: 1.6;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .circuit-secondary {
-      stroke: var(--dusty-rose);
-      stroke-width: 1.2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      opacity: 0.7;
-    }
-
-    .circuit-tertiary {
-      stroke: var(--clay);
-      stroke-width: 1;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      opacity: 0.6;
-    }
-
-    .circuit-node {
-      fill: var(--bright-bronze);
-      opacity: 0.9;
-    }
-
-    .circuit-node-soft {
-      fill: var(--purple-slate);
-      opacity: 0.5;
-    }
-
-    @media (max-width: 900px) {
-      .ambient-left,
-      .ambient-right {
-        display: none;
-      }
-    }
   </style>
 </head>
 
 <body>
-
+<div class="ambient-left"></div>
+<div class="ambient-right"></div>
+  
   <header class="top-bar">
     <div class="logo-row">
       <div class="logo-mark"></div>
