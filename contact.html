@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Daedalus Systems – Contact & Live Demo</title>
+  <title>Daedalus Systems – Contact</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     :root {
-      /* Your core palette */
       --steel-blue: #50718B;
       --dark-iron: #50241E;
       --bright-bronze: #CE7623;
@@ -15,685 +14,667 @@
       --purple-slate: #615576;
       --dusty-rose: #A8808E;
 
-      /* Backgrounds */
-      --bg-page: #F4EFE7;    /* main background */
-      --bg-surface: #F9F6F2; /* cards, header */
-      --bg-soft: #F1ECE4;    /* subtle sections */
+      --bg-light: #F4EFE7;
+      --bg-mid: #F1ECE4;
+      --bg-dark: #3C2A2B;
 
-      /* Text */
-      --text-main: #2B1F20;
-      --text-body: #3D2B2C;
-      --text-muted: #7A6662;
-      --text-subtle: #A1918A;
-      --text-on-dark: #F9F6F2;
-
-      /* Borders */
-      --border-subtle: #E3D9CC;
-      --border-strong: #C8B8A5;
-
-      /* Buttons & links */
-      --btn-primary-bg: var(--bright-bronze);
-      --btn-primary-bg-hover: #B9621F;
-      --btn-primary-text: #F9F6F2;
-
-      --btn-secondary-bg: var(--steel-blue);
-      --btn-secondary-bg-hover: #435F75;
-      --btn-secondary-text: #F9F6F2;
-
-      --link: var(--steel-blue);
-      --link-hover: #3F5A70;
-      --link-visited: var(--purple-slate);
+      --text-light: #FAF5EE;
+      --text-dark: #2A1D1E;
+      --text-muted: #8A7570;
+      --border-soft: #E3D9CC;
+      --field-bg: #F9F6F2;
     }
 
-    /* Basic reset */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      margin: 0;
-      min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg-page);
-      color: var(--text-body);
-      display: flex;
-      flex-direction: column;
+      color: var(--text-dark);
+      position: relative;
+      overflow-x: hidden;
+      background: var(--bg-light);
     }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
+    a { text-decoration: none; color: inherit; }
 
-    a:hover {
-      color: var(--link-hover);
-    }
-
-    /* PAGE WRAPPER */
-    .page {
+    /* HEADER */
+    .top-bar {
       max-width: 1120px;
       margin: 0 auto;
-      padding: 1.5rem 1.25rem 2.5rem;
-      width: 100%;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    /* HEADER / NAV */
-    .site-header {
-      background: var(--bg-surface);
-      border-radius: 20px;
-      border: 1px solid var(--border-subtle);
-      padding: 0.9rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      position: sticky;
-      top: 0.75rem;
-      z-index: 20;
-      backdrop-filter: blur(8px);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      white-space: nowrap;
-    }
-
-    .brand-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      background:
-        radial-gradient(circle at 25% 20%, #F9F6F2 0, #F9F6F2 25%, var(--bright-bronze) 26%, var(--dark-iron) 75%);
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.09);
-    }
-
-    .brand-title {
-      font-weight: 650;
-      letter-spacing: 0.04em;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      color: var(--dark-iron);
-    }
-
-    .brand-subtitle {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    .main-nav {
-      display: flex;
-      gap: 0.75rem;
-      justify-content: center;
-      flex: 1;
-    }
-
-    .nav-link {
-      font-size: 0.9rem;
-      padding: 0.4rem 0.8rem;
-      border-radius: 999px;
-      color: var(--text-muted);
-      border: 1px solid transparent;
-      transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.1s ease;
-    }
-
-    .nav-link:hover {
-      background: var(--bg-soft);
-      color: var(--text-body);
-      border-color: var(--border-subtle);
-      transform: translateY(-1px);
-    }
-
-    .nav-link.is-active {
-      background: var(--steel-blue);
-      color: var(--text-on-dark);
-      border-color: transparent;
-    }
-
-    .nav-cta {
-      white-space: nowrap;
-    }
-
-    /* BUTTONS */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.3rem;
-      padding: 0.55rem 1.2rem;
-      border-radius: 999px;
-      border: none;
-      font-size: 0.9rem;
-      font-weight: 550;
-      cursor: pointer;
-      transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.1s ease, border-color 0.18s ease;
-    }
-
-    .btn:active {
-      transform: translateY(1px);
-      box-shadow: none;
-    }
-
-    .btn-primary {
-      background: var(--btn-primary-bg);
-      color: var(--btn-primary-text);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.16);
-    }
-
-    .btn-primary:hover {
-      background: var(--btn-primary-bg-hover);
-    }
-
-    .btn-secondary {
-      background: var(--btn-secondary-bg);
-      color: var(--btn-secondary-text);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-    }
-
-    .btn-secondary:hover {
-      background: var(--btn-secondary-bg-hover);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      border: 1px solid var(--border-subtle);
-      color: var(--text-body);
-    }
-
-    .btn-ghost:hover {
-      background: var(--bg-soft);
-    }
-
-    /* MAIN HERO CARD */
-    .hero-card {
-      background: var(--bg-surface);
-      border-radius: 24px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-      padding: 1.75rem 1.5rem;
+      padding: 1.1rem 1.4rem;
       display: grid;
-      grid-template-columns: minmax(0, 3fr);
-      gap: 2rem;
-    }
-
-    @media (min-width: 900px) {
-      .hero-card {
-        grid-template-columns: minmax(0, 3.4fr) minmax(0, 2.4fr);
-        align-items: flex-start;
-      }
-    }
-
-    .eyebrow {
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--purple-slate);
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-
-    .hero-title {
-      font-size: clamp(1.9rem, 3vw, 2.4rem);
-      line-height: 1.12;
-      margin: 0 0 0.75rem;
-      color: var(--text-main);
-    }
-
-    .hero-highlight {
-      color: var(--bright-bronze);
-    }
-
-    .hero-body {
-      font-size: 0.98rem;
-      line-height: 1.5;
-      max-width: 34rem;
-      color: var(--text-body);
-      margin: 0 0 1.1rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 0.9rem;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem 1.2rem;
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #16A34A;
-      box-shadow: 0 0 0 6px rgba(22,163,74,0.18);
-    }
-
-    /* FORM PANEL */
-    .form-panel {
-      border-radius: 18px;
-      background: var(--bg-soft);
-      border: 1px solid var(--border-subtle);
-      padding: 1.25rem 1.2rem 1.3rem;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
-    }
-
-    .form-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--dark-iron);
-      margin-bottom: 0.25rem;
-    }
-
-    .form-subtitle {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-    }
-
-    form {
-      margin-top: 0.2rem;
-    }
-
-    label {
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--text-main);
-      display: block;
-      margin-bottom: 0.2rem;
-    }
-
-    .field-group {
-      margin-bottom: 0.75rem;
-    }
-
-    input,
-    textarea,
-    select {
-      width: 100%;
-      padding: 0.5rem 0.6rem;
-      border-radius: 10px;
-      border: 1px solid var(--border-subtle);
-      font-size: 0.9rem;
-      color: var(--text-body);
-      outline: none;
-      background: #FDFBF8;
-      transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: var(--steel-blue);
-      box-shadow: 0 0 0 1px rgba(80,113,139,0.18);
-      background: #FFFFFF;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 90px;
-    }
-
-    .small-hint {
-      font-size: 0.75rem;
-      color: var(--text-subtle);
-      margin-top: 0.2rem;
-    }
-
-    .submit-btn {
-      margin-top: 0.4rem;
-    }
-
-    #thanks {
-      margin-top: 0.6rem;
-      font-size: 0.82rem;
-      color: #15803D;
-      display: none;
-    }
-
-    .status-text {
-      font-size: 0.76rem;
-      color: var(--text-muted);
-      margin-top: 0.4rem;
-      min-height: 1rem;
-    }
-
-    /* SUB-SECTION BELOW HERO */
-    .sub-grid {
-      margin-top: 1.25rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 1rem;
     }
 
-    .info-card {
-      background: var(--bg-soft);
-      border-radius: 18px;
-      border: 1px solid var(--border-subtle);
-      padding: 1rem 1rem 1.1rem;
-      font-size: 0.86rem;
-      color: var(--text-body);
+    .logo-row { display: flex; align-items: center; gap: 0.75rem; }
+
+    .logo-mark {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: linear-gradient(145deg, var(--bright-bronze), var(--dark-iron));
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.35) inset,
+        0 4px 10px rgba(0, 0, 0, 0.18);
     }
 
-    .info-title {
+    .logo-text-main {
       font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 650;
       color: var(--dark-iron);
     }
 
-    .info-tag {
-      display: inline-block;
-      padding: 0.15rem 0.55rem;
+    .logo-text-sub { font-size: 0.75rem; color: var(--text-muted); }
+
+    .nav-links {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      font-size: 0.86rem;
+      justify-self: end;
+    }
+
+    .nav-link {
+      position: relative;
+      color: var(--text-muted);
+      padding-bottom: 0.2rem;
+      transition: color 140ms ease;
+    }
+
+    .nav-link.is-active {
+      color: var(--steel-blue);
+      font-weight: 550;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 100%;
+      background: var(--steel-blue);
+      transform: scaleX(0);
+      transform-origin: center;
+      opacity: 0;
+      transition: transform 180ms ease-out, opacity 180ms ease-out;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.is-active::after {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+
+    .top-cta {
       border-radius: 999px;
-      font-size: 0.72rem;
-      background: rgba(80,36,30,0.08);
+      border: 1px solid var(--steel-blue);
+      padding: 0.45rem 1rem;
+      font-size: 0.85rem;
+      color: var(--steel-blue);
+      background: transparent;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .top-cta:hover {
+      background: rgba(80,113,139,0.08);
+    }
+
+    /* Menu toggle (mobile) */
+    .menu-toggle {
+      display: none;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      padding: 0.4rem 0.9rem;
+      font-size: 0.85rem;
+      background: #F8F3EB;
+      cursor: pointer;
+      white-space: nowrap;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .menu-toggle:hover {
+      background: #F2E8DC;
+    }
+
+    .menu-icon {
+      width: 14px;
+      height: 10px;
+      position: relative;
+    }
+
+    .menu-icon::before,
+    .menu-icon::after,
+    .menu-icon span {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1.5px;
+      background: var(--dark-iron);
+      border-radius: 999px;
+      transform-origin: center;
+      transition: transform 160ms ease, opacity 160ms ease;
+    }
+
+    .menu-icon::before { top: 0; }
+    .menu-icon::after { bottom: 0; }
+    .menu-icon span {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .top-bar.is-open .menu-icon::before {
+      transform: translateY(4px) rotate(45deg);
+    }
+
+    .top-bar.is-open .menu-icon::after {
+      transform: translateY(-4px) rotate(-45deg);
+    }
+
+    .top-bar.is-open .menu-icon span {
+      opacity: 0;
+    }
+
+    /* CONTACT LAYOUT */
+    .contact-shell {
+      padding: 2.6rem 1.4rem 2.8rem;
+      border-top: 1px solid var(--border-soft);
+      background:
+        radial-gradient(circle at 0 20%, rgba(80,36,30,0.06), transparent 60%),
+        radial-gradient(circle at 100% 80%, rgba(80,113,139,0.06), transparent 60%),
+        var(--bg-light);
+    }
+
+    .contact-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .contact-header {
+      max-width: 640px;
+      margin-bottom: 1.9rem;
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-title {
+      font-size: 1.5rem;
       color: var(--dark-iron);
       margin-bottom: 0.4rem;
     }
 
-    /* FOOTER */
-    .site-footer {
-      margin-top: 1.5rem;
-      padding: 1.25rem 1.25rem 0.75rem;
-      border-top: 1px solid var(--border-subtle);
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      font-size: 0.78rem;
+    .contact-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    /* LEFT COLUMN – EXPECTATIONS */
+    .contact-notes {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-dark);
+    }
+
+    .contact-notes-block {
+      margin-bottom: 1.1rem;
+    }
+
+    .contact-notes-title {
+      font-size: 0.95rem;
+      font-weight: 550;
+      color: var(--dark-iron);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-notes-sub {
+      font-size: 0.86rem;
       color: var(--text-muted);
     }
 
-    .site-footer a {
+    .contact-list {
+      list-style: disc;
+      padding-left: 1.3rem;
+      margin-top: 0.4rem;
+      font-size: 0.88rem;
+      color: var(--text-dark);
+    }
+
+    .contact-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-small {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.6rem;
+    }
+
+    /* RIGHT COLUMN – FORM */
+    .contact-card {
+      background: #F9F6F2;
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      padding: 1.4rem 1.3rem 1.3rem;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.06);
+    }
+
+    .contact-card-title {
+      font-size: 0.98rem;
+      font-weight: 550;
+      color: var(--dark-iron);
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-card-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.8rem;
+    }
+
+    .form-field {
+      flex: 1;
+      min-width: 0;
+    }
+
+    label {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 0.24rem;
+    }
+
+    .field-optional {
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--text-muted);
       font-size: 0.78rem;
     }
 
-    @media (max-width: 700px) {
-      .site-header {
-        flex-wrap: wrap;
-        align-items: flex-start;
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.55rem 0.6rem;
+      border-radius: 10px;
+      border: 1px solid var(--border-soft);
+      background: var(--field-bg);
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--steel-blue);
+      box-shadow: 0 0 0 1px rgba(80,113,139,0.28);
+      background: #FCFAF7;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .help-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.65rem 1.6rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      font-weight: 550;
+      transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+    }
+
+    .btn-primary {
+      background: var(--steel-blue);
+      color: #FDF8F0;
+    }
+
+    .btn-primary:hover {
+      background: #436479;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    }
+
+    .contact-footer-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.7rem;
+    }
+
+    /* FINAL STRIPE – OPTIONAL NOTE */
+    .stripe-final {
+      background: var(--bg-mid);
+      color: var(--text-dark);
+      padding: 1.8rem 1.4rem 1.9rem;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    .stripe-final-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .stripe-final-strong {
+      font-weight: 550;
+      color: var(--dark-iron);
+    }
+
+    /* FOOTER */
+    .footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1rem 1.4rem 1.4rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .top-bar {
+        grid-template-columns: auto auto;
+        align-items: center;
+        row-gap: 0.75rem;
       }
 
-      .main-nav {
-        order: 3;
+      .logo-row {
         justify-content: flex-start;
-        flex-wrap: wrap;
       }
 
-      .nav-cta {
-        order: 2;
+      .menu-toggle {
+        display: inline-flex;
+        justify-self: end;
       }
 
-      .hero-card {
-        padding: 1.4rem 1.1rem;
+      .nav-links,
+      .top-cta {
+        grid-column: 1 / -1;
+        width: 100%;
       }
 
-      .site-footer {
+      .nav-links {
+        display: none;
+        flex-wrap: nowrap;
         flex-direction: column;
         align-items: flex-start;
+        gap: 0.4rem;
+      }
+
+      .top-cta {
+        display: none;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .top-bar.is-open .nav-links {
+        display: flex;
+      }
+
+      .top-bar.is-open .top-cta {
+        display: inline-flex;
       }
     }
   </style>
 </head>
+
 <body>
-  <div class="page">
 
-    <!-- HEADER (shared across pages) -->
-    <header class="site-header">
-      <div class="brand">
-        <div class="brand-mark"></div>
-        <div>
-          <div class="brand-title">Daedalus Systems</div>
-          <div class="brand-subtitle">Automation atelier for real estate</div>
-        </div>
-      </div>
-
-      <nav class="main-nav">
-        <a href="index.html" class="nav-link">Overview</a>
-        <a href="solutions.html" class="nav-link">Solutions</a>
-        <a href="packages.html" class="nav-link">Packages</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link is-active">Contact</a>
-      </nav>
-
-      <div class="nav-cta">
-        <button class="btn btn-secondary" onclick="window.location.href='contact.html'">
-          Book a 15-min consult
-        </button>
-      </div>
-    </header>
-
-    <!-- MAIN HERO CONTENT -->
-    <main>
-      <section class="hero-card">
-        <!-- LEFT: main message -->
-        <div>
-          <div class="eyebrow">See Talos in action</div>
-          <h1 class="hero-title">
-            Send a test inquiry and watch a <span class="hero-highlight">handled lead</span> appear.
-          </h1>
-          <p class="hero-body">
-            This isn’t a mockup. When you fill out the form on this page, Talos will treat it like a real
-            buyer inquiry: capture the details, send them through an automation scenario, and deliver them
-            into the inbox and tools on the other side.
-          </p>
-          <p class="hero-body">
-            On a short follow-up call, we’ll walk through what happened behind the scenes and talk about how
-            the same approach could fit your current tools—whether you’re using Follow Up Boss, Wise Agent,
-            LionDesk, or something similar.
-          </p>
-
-          <div class="hero-actions">
-            <button class="btn btn-primary" onclick="document.getElementById('name').focus();">
-              Start the live lead demo
-            </button>
-            <button class="btn btn-ghost" onclick="window.location.href='packages.html'">
-              Review packages
-            </button>
-          </div>
-
-          <div class="hero-meta">
-            <span class="status-dot"></span>
-            <span>Demo built on real automation infrastructure (Make.com).</span>
-            <span>•</span>
-            <span>No obligation—use this just to see what’s possible.</span>
-          </div>
-        </div>
-
-        <!-- RIGHT: form panel -->
-        <aside class="form-panel">
-          <div class="form-title">Live lead capture demo</div>
-          <div class="form-subtitle">
-            Pretend you’re a buyer curious about a property. Choose a listing, submit the form, and then
-            check what shows up in your inbox and phone.
-          </div>
-
-          <form id="inquiryForm">
-            <div class="field-group">
-              <label for="property">Property</label>
-              <select id="property" name="property">
-                <option value="123 Mountain View Dr, Boulder CO">
-                  123 Mountain View Dr, Boulder CO
-                </option>
-                <option value="45 Canyon Ridge Lane, Louisville CO">
-                  45 Canyon Ridge Lane, Louisville CO
-                </option>
-                <option value="Downtown Loft, Pearl Street, Boulder CO">
-                  Downtown Loft, Pearl Street, Boulder CO
-                </option>
-                <option value="Lakeside Ranch Home, Longmont CO">
-                  Lakeside Ranch Home, Longmont CO
-                </option>
-              </select>
-              <div class="small-hint">
-                Pick any example listing—you’ll see how the inquiry can be tied to that specific property.
-              </div>
-            </div>
-
-            <div class="field-group">
-              <label for="name">Your name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Alex Buyer"
-                required
-              />
-            </div>
-
-            <div class="field-group">
-              <label for="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="you@example.com"
-                required
-              />
-              <div class="small-hint">
-                Used to send you the “agent side” of the demo—what a real lead notification could look like.
-              </div>
-            </div>
-
-            <div class="field-group">
-              <label for="phone">Phone</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="(555) 123-4567"
-                required
-              />
-              <div class="small-hint">
-                Optional in a real build, but useful here if you’d like to see a sample text-style follow-up.
-              </div>
-            </div>
-
-            <div class="field-group">
-              <label for="message">What would you like to know?</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                placeholder="Ask about showings, pricing, neighborhood details, or anything you’d usually ask an agent."
-              ></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary submit-btn">
-              Run the demo
-            </button>
-
-            <p id="thanks">
-              Thanks—Talos has picked up your inquiry. If everything is connected correctly, you’ll see the
-              lead details come through shortly.
-            </p>
-
-            <div class="status-text" id="statusText"></div>
-          </form>
-        </aside>
-      </section>
-
-      <!-- SUB-SECTION: info cards -->
-      <section class="sub-grid">
-        <article class="info-card">
-          <div class="info-tag">01 · What happens behind the scenes</div>
-          <div class="info-title">From form fill to organized lead.</div>
-          <p>
-            Your submission is sent through an automation scenario (built on Make.com) that could log the lead,
-            notify an agent, tag the source, and prepare the next best actions. On a call, we’ll walk through
-            how this could map into your exact CRM and workflow.
-          </p>
-        </article>
-
-        <article class="info-card">
-          <div class="info-tag">02 · Your tools, not ours</div>
-          <div class="info-title">We work inside your existing stack.</div>
-          <p>
-            In a real build, Talos connects to the tools you already trust—CRMs like Follow Up Boss, Wise Agent,
-            or LionDesk, your calendar, email, and lead sources. We don’t ask you to move platforms; we wire
-            your current ones together.
-          </p>
-        </article>
-
-        <article class="info-card">
-          <div class="info-tag">03 · Next conversation</div>
-          <div class="info-title">From demo to practical plan.</div>
-          <p>
-            If the demo feels promising, we’ll map a simple starter system for your business: what to automate
-            first, which tier fits you best, and how quickly you could see relief in your day-to-day workload.
-          </p>
-        </article>
-      </section>
-    </main>
-
-    <!-- FOOTER (shared across pages) -->
-    <footer class="site-footer">
-      <div>© <span id="year"></span> Daedalus Systems. All rights reserved.</div>
-      <div>
-        <a href="#">Privacy</a> ·
-        <a href="#">Terms</a> ·
-        <a href="contact.html">Contact</a>
-      </div>
-    </footer>
+<header class="top-bar">
+  <div class="logo-row">
+    <div class="logo-mark"></div>
+    <div>
+      <div class="logo-text-main">Daedalus Systems</div>
+      <div class="logo-text-sub">Hand-built systems for real estate</div>
+    </div>
   </div>
 
-  <script>
-    // keep year current
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <nav class="nav-links" id="primary-nav">
+    <a href="index.html" class="nav-link">Overview</a>
+    <a href="solutions.html" class="nav-link">Solutions</a>
+    <a href="packages.html" class="nav-link">Packages</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="demo.html" class="nav-link">Demo</a>
+    <a href="contact.html" class="nav-link is-active">Contact</a>
+  </nav>
 
-    // live demo form handler (Make.com webhook)
-    document.getElementById("inquiryForm").addEventListener("submit", async function (e) {
-      e.preventDefault();
+  <button class="top-cta">Begin a conversation</button>
 
-      const button = this.querySelector("button[type='submit']");
-      const statusText = document.getElementById("statusText");
-      const thanks = document.getElementById("thanks");
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="primary-nav"
+    aria-label="Toggle navigation"
+  >
+    Menu
+    <span class="menu-icon">
+      <span></span>
+    </span>
+  </button>
+</header>
 
-      const data = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value,
-        message: document.getElementById("message").value,
-        property: document.getElementById("property").value
-      };
+<main>
+  <section class="contact-shell">
+    <div class="contact-inner">
+      <header class="contact-header">
+        <div class="contact-label">Contact</div>
+        <h1 class="contact-title">Start with a simple inquiry</h1>
+        <p class="contact-sub">
+          This form is for agents and small teams who are considering a Talos build and want to understand what it might look like in their world.
+          A short note is enough — we can fill in the details together.
+        </p>
+      </header>
 
-      button.disabled = true;
-      button.textContent = "Running demo...";
-      statusText.textContent = "Sending your inquiry through the automation scenario…";
+      <div class="contact-grid">
+        <!-- LEFT: CONTEXT -->
+        <section class="contact-notes">
+          <div class="contact-notes-block">
+            <div class="contact-notes-title">Good uses for this form</div>
+            <p class="contact-notes-sub">
+              A few examples of the kinds of questions that fit well here:
+            </p>
+            <ul class="contact-list">
+              <li>“Leads are slipping between my website, inbox, and CRM — can Talos help?”</li>
+              <li>“I’m on Follow Up Boss now. What would a Starter or Core System build actually change?”</li>
+              <li>“Our small team is juggling too many tools. Where would you begin?”</li>
+            </ul>
+          </div>
 
-      try {
-        await fetch("https://hook.us2.make.com/8vl8pvp817hib9w1e3rz3efg8eiw2sly", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        });
+          <div class="contact-notes-block">
+            <div class="contact-notes-title">What happens after you send this</div>
+            <p class="contact-notes-sub">
+              The usual flow is quiet and straightforward:
+            </p>
+            <ul class="contact-list">
+              <li>You receive a short reply within one business day.</li>
+              <li>If it looks like a fit, we’ll offer a 15–30 minute call window.</li>
+              <li>From there, you’ll get a clear written outline of options — no hard sell.</li>
+            </ul>
+          </div>
 
-        (document.getElementById("inquiryForm") as HTMLFormElement).reset?.();
+          <p class="contact-small">
+            If you prefer, you can also start with a specific question about tools you already use, rather than a full project scope.
+          </p>
+        </section>
 
-        thanks.style.display = "block";
-        statusText.textContent =
-          "If everything is wired correctly, you’ll see lead details come through via email and/or text shortly.";
-      } catch (error) {
-        console.error(error);
-        statusText.textContent =
-          "Something went wrong sending the request. If this keeps happening, the Make.com scenario may need a quick check.";
-      } finally {
-        button.disabled = false;
-        button.textContent = "Run the demo";
-      }
+        <!-- RIGHT: FORM -->
+        <section class="contact-card" aria-label="Contact form">
+          <h2 class="contact-card-title">Share a bit about your setup</h2>
+          <p class="contact-card-sub">
+            Just enough detail to understand where Talos might help. There is no obligation and no mailing list attached to this form.
+          </p>
+
+          <form action="#" method="post" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" autocomplete="name" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" required />
+              </div>
+              <div class="form-field">
+                <label for="phone">
+                  Phone
+                  <span class="field-optional">(optional)</span>
+                </label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="brokerage">
+                  Brokerage / Team
+                  <span class="field-optional">(optional)</span>
+                </label>
+                <input type="text" id="brokerage" name="brokerage" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="stage">Where you are right now</label>
+                <select id="stage" name="stage">
+                  <option value="">Select an option</option>
+                  <option value="just-curious">Just exploring what’s possible</option>
+                  <option value="specific-problem">Have a specific problem to solve</option>
+                  <option value="ready-soon">Planning to make changes in the next 1–3 months</option>
+                  <option value="team-conversation">Gathering info for a small team</option>
+                </select>
+                <p class="help-text">
+                  This simply helps right-size the first conversation.
+                </p>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="tools">What tools are you using today?</label>
+                <textarea id="tools" name="tools" placeholder="For example: Follow Up Boss, website forms, Google Calendar, email, SMS platform…"></textarea>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="message">What would you like Talos to help with?</label>
+                <textarea id="message" name="message" placeholder="A short description is plenty — where things feel heavy, scattered, or fragile right now."></textarea>
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-top: 0.6rem;">
+              <button type="submit" class="btn btn-primary">Send inquiry</button>
+            </div>
+
+            <p class="contact-footer-note">
+              You’ll receive a reply from Daedalus Systems directly — no automated scheduling links unless you ask for one.
+            </p>
+          </form>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="stripe-final">
+    <div class="stripe-final-inner">
+      <span class="stripe-final-strong">Not urgent?</span>
+      It’s completely fine to reach out even if you’re months away from making changes. A brief conversation now often prevents rushed decisions later when things get busy.
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div>© <span id="year"></span> Daedalus Systems</div>
+  <div>Boulder, CO · Built as a one-person workshop</div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Mobile nav toggle
+  const topBar = document.querySelector('.top-bar');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = topBar.classList.toggle('is-open');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
-  </script>
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (topBar.classList.contains('is-open')) {
+          topBar.classList.remove('is-open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  }
+</script>
+
 </body>
 </html>
