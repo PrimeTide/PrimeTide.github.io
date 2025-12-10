@@ -38,14 +38,13 @@
 
     /* HEADER */
     .top-bar {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 1.1rem 1.4rem;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 1.1rem 1.4rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
     }
 
     .logo-row { display: flex; align-items: center; gap: 0.75rem; }
@@ -65,8 +64,38 @@
 
     .nav-links { display: flex; gap: 0.9rem; flex-wrap: wrap; font-size: 0.86rem; }
 
-    .nav-link { color: var(--text-muted); }
-    .nav-link.is-active { color: var(--steel-blue); font-weight: 550; }
+   .nav-link {
+  position: relative;
+  color: var(--text-muted);
+  padding-bottom: 0.2rem;
+}
+
+.nav-link.is-active {
+  color: var(--steel-blue);
+  font-weight: 550;
+}
+
+    .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--steel-blue);
+  transform: scaleX(0);
+  transform-origin: center;
+  opacity: 0;
+  transition: transform 180ms ease-out, opacity 180ms ease-out;
+}
+
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+    .nav-links { justify-self: end; }
 
     .top-cta {
       border-radius: 999px;
