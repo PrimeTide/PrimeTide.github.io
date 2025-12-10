@@ -7,7 +7,6 @@
 
   <style>
     :root {
-      /* Your core palette */
       --steel-blue: #50718B;
       --dark-iron: #50241E;
       --bright-bronze: #CE7623;
@@ -15,609 +14,720 @@
       --purple-slate: #615576;
       --dusty-rose: #A8808E;
 
-      /* Backgrounds (light, like the mockup) */
-      --bg-page: #F4EFE7;    /* main background */
-      --bg-surface: #F9F6F2; /* cards, header */
-      --bg-soft: #F1ECE4;    /* subtle sections */
+      --bg-light: #F4EFE7;
+      --bg-mid: #F1ECE4;
+      --bg-dark: #3C2A2B;
 
-      /* Text */
-      --text-main: #2B1F20;
-      --text-body: #3D2B2C;
-      --text-muted: #7A6662;
-      --text-subtle: #A1918A;
-      --text-on-dark: #F9F6F2;
-
-      /* Borders */
-      --border-subtle: #E3D9CC;
-      --border-strong: #C8B8A5;
-
-      /* Buttons & links */
-      --btn-primary-bg: var(--bright-bronze);
-      --btn-primary-bg-hover: #B9621F;
-      --btn-primary-text: #F9F6F2;
-
-      --btn-secondary-bg: var(--steel-blue);
-      --btn-secondary-bg-hover: #435F75;
-      --btn-secondary-text: #F9F6F2;
-
-      --link: var(--steel-blue);
-      --link-hover: #3F5A70;
-      --link-visited: var(--purple-slate);
+      --text-light: #FAF5EE;
+      --text-dark: #2A1D1E;
+      --text-muted: #8A7570;
+      --border-soft: #E3D9CC;
     }
 
-    /* Basic reset */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      margin: 0;
-      min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg-page);
-      color: var(--text-body);
-      display: flex;
-      flex-direction: column;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      position: relative;
+      overflow-x: hidden;
     }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
+    a { text-decoration: none; color: inherit; }
 
-    a:hover {
-      color: var(--link-hover);
-    }
-
-    /* PAGE WRAPPER */
-    .page {
+    /* HEADER */
+    .top-bar {
       max-width: 1120px;
       margin: 0 auto;
-      padding: 1.5rem 1.25rem 2.5rem;
-      width: 100%;
-      flex: 1;
+      padding: 1.1rem 1.4rem;
       display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    /* HEADER / NAV */
-    .site-header {
-      background: var(--bg-surface);
-      border-radius: 20px;
-      border: 1px solid var(--border-subtle);
-      padding: 0.9rem 1.25rem;
-      display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
-      position: sticky;
-      top: 0.75rem;
-      z-index: 20;
-      backdrop-filter: blur(8px);
-    }
-
-    .brand {
-      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
       align-items: center;
-      gap: 0.75rem;
-      white-space: nowrap;
     }
 
-    .brand-mark {
-      width: 32px;
-      height: 32px;
+    .logo-row { display: flex; align-items: center; gap: 0.75rem; }
+
+    .logo-mark {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: radial-gradient(circle at 20% 20%, #FDF7ED 0, #FDF7ED 24%, var(--bright-bronze) 25%, var(--dark-iron) 70%);
+      border: 1px solid var(--border-soft);
+    }
+
+    .logo-text-main {
+      font-size: 0.9rem; letter-spacing: 0.18em; text-transform: uppercase;
+      font-weight: 650; color: var(--dark-iron);
+    }
+
+    .logo-text-sub { font-size: 0.75rem; color: var(--text-muted); }
+
+    .nav-links { display: flex; gap: 0.9rem; flex-wrap: wrap; font-size: 0.86rem; }
+
+    .nav-link { color: var(--text-muted); }
+    .nav-link.is-active { color: var(--steel-blue); font-weight: 550; }
+
+    .top-cta {
       border-radius: 999px;
-      background:
-        radial-gradient(circle at 25% 20%, #F9F6F2 0, #F9F6F2 25%, var(--bright-bronze) 26%, var(--dark-iron) 75%);
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.09);
-    }
-
-    .brand-title {
-      font-weight: 650;
-      letter-spacing: 0.04em;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      color: var(--dark-iron);
-    }
-
-    .brand-subtitle {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    .main-nav {
-      display: flex;
-      gap: 0.75rem;
-      justify-content: center;
-      flex: 1;
-    }
-
-    .nav-link {
-      font-size: 0.9rem;
-      padding: 0.4rem 0.8rem;
-      border-radius: 999px;
-      color: var(--text-muted);
-      border: 1px solid transparent;
-      transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.1s ease;
-    }
-
-    .nav-link:hover {
-      background: var(--bg-soft);
-      color: var(--text-body);
-      border-color: var(--border-subtle);
-      transform: translateY(-1px);
-    }
-
-    .nav-link.is-active {
-      background: var(--steel-blue);
-      color: var(--text-on-dark);
-      border-color: transparent;
-    }
-
-    .nav-cta {
-      white-space: nowrap;
-    }
-
-    /* BUTTONS */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.3rem;
-      padding: 0.55rem 1.2rem;
-      border-radius: 999px;
-      border: none;
-      font-size: 0.9rem;
-      font-weight: 550;
-      cursor: pointer;
-      transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.1s ease, border-color 0.18s ease;
-    }
-
-    .btn:active {
-      transform: translateY(1px);
-      box-shadow: none;
-    }
-
-    .btn-primary {
-      background: var(--btn-primary-bg);
-      color: var(--btn-primary-text);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.16);
-    }
-
-    .btn-primary:hover {
-      background: var(--btn-primary-bg-hover);
-    }
-
-    .btn-secondary {
-      background: var(--btn-secondary-bg);
-      color: var(--btn-secondary-text);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-    }
-
-    .btn-secondary:hover {
-      background: var(--btn-secondary-bg-hover);
-    }
-
-    .btn-ghost {
+      border: 1px solid var(--steel-blue);
+      padding: 0.45rem 1rem;
+      font-size: 0.85rem;
+      color: var(--steel-blue);
       background: transparent;
-      border: 1px solid var(--border-subtle);
-      color: var(--text-body);
+      cursor: pointer;
+      white-space: nowrap;
     }
 
-    .btn-ghost:hover {
-      background: var(--bg-soft);
+    .top-cta:hover {
+      background: rgba(80,113,139,0.08);
     }
 
-    /* MAIN HERO CARD */
-    .hero-card {
-      background: var(--bg-surface);
-      border-radius: 24px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-      padding: 1.75rem 1.5rem;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr);
-      gap: 2rem;
+    /* HERO */
+    .hero-stripe {
+      background:
+        linear-gradient(135deg, rgba(80,113,139,0.18), rgba(80,36,30,0.2)),
+        var(--bg-dark);
+      color: var(--text-light);
+      padding: 3.4rem 1.4rem 3.2rem;
     }
 
-    @media (min-width: 900px) {
-      .hero-card {
-        grid-template-columns: minmax(0, 3.4fr) minmax(0, 2.4fr);
-        align-items: center;
-      }
-    }
+    .hero-inner { max-width: 860px; margin: 0 auto; text-align: center; }
 
-    .eyebrow {
-      font-size: 0.78rem;
+    .hero-eyebrow {
+      font-size: 0.8rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--purple-slate);
-      margin-bottom: 0.5rem;
-      font-weight: 600;
+      color: rgba(250,245,238,0.75);
+      margin-bottom: 0.6rem;
     }
 
     .hero-title {
-      font-size: clamp(1.9rem, 3vw, 2.4rem);
-      line-height: 1.12;
-      margin: 0 0 0.75rem;
-      color: var(--text-main);
+      font-size: clamp(2.2rem, 4vw, 3.1rem);
+      line-height: 1.08;
+      margin-bottom: 0.9rem;
     }
 
-    .hero-highlight {
-      color: var(--bright-bronze);
-    }
+    .hero-title span { color: var(--bright-bronze); }
 
     .hero-body {
-      font-size: 0.98rem;
-      line-height: 1.5;
-      max-width: 34rem;
-      color: var(--text-body);
-      margin: 0 0 1.1rem;
+      font-size: 1rem;
+      max-width: 42rem;
+      margin: 0 auto 1.7rem;
+      color: rgba(250,245,238,0.9);
     }
 
     .hero-actions {
       display: flex;
+      justify-content: center;
+      gap: 0.9rem;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.65rem 1.6rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      font-weight: 550;
+    }
+
+    .btn-primary { background: #FAF5EE; color: #321916; }
+    .btn-primary:hover { background: #F4E5CF; }
+
+    .btn-ghost {
+      background: transparent;
+      color: #FAF5EE;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(250,245,238,0.08);
     }
 
     .hero-meta {
+      font-size: 0.8rem;
+      color: rgba(250,245,238,0.7);
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* WHO IT'S FOR */
+    .stripe-mid {
+      padding: 3rem 1.4rem;
+      background: var(--bg-light);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .stripe-inner { max-width: 900px; margin: 0 auto; }
+
+    .stripe-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .stripe-title {
+      font-size: 1.25rem;
+      margin-bottom: 1.2rem;
+      color: var(--dark-iron);
+    }
+
+    /* Vertical "Who this is for" list */
+    .who-list {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      max-width: 720px;
+    }
+
+    .who-item {
+      display: grid;
+      grid-template-columns: 12px 1fr;
+      gap: 0.9rem;
+      align-items: flex-start;
+    }
+
+    .who-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--bright-bronze);
+      margin-top: 0.45rem;
+      box-shadow: 0 0 0 4px rgba(206,118,35,0.18);
+    }
+
+    .who-body {
+      font-size: 0.93rem;
+      color: var(--text-dark);
+      line-height: 1.55;
+    }
+
+    .who-body strong {
+      color: var(--dark-iron);
+    }
+
+    /* HOW IT FEELS */
+    .stripe-soft {
+      background: var(--bg-mid);
+      padding: 2.8rem 1.4rem;
+    }
+
+    .soft-grid {
+      margin-top: 1.9rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 1.1rem;
+    }
+
+    .soft-item {
+      padding: 1rem 1.1rem;
+      border-radius: 14px;
+      background: #F9F6F2;
+      border: 1px solid var(--border-soft);
+      font-size: 0.88rem;
+    }
+
+    /* FINAL CTA */
+    .stripe-final {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      padding: 2.7rem 1.4rem 2.3rem;
+    }
+
+    .stripe-final-inner {
+      max-width: 900px;
+      margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem 1.2rem;
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      gap: 1.6rem;
+      justify-content: space-between;
       align-items: center;
     }
 
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #16A34A;
-      box-shadow: 0 0 0 6px rgba(22,163,74,0.18);
-    }
-
-    /* RIGHT COLUMN – SIDE PANEL */
-    .side-panel {
-      border-radius: 20px;
-      background:
-        radial-gradient(circle at 10% 0, rgba(206,118,35,0.14), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(80,36,30,0.18), transparent 55%),
-        var(--bg-soft);
-      border: 1px solid var(--border-subtle);
-      padding: 1.35rem 1.3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .side-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--dark-iron);
+    .final-text-main {
+      font-size: 1.08rem;
+      font-weight: 550;
       margin-bottom: 0.2rem;
     }
 
-    .side-text {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin: 0;
-    }
-
-    .mini-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-subtle);
-      margin-bottom: 0.25rem;
-    }
-
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--border-subtle), transparent);
-      margin: 0.3rem 0 0.6rem;
-    }
-
-    .color-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.5rem;
-    }
-
-    .swatch {
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.08);
-      background: rgba(249,246,242,0.95);
-      font-size: 0.74rem;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .swatch-color {
-      height: 36px;
-    }
-
-    .swatch-body {
-      padding: 0.4rem 0.55rem 0.5rem;
-    }
-
-    .swatch-name {
-      font-weight: 550;
-      margin-bottom: 0.05rem;
-      color: var(--text-body);
-    }
-
-    .swatch-hex {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      color: var(--text-muted);
-    }
-
-    .side-footnote {
-      font-size: 0.75rem;
-      color: var(--text-subtle);
-    }
-
-    /* SUB-SECTION BELOW HERO */
-    .sub-grid {
-      margin-top: 1.25rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1rem;
-    }
-
-    .info-card {
-      background: var(--bg-soft);
-      border-radius: 18px;
-      border: 1px solid var(--border-subtle);
-      padding: 1rem 1rem 1.1rem;
-      font-size: 0.86rem;
-      color: var(--text-body);
-    }
-
-    .info-title {
+    .final-text-sub {
       font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-      color: var(--dark-iron);
+      color: rgba(250,245,238,0.82);
+      max-width: 28rem;
     }
 
-    .info-tag {
-      display: inline-block;
-      padding: 0.15rem 0.55rem;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      background: rgba(80,36,30,0.08);
-      color: var(--dark-iron);
-      margin-bottom: 0.4rem;
-    }
+/* AMBIENT SIDE CIRCUIT PANELS */
+.ambient-left,
+.ambient-right {
+  position: absolute;   /* was fixed */
+  top: 0;
+  bottom: 0;
+  width: 220px;         /* you can tweak this later */
+  pointer-events: none;
+  z-index: 0;           /* behind header/sections/footer */
+}
 
-    /* FOOTER */
-    .site-footer {
-      margin-top: 1.5rem;
-      padding: 1.25rem 1.25rem 0.75rem;
-      border-top: 1px solid var(--border-subtle);
+/* Left side panel */
+.ambient-left {
+  left: 0;
+}
+
+/* Right side panel – mirror the same SVG */
+.ambient-right {
+  right: 0;
+  transform: scaleX(-1);     /* reuse the same SVG, flipped */
+}
+
+/* SVG styling */
+.circuit-svg {
+  width: 100%;      /* fill the 220px panel */
+  height: 100%;
+  opacity: 0.35;    /* tweak stronger/weaker here */
+}
+
+
+/* Circuit strokes & nodes */
+.circuit-main {
+  stroke: var(--steel-blue);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.circuit-secondary {
+  stroke: var(--dusty-rose);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.7;
+}
+
+.circuit-tertiary {
+  stroke: var(--clay);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.6;
+}
+
+.circuit-node {
+  fill: var(--bright-bronze);
+  opacity: 0.9;
+}
+
+.circuit-node-soft {
+  fill: var(--purple-slate);
+  opacity: 0.5;
+}
+
+/* Keep content above the circuits */
+header,
+section,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hide on small screens */
+@media (max-width: 900px) {
+  .ambient-left,
+  .ambient-right {
+    display: none;
+  }
+}
+
+
+    .final-actions { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+
+    .footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1rem 1.4rem 1.4rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
       display: flex;
       justify-content: space-between;
-      gap: 1rem;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .site-footer a {
-      font-size: 0.78rem;
-    }
-
-    @media (max-width: 700px) {
-      .site-header {
-        flex-wrap: wrap;
-        align-items: flex-start;
-      }
-
-      .main-nav {
-        order: 3;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-      }
-
-      .nav-cta {
-        order: 2;
-      }
-
-      .hero-card {
-        padding: 1.4rem 1.1rem;
-      }
-
-      .site-footer {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      flex-wrap: wrap;
     }
   </style>
 </head>
+
 <body>
-  <div class="page">
 
-    <!-- HEADER (shared across pages) -->
-    <header class="site-header">
-      <div class="brand">
-        <div class="brand-mark"></div>
-        <div>
-          <div class="brand-title">Daedalus Systems</div>
-          <div class="brand-subtitle">Automation atelier for real estate</div>
-        </div>
-      </div>
+  <div class="ambient-left">
+    <svg
+      class="circuit-svg"
+      viewBox="0 0 260 800"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+    >
+      <g fill="none">
+        <!-- Main vertical spine -->
+        <path
+          class="circuit-main"
+          d="
+            M250 10
+            V140
+            H210
+            V230
+            H170
+            V340
+            H140
+            V460
+            H190
+            V560
+            H220
+            V720
+          "
+        />
 
-      <nav class="main-nav">
-        <a href="index.html" class="nav-link is-active">Overview</a>
-        <a href="solutions.html" class="nav-link">Solutions</a>
-        <a href="packages.html" class="nav-link">Packages</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </nav>
+        <!-- Secondary branches -->
+        <path
+          class="circuit-secondary"
+          d="
+            M230 60
+            H190
+            V130
+            H150
+            V190
 
-      <div class="nav-cta">
-        <button class="btn btn-secondary">Book a 15-min consult</button>
-      </div>
-    </header>
+            M230 260
+            H200
+            V310
+            H160
 
-    <!-- MAIN HERO CONTENT -->
-    <main>
-      <section class="hero-card">
-        <!-- LEFT: main message -->
-        <div>
-          <div class="eyebrow">For solo agents who can’t afford slow follow-up</div>
-          <h1 class="hero-title">
-            Turn every new lead into a <span class="hero-highlight">handled conversation</span>.
-          </h1>
-          <p class="hero-body">
-            Real estate doesn’t slow down just because you finally have a moment to check your inbox.
-            Daedalus Systems builds quiet, dependable automations that sit inside the tools you already use—
-            catching new leads, replying on your behalf, and keeping your pipeline organized while you stay
-            out in the field.
-          </p>
-          <p class="hero-body">
-            No new platform to learn. No extra dashboard to babysit. Just a system that feels like a calm,
-            reliable assistant working behind the scenes so you can focus on real conversations, not admin.
-          </p>
+            M230 420
+            H200
+            V380
+            H160
+            V330
 
-          <div class="hero-actions">
-            <button class="btn btn-primary">Try the live lead capture</button>
-            <button class="btn btn-ghost">Watch a 3-minute overview</button>
-          </div>
+            M230 620
+            H200
+            V580
+            H160
+          "
+        />
 
-          <div class="hero-meta">
-            <span class="status-dot"></span>
-            <span>Average response time for new leads: under 30 seconds.</span>
-            <span>•</span>
-            <span>Works with CRMs like Follow Up Boss, Wise Agent, and LionDesk.</span>
-          </div>
-        </div>
+        <!-- Tertiary, finer traces -->
+        <path
+          class="circuit-tertiary"
+          d="
+            M215 100
+            H175
+            V80
 
-        <!-- RIGHT: side info panel -->
-        <aside class="side-panel">
-          <div>
-            <div class="mini-label">Design system</div>
-            <div class="divider"></div>
-            <div class="side-title">A calm, crafted interface for your business.</div>
-            <p class="side-text">
-              Light, warm surfaces with steel blue and bronze accents keep everything feeling sharp,
-              professional, and human. Your operations may be powered by automation, but the experience
-              remains personal and grounded—just like the way you serve your clients.
-            </p>
-          </div>
+            M215 160
+            H185
+            V200
 
-          <div>
-            <div class="mini-label">Core colors</div>
-            <div class="color-row">
-              <div class="swatch">
-                <div class="swatch-color" style="background: var(--steel-blue);"></div>
-                <div class="swatch-body">
-                  <div class="swatch-name">Steel Blue</div>
-                  <div class="swatch-hex">#50718B</div>
-                </div>
-              </div>
-              <div class="swatch">
-                <div class="swatch-color" style="background: var(--dark-iron);"></div>
-                <div class="swatch-body">
-                  <div class="swatch-name">Dark Iron</div>
-                  <div class="swatch-hex">#50241E</div>
-                </div>
-              </div>
-              <div class="swatch">
-                <div class="swatch-color" style="background: var(--bright-bronze);"></div>
-                <div class="swatch-body">
-                  <div class="swatch-name">Bronze</div>
-                  <div class="swatch-hex">#CE7623</div>
-                </div>
-              </div>
-              <div class="swatch">
-                <div class="swatch-color" style="background: var(--clay);"></div>
-                <div class="swatch-body">
-                  <div class="swatch-name">Clay</div>
-                  <div class="swatch-hex">#B28770</div>
-                </div>
-              </div>
-              <div class="swatch">
-                <div class="swatch-color" style="background: var(--purple-slate);"></div>
-                <div class="swatch-body">
-                  <div class="swatch-name">Slate</div>
-                  <div class="swatch-hex">#615576</div>
-                </div>
-              </div>
-              <div class="swatch">
-                <div class="swatch-color" style="background: var(--dusty-rose);"></div>
-                <div class="swatch-body">
-                  <div class="swatch-name">Dusty Rose</div>
-                  <div class="swatch-hex">#A8808E</div>
-                </div>
-              </div>
-            </div>
-          </div>
+            M215 300
+            H185
+            V280
 
-          <div>
-            <div class="mini-label">Implementation</div>
-            <p class="side-footnote">
-              Talos, your automation steward, connects to the systems you already trust—CRMs like Follow Up Boss,
-              Wise Agent, or LionDesk, along with your email, calendar, and forms. No ripping and replacing.
-              We simply weave your existing tools into a smoother, more intelligent workflow.
-            </p>
-          </div>
-        </aside>
-      </section>
+            M215 360
+            H175
+            V390
 
-      <!-- SUB-SECTION: three info cards -->
-      <section class="sub-grid">
-        <article class="info-card">
-          <div class="info-tag">01 · Lead capture</div>
-          <div class="info-title">Instant, on-brand responses.</div>
-          <p>
-            Every new inquiry is greeted within seconds with a friendly, consistent message that sounds like you—
-            collecting the details you need and setting expectations, even when you’re in a showing, driving,
-            or finally taking a break.
-          </p>
-        </article>
+            M215 500
+            H185
+            V540
 
-        <article class="info-card">
-          <div class="info-tag">02 · Your day, prepared</div>
-          <div class="info-title">A pipeline that stays organized for you.</div>
-          <p>
-            Talos keeps your CRM, tasks, and notes tidy without you living inside them. New leads are logged,
-            tagged, and routed automatically, so when you sit down to work, the next right actions are already
-            laid out in front of you.
-          </p>
-        </article>
+            M215 660
+            H175
+            V640
+          "
+        />
 
-        <article class="info-card">
-          <div class="info-tag">03 · Partnership</div>
-          <div class="info-title">A partner in your business, not another tool.</div>
-          <p>
-            Daedalus Systems doesn’t hand you software and walk away. We design, integrate, and maintain your
-            automations over time. As your business evolves, your systems evolve with it—without adding another
-            thing to your plate to manage.
-          </p>
-        </article>
-      </section>
-    </main>
+        <!-- Nodes / connection points -->
+        <circle class="circuit-node" cx="250" cy="10" r="3" />
+        <circle class="circuit-node" cx="210" cy="140" r="3" />
+        <circle class="circuit-node" cx="170" cy="230" r="3" />
+        <circle class="circuit-node" cx="140" cy="340" r="3" />
+        <circle class="circuit-node" cx="190" cy="460" r="3" />
+        <circle class="circuit-node" cx="220" cy="560" r="3" />
+        <circle class="circuit-node" cx="220" cy="720" r="3" />
 
-    <!-- FOOTER (shared across pages) -->
-    <footer class="site-footer">
-      <div>© <span id="year"></span> Daedalus Systems. All rights reserved.</div>
-      <div>
-        <a href="#">Privacy</a> ·
-        <a href="#">Terms</a> ·
-        <a href="contact.html">Contact</a>
-      </div>
-    </footer>
+        <!-- Softer, background nodes -->
+        <circle class="circuit-node-soft" cx="200" cy="90" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="180" r="2.5" />
+        <circle class="circuit-node-soft" cx="200" cy="280" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="360" r="2.5" />
+        <circle class="circuit-node-soft" cx="200" cy="520" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="600" r="2.5" />
+      </g>
+    </svg>
   </div>
 
-  <script>
-    // keep year current
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <div class="ambient-right">
+    <!-- We reuse the same SVG, mirrored via CSS scaleX(-1) -->
+    <svg
+      class="circuit-svg"
+      viewBox="0 0 260 800"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+    >
+      <g fill="none">
+        <!-- Main vertical spine -->
+        <path
+          class="circuit-main"
+          d="
+            M250 10
+            V140
+            H210
+            V230
+            H170
+            V340
+            H140
+            V460
+            H190
+            V560
+            H220
+            V720
+          "
+        />
+
+        <!-- Secondary branches -->
+        <path
+          class="circuit-secondary"
+          d="
+            M230 60
+            H190
+            V130
+            H150
+            V190
+
+            M230 260
+            H200
+            V310
+            H160
+
+            M230 420
+            H200
+            V380
+            H160
+            V330
+
+            M230 620
+            H200
+            V580
+            H160
+          "
+        />
+
+        <!-- Tertiary, finer traces -->
+        <path
+          class="circuit-tertiary"
+          d="
+            M215 100
+            H175
+            V80
+
+            M215 160
+            H185
+            V200
+
+            M215 300
+            H185
+            V280
+
+            M215 360
+            H175
+            V390
+
+            M215 500
+            H185
+            V540
+
+            M215 660
+            H175
+            V640
+          "
+        />
+
+        <!-- Nodes / connection points -->
+        <circle class="circuit-node" cx="250" cy="10" r="3" />
+        <circle class="circuit-node" cx="210" cy="140" r="3" />
+        <circle class="circuit-node" cx="170" cy="230" r="3" />
+        <circle class="circuit-node" cx="140" cy="340" r="3" />
+        <circle class="circuit-node" cx="190" cy="460" r="3" />
+        <circle class="circuit-node" cx="220" cy="560" r="3" />
+        <circle class="circuit-node" cx="220" cy="720" r="3" />
+
+        <!-- Softer, background nodes -->
+        <circle class="circuit-node-soft" cx="200" cy="90" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="180" r="2.5" />
+        <circle class="circuit-node-soft" cx="200" cy="280" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="360" r="2.5" />
+        <circle class="circuit-node-soft" cx="200" cy="520" r="2.5" />
+        <circle class="circuit-node-soft" cx="180" cy="600" r="2.5" />
+      </g>
+    </svg>
+  </div>
+
+  <header class="top-bar">
+
+
+
+  
+  <div class="logo-row">
+    <div class="logo-mark"></div>
+    <div>
+      <div class="logo-text-main">Daedalus Systems</div>
+      <div class="logo-text-sub">Automation atelier for real estate</div>
+    </div>
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html" class="nav-link is-active">Overview</a>
+    <a href="solutions.html" class="nav-link">Solutions</a>
+    <a href="packages.html" class="nav-link">Packages</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="demo.html" class="nav-link">Demo</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </nav>
+
+  <button class="top-cta">Talk with Daedalus</button>
+</header>
+
+<!-- HERO -->
+<section class="hero-stripe">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">For solo agents and small teams</div>
+
+    <h1 class="hero-title">
+      We make your existing systems
+      <span>work as one</span>.
+    </h1>
+
+    <p class="hero-body">
+      Most CRMs are powerful. Most workflows are broken. Talos sits between your tools,
+      quietly repairing the handoffs—so your forms, inbox, calendar, and CRM finally move
+      as a single system.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn btn-primary">See the live lead journey</button>
+      <button class="btn btn-ghost">Book a short consult</button>
+    </div>
+
+    <div class="hero-meta">
+      <span>Works with Follow Up Boss, Wise Agent, LionDesk & more</span>
+      <span>No platform switching · No long-term contracts</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR – VERTICAL LIST -->
+<section class="stripe-mid">
+  <div class="stripe-inner">
+    <div class="stripe-label">Who this is for</div>
+
+    <h2 class="stripe-title">
+      You don’t need more software. You need your existing tools to stop fighting each other.
+    </h2>
+
+    <div class="who-list">
+      <div class="who-item">
+        <div class="who-dot"></div>
+        <div class="who-body">
+          <strong>You already have “enough” tools.</strong><br />
+          A CRM, a website, email, maybe a text platform — but they don’t move in sync.
+        </div>
+      </div>
+
+      <div class="who-item">
+        <div class="who-dot"></div>
+        <div class="who-body">
+          <strong>You lose momentum in the handoffs.</strong><br />
+          Leads come in, but follow-up splinters across inboxes, forms, and half-used automations.
+        </div>
+      </div>
+
+      <div class="who-item">
+        <div class="who-dot"></div>
+        <div class="who-body">
+          <strong>You don’t want another dashboard to manage.</strong><br />
+          You want fewer places to check, not one more place to babysit.
+        </div>
+      </div>
+
+      <div class="who-item">
+        <div class="who-dot"></div>
+        <div class="who-body">
+          <strong>You care about tone, timing, and trust.</strong><br />
+          You’re open to automation — as long as it doesn’t feel robotic or reckless.
+        </div>
+      </div>
+
+      <div class="who-item">
+        <div class="who-dot"></div>
+        <div class="who-body">
+          <strong>You want leverage without losing control.</strong><br />
+          You want the system to carry weight — without making promises on your behalf.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT FEELS -->
+<section class="stripe-soft">
+  <div class="stripe-inner" style="text-align:center;">
+    <h2 class="stripe-title">What it feels like when the system is finally aligned</h2>
+
+    <div class="soft-grid">
+      <div class="soft-item">
+        <strong>Your mornings</strong><br />
+        You open your CRM to a small, clean list of real opportunities. Not noise.
+      </div>
+      <div class="soft-item">
+        <strong>Your showings</strong><br />
+        While you’re in appointments, Talos answers new inquiries in your voice.
+      </div>
+      <div class="soft-item">
+        <strong>Your evenings</strong><br />
+        You review summaries—not catch up on forgotten messages.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="stripe-final">
+  <div class="stripe-final-inner">
+    <div>
+      <div class="final-text-main">Curious what Talos would change in your week?</div>
+      <div class="final-text-sub">
+        In a short call, we map your current tools, identify friction, and outline a simple first automation.
+        No slides. No buzzwords. Just clarity.
+      </div>
+    </div>
+
+    <div class="final-actions">
+      <button class="btn btn-primary">Schedule your 15-minute call</button>
+      <button class="btn btn-ghost">Send a quick question instead</button>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div>© <span id="year"></span> Daedalus Systems</div>
+  <div>Boulder, CO · Built as a one-person workshop</div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
