@@ -265,6 +265,30 @@
       max-width: 28rem;
     }
 
+        /* AMBIENT SIDE PANELS */
+    .ambient-left,
+    .ambient-right {
+      position: fixed;
+      top: 0;
+      width: 22vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.9;
+    }
+    
+    .ambient-left {
+      left: 0;
+      background:
+        radial-gradient(circle at 30% 40%, rgba(97,85,118,0.22), transparent 60%);
+    }
+    
+    .ambient-right {
+      right: 0;
+      background:
+        radial-gradient(circle at 70% 55%, rgba(168,128,142,0.20), transparent 60%);
+    }
+
     .final-actions { display: flex; gap: 0.7rem; flex-wrap: wrap; }
 
     .footer {
@@ -282,6 +306,9 @@
 
 <body>
 
+<div class="ambient-left"></div>
+<div class="ambient-right"></div>
+  
 <header class="top-bar">
   <div class="logo-row">
     <div class="logo-mark"></div>
