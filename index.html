@@ -229,7 +229,10 @@
     /* WHO IT'S FOR */
     .stripe-mid {
       padding: 3rem 1.4rem;
-      background: var(--bg-light);
+      background:
+        radial-gradient(circle at 0 20%, rgba(80, 36, 30, 0.12), transparent 60%),
+        radial-gradient(circle at 100% 80%, rgba(80, 113, 139, 0.12), transparent 60%),
+        var(--bg-light);
       border-top: 1px solid var(--border-soft);
       border-bottom: 1px solid var(--border-soft);
     }
@@ -290,8 +293,11 @@
     /* HOW IT FEELS */
   
     .stripe-soft {
-      background: var(--bg-mid);
       padding: 2.8rem 1.4rem;
+      background:
+      radial-gradient(circle at 0 30%, rgba(97, 85, 118, 0.12), transparent 60%),
+      radial-gradient(circle at 100% 70%, rgba(178, 135, 112, 0.12), transparent 60%),
+      var(--bg-mid);
     }
 
     .soft-grid {
@@ -363,23 +369,6 @@
       overflow: hidden;
     }
 
-    @media (min-width: 900px) {
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: -1;
-
-      background:
-          radial-gradient(circle at 0 20%, rgba(80, 36, 30, 0.12), transparent 60%),
-          radial-gradient(circle at 0 80%, rgba(80, 113, 139, 0.12), transparent 60%),
-          radial-gradient(circle at 100% 30%, rgba(97, 85, 118, 0.12), transparent 60%),
-          radial-gradient(circle at 100% 90%, rgba(178, 135, 112, 0.12), transparent 60%),
-          var(--bg-light);
-      }
-    }
-    
     .hero-stripe::before {
       content: "";
       position: absolute;
