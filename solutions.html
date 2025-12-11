@@ -184,23 +184,43 @@
       opacity: 0;
     }
 
-    /* HERO – LIGHT, CARD-STYLE */
+    /* HERO – DARK, COMPACT, UTILITY */
     .hero-stripe {
-      padding: 2.7rem 1.4rem 2.4rem;
       background:
-        radial-gradient(circle at 0 0, rgba(80,113,139,0.12), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(80,36,30,0.10), transparent 55%),
-        var(--bg-light);
-      border-top: 1px solid var(--border-soft);
-      border-bottom: 1px solid var(--border-soft);
+        linear-gradient(135deg, rgba(80,113,139,0.5), rgba(80,36,30,0.55)),
+        var(--bg-dark);
+      color: var(--text-light);
+      padding: 2.4rem 1.4rem 2.2rem;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(0,0,0,0.7);
+      border-bottom: 1px solid rgba(0,0,0,0.7);
+    }
+
+    .hero-stripe::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(22, 12, 12, 0.4) 0%,
+          rgba(22, 12, 12, 0.16) 18%,
+          transparent 40%,
+          transparent 60%,
+          rgba(22, 12, 12, 0.16) 82%,
+          rgba(22, 12, 12, 0.4) 100%
+        );
     }
 
     .hero-inner {
+      position: relative;
       max-width: 960px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-      gap: 1.8rem;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1.6rem;
       align-items: flex-start;
     }
 
@@ -212,23 +232,22 @@
       font-size: 0.78rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
+      color: rgba(250,245,238,0.78);
+      margin-bottom: 0.45rem;
     }
 
     .hero-title {
-      font-size: 1.6rem;
-      line-height: 1.15;
+      font-size: 1.5rem;
+      line-height: 1.16;
       margin-bottom: 0.4rem;
-      color: var(--dark-iron);
     }
 
     .hero-title span { color: var(--bright-bronze); }
 
     .hero-body {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 1.1rem;
+      font-size: 0.93rem;
+      color: rgba(250,245,238,0.9);
+      margin-bottom: 0.9rem;
     }
 
     .hero-actions {
@@ -240,53 +259,59 @@
 
     .hero-meta {
       font-size: 0.8rem;
-      color: var(--text-muted);
+      color: rgba(250,245,238,0.75);
     }
 
     .hero-side {
-      background: #F9F6F2;
-      border-radius: 16px;
-      border: 1px solid var(--border-soft);
-      padding: 1rem 1rem 0.9rem;
-      font-size: 0.86rem;
+      background: rgba(249,246,242,0.06);
+      border-radius: 14px;
+      border: 1px solid rgba(227,217,204,0.35);
+      padding: 0.9rem 1rem 0.8rem;
+      font-size: 0.83rem;
       line-height: 1.6;
+      box-shadow: 0 14px 26px rgba(0,0,0,0.25);
     }
 
     .hero-side-label {
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      color: var(--text-muted);
-      margin-bottom: 0.3rem;
+      color: rgba(250,245,238,0.78);
+      margin-bottom: 0.35rem;
     }
 
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
+    .hero-map-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.4rem;
       margin-bottom: 0.5rem;
     }
 
-    .hero-tag {
-      font-size: 0.7rem;
+    .hero-map-item {
+      border-radius: 10px;
+      padding: 0.4rem 0.45rem;
+      border: 1px solid rgba(250,245,238,0.18);
+      background: radial-gradient(circle at 0 0, rgba(250,245,238,0.18), transparent 60%);
+      font-size: 0.78rem;
+    }
+
+    .hero-map-label {
+      font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      padding: 0.14rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,0.06);
-      background: #F3EBDF;
-      color: var(--text-muted);
-      white-space: nowrap;
+      color: rgba(250,245,238,0.85);
+      margin-bottom: 0.1rem;
     }
 
-    .hero-side-list {
-      list-style: disc;
-      padding-left: 1.1rem;
+    .hero-map-sub {
+      font-size: 0.78rem;
+      color: rgba(250,245,238,0.8);
+    }
+
+    .hero-side-note {
+      font-size: 0.8rem;
+      color: rgba(250,245,238,0.78);
       margin-top: 0.3rem;
-    }
-
-    .hero-side-list li {
-      margin-bottom: 0.2rem;
     }
 
     .btn {
@@ -301,20 +326,20 @@
 
     .btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
     }
 
-    .btn-primary { background: var(--steel-blue); color: #FDF8F0; }
-    .btn-primary:hover { background: #436479; }
+    .btn-primary { background: #FAF5EE; color: #321916; }
+    .btn-primary:hover { background: #F4E5CF; }
 
     .btn-ghost {
       background: transparent;
-      color: var(--steel-blue);
-      border: 1px solid rgba(80,113,139,0.4);
+      color: #FAF5EE;
+      border: 1px solid rgba(255,255,255,0.6);
     }
 
     .btn-ghost:hover {
-      background: rgba(80,113,139,0.06);
+      background: rgba(250,245,238,0.08);
     }
 
     /* GENERIC STRIPES */
@@ -413,54 +438,6 @@
 
     .card-list li {
       margin-bottom: 0.25rem;
-    }
-
-    /* TWO-COLUMN DETAIL LIST – DARK VARIANT */
-    .stripe-dark {
-      padding: 3rem 1.4rem;
-      background:
-        linear-gradient(135deg, rgba(80,113,139,0.28), rgba(80,36,30,0.35)),
-        var(--bg-dark);
-      color: var(--text-light);
-      border-top: 1px solid rgba(0,0,0,0.7);
-      border-bottom: 1px solid rgba(0,0,0,0.7);
-    }
-
-    .stripe-dark .stripe-label {
-      color: rgba(250,245,238,0.7);
-    }
-
-    .stripe-dark .stripe-title {
-      color: #FDF8F0;
-    }
-
-    .stripe-dark .stripe-sub {
-      color: rgba(250,245,238,0.82);
-    }
-
-    .detail-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 1.6rem;
-      align-items: flex-start;
-    }
-
-    .detail-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      font-size: 0.9rem;
-    }
-
-    .detail-item-label {
-      font-weight: 550;
-      color: #FDF2DF;
-      margin-bottom: 0.05rem;
-    }
-
-    .detail-item-sub {
-      font-size: 0.86rem;
-      color: rgba(250,245,238,0.85);
     }
 
     /* STEPS / TIMELINE */
@@ -584,6 +561,7 @@
 
     .final-actions { display: flex; gap: 0.7rem; flex-wrap: wrap; }
 
+    /* FOOTER */
     .footer {
       max-width: 1120px;
       margin: 0 auto;
@@ -603,10 +581,6 @@
 
       .hero-main {
         max-width: none;
-      }
-
-      .detail-grid {
-        grid-template-columns: minmax(0, 1fr);
       }
     }
 
@@ -693,270 +667,231 @@
   </button>
 </header>
 
-<!-- HERO – LIGHT -->
-<section class="hero-stripe">
-  <div class="hero-inner">
-    <div class="hero-main">
-      <div class="hero-eyebrow">Hands-on automation for real estate</div>
-      <h1 class="hero-title">
-        What Talos actually does
-        <span>between your tools</span>.
-      </h1>
-      <p class="hero-body">
-        On this page, “solutions” means something simple: the specific, repeatable work Talos handles in the background while you stay focused on people.
-      </p>
+<main>
+  <!-- HERO – DARK, COMPACT -->
+  <section class="hero-stripe">
+    <div class="hero-inner">
+      <div class="hero-main">
+        <div class="hero-eyebrow">Hands-on automation for real estate</div>
+        <h1 class="hero-title">
+          What Talos actually does
+          <span>between your tools</span>.
+        </h1>
+        <p class="hero-body">
+          On this page, “solutions” means something simple: the specific, repeatable work Talos takes over while you stay focused on people, not plumbing.
+        </p>
 
-      <div class="hero-actions">
+        <div class="hero-actions">
+          <a href="demo.html">
+            <button class="btn btn-primary">Watch a system in motion</button>
+          </a>
+          <a href="packages.html">
+            <button class="btn btn-ghost">See how it’s packaged</button>
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          Most builds start with intake and first response, then grow into follow-up and light operations once the basics feel steady.
+        </div>
+      </div>
+
+      <aside class="hero-side">
+        <div class="hero-side-label">Where Talos lives day to day</div>
+        <div class="hero-map-grid">
+          <div class="hero-map-item">
+            <div class="hero-map-label">Intake</div>
+            <div class="hero-map-sub">Forms, portals, inbox → one clean entry in your CRM.</div>
+          </div>
+          <div class="hero-map-item">
+            <div class="hero-map-label">Follow-up</div>
+            <div class="hero-map-sub">First replies, light check-ins, and simple next steps.</div>
+          </div>
+          <div class="hero-map-item">
+            <div class="hero-map-label">Operations</div>
+            <div class="hero-map-sub">Tags, routing, and quiet calendar support.</div>
+          </div>
+        </div>
+        <div class="hero-side-note">
+          You do not log into “Talos.” It runs between tools you already trust — especially your CRM.
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- WHAT WE ACTUALLY AUTOMATE -->
+  <section class="stripe">
+    <div class="stripe-inner">
+      <div class="stripe-header">
+        <div class="stripe-label">What Talos handles</div>
+        <h2 class="stripe-title">The quiet work that moves leads forward</h2>
+        <p class="stripe-sub">
+          These are the pieces Talos usually takes off your plate while you stay in charge of key conversations and decisions.
+        </p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-title-row">
+            <div class="card-title">Lead intake & first response</div>
+            <div class="pill">Front door</div>
+          </div>
+          <p>
+            New inquiries are caught, answered, and organized — without copy-paste.
+          </p>
+          <ul class="card-list">
+            <li>Website and portal leads pushed into your CRM.</li>
+            <li>Short, warm first responses in your tone.</li>
+            <li>Simple tags for source and basic intent.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title-row">
+            <div class="card-title">Follow-up & nurturing</div>
+            <div class="pill">Middle</div>
+          </div>
+          <p>
+            Follow-up becomes a calm rhythm instead of a pile of overdue tasks.
+          </p>
+          <ul class="card-list">
+            <li>Light check-ins for “not yet” and long-term leads.</li>
+            <li>Automatic pauses when a conversation is active.</li>
+            <li>Daily lists that show who actually needs you.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-title-row">
+            <div class="card-title">Back-end cleanup & operations</div>
+            <div class="pill">Back end</div>
+          </div>
+          <p>
+            The tools you already pay for stop working against each other.
+          </p>
+          <ul class="card-list">
+            <li>De-duped contacts and tidier pipelines.</li>
+            <li>Basic calendar confirmations for key events.</li>
+            <li>Simple views that highlight bottlenecks.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="stripe-alt">
+    <div class="stripe-inner">
+      <div class="stripe-header">
+        <div class="stripe-label">Process</div>
+        <h2 class="stripe-title">From scattered tools to a steady system</h2>
+        <p class="stripe-sub">
+          The shape is simple: understand your current week, fix the biggest leaks, then refine once real leads run through.
+        </p>
+      </div>
+
+      <div class="step-list">
+        <div class="step">
+          <div class="step-head">
+            <div class="step-badge">1</div>
+            <div class="step-title">Map what already exists</div>
+          </div>
+          <div class="step-meta">One short call and a few screenshots.</div>
+          <p>
+            We walk through how leads arrive today and where they fall off. The outcome is a clear picture of your tools and a small list of places Talos can help first.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-head">
+            <div class="step-badge">2</div>
+            <div class="step-title">Build the first slice</div>
+          </div>
+          <div class="step-meta">Usually intake, first reply, and basic tagging.</div>
+          <p>
+            Talos is wired between your tools to fix those leaks. You approve the language and timing before anything goes live.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-head">
+            <div class="step-badge">3</div>
+            <div class="step-title">Tune and extend</div>
+          </div>
+          <div class="step-meta">Adjustments over weeks, not one big launch.</div>
+          <p>
+            As leads move through, we adjust pacing, trim steps that feel heavy, and add new automations only where they clearly help.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXAMPLE FLOWS -->
+  <section class="stripe">
+    <div class="stripe-inner">
+      <div class="stripe-header">
+        <div class="stripe-label">Example flows</div>
+        <h2 class="stripe-title">What this looks like in real days</h2>
+        <p class="stripe-sub">
+          These aren’t scripts to copy — just snapshots of how Talos usually shows up in an agent’s week.
+        </p>
+      </div>
+
+      <div class="example-list">
+        <div class="example">
+          <div class="example-label">New portal inquiry</div>
+          <div class="example-title">From “just came in” to organized lead</div>
+          <ul class="example-steps">
+            <li>Lead arrives from a portal and lands in your CRM with source and price range tagged.</li>
+            <li>A short, human reply goes out in your voice with one or two simple questions.</li>
+            <li>If they reply, the automation steps back. If they don’t, Talos schedules a gentle follow-up.</li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <div class="example-label">Open house signup</div>
+          <div class="example-title">From sign-in sheet to clear next steps</div>
+          <ul class="example-steps">
+            <li>Attendees are added to your CRM the same day with basic notes attached.</li>
+            <li>Everyone receives a brief thank-you and a useful link or recap.</li>
+            <li>Hot leads are flagged for a call; others move into a light nurture path.</li>
+          </ul>
+        </div>
+
+        <div class="example">
+          <div class="example-label">Long-term nurture</div>
+          <div class="example-title">Staying present without hovering</div>
+          <ul class="example-steps">
+            <li>“Someday” buyers are grouped by timeline instead of one big bucket.</li>
+            <li>Every so often, they receive a small, relevant check-in that still sounds like you.</li>
+            <li>Any reply moves them into a more active follow-up flow; silence does not trigger a barrage.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA – DARK -->
+  <section class="stripe-final">
+    <div class="stripe-final-inner">
+      <div>
+        <div class="final-text-main">Curious what this would look like with your tools?</div>
+        <div class="final-text-sub">
+          In a short conversation, we can sketch your current stack, point out the biggest friction points, and outline a first Talos build that fits how you already work.
+        </div>
+      </div>
+
+      <div class="final-actions">
+        <a href="contact.html">
+          <button class="btn btn-primary">Start with a simple inquiry</button>
+        </a>
         <a href="demo.html">
-          <button class="btn btn-primary">Watch a system in motion</button>
-        </a>
-        <a href="packages.html">
-          <button class="btn btn-ghost">See how it’s packaged</button>
+          <button class="btn btn-ghost">Watch the demo first</button>
         </a>
       </div>
-
-      <div class="hero-meta">
-        Most builds start with intake and first response, then grow into follow-up and light operations.
-      </div>
     </div>
-
-    <aside class="hero-side">
-      <div class="hero-side-label">Areas Talos supports</div>
-      <div class="hero-tags">
-        <span class="hero-tag">Intake</span>
-        <span class="hero-tag">Follow-up</span>
-        <span class="hero-tag">Operations</span>
-      </div>
-      <p>
-        If you already have a CRM and at least one steady lead source, Talos can usually help. The question is where it will make the clearest difference first.
-      </p>
-      <ul class="hero-side-list">
-        <li>New inquiries are caught and answered reliably.</li>
-        <li>Your CRM shows real next steps, not just names.</li>
-        <li>Simple rhythms replace “when I finally have time.”</li>
-      </ul>
-    </aside>
-  </div>
-</section>
-
-<!-- WHAT WE ACTUALLY AUTOMATE -->
-<section class="stripe">
-  <div class="stripe-inner">
-    <div class="stripe-header">
-      <div class="stripe-label">What Talos handles</div>
-      <h2 class="stripe-title">The quiet work that moves leads forward</h2>
-      <p class="stripe-sub">
-        These are the pieces Talos usually takes off your plate while you stay in charge of key conversations and decisions.
-      </p>
-    </div>
-
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-title-row">
-          <div class="card-title">Lead intake & first response</div>
-          <div class="pill">Front door</div>
-        </div>
-        <p>
-          New inquiries are caught, answered, and organized — without copy-paste.
-        </p>
-        <ul class="card-list">
-          <li>Website and portal leads pushed into your CRM.</li>
-          <li>Short, warm first responses in your tone.</li>
-          <li>Simple tags for source and basic intent.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-title-row">
-          <div class="card-title">Follow-up & nurturing</div>
-          <div class="pill">Middle</div>
-        </div>
-        <p>
-          Follow-up becomes a calm rhythm instead of a pile of overdue tasks.
-        </p>
-        <ul class="card-list">
-          <li>Light check-ins for “not yet” and long-term leads.</li>
-          <li>Automatic pauses when a conversation is active.</li>
-          <li>Daily lists that show who actually needs you.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-title-row">
-          <div class="card-title">Back-end cleanup & operations</div>
-          <div class="pill">Back end</div>
-        </div>
-        <p>
-          The tools you already pay for stop working against each other.
-        </p>
-        <ul class="card-list">
-          <li>De-duped contacts and tidier pipelines.</li>
-          <li>Basic calendar confirmations for key events.</li>
-          <li>Simple views that highlight bottlenecks.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHERE TALOS PLUGS IN – DARK STRIPE -->
-<section class="stripe-dark">
-  <div class="stripe-inner">
-    <div class="stripe-header">
-      <div class="stripe-label">Systems & handoffs</div>
-      <h2 class="stripe-title">Where Talos actually sits in your stack</h2>
-      <p class="stripe-sub">
-        No new dashboard. Talos connects the tools you already trust so they behave like one system instead of six.
-      </p>
-    </div>
-
-    <div class="detail-grid">
-      <div class="detail-list">
-        <div>
-          <div class="detail-item-label">CRM & databases</div>
-          <div class="detail-item-sub">
-            Follow Up Boss, Wise Agent, LionDesk, and similar tools become the single place to find each lead and its history.
-          </div>
-        </div>
-        <div>
-          <div class="detail-item-label">Email, SMS & messaging</div>
-          <div class="detail-item-sub">
-            Messages are coordinated so people don’t feel like they’re talking to three different versions of you.
-          </div>
-        </div>
-      </div>
-
-      <div class="detail-list">
-        <div>
-          <div class="detail-item-label">Web forms & lead sources</div>
-          <div class="detail-item-sub">
-            Website forms, portals, and sign-up pages are mapped so every lead has a clear path into your CRM.
-          </div>
-        </div>
-        <div>
-          <div class="detail-item-label">Calendar & simple workflows</div>
-          <div class="detail-item-sub">
-            Consult calls, reminders, and follow-up blocks are tied into the same flow, so your day feels less scattered.
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW A TYPICAL BUILD WORKS -->
-<section class="stripe">
-  <div class="stripe-inner">
-    <div class="stripe-header">
-      <div class="stripe-label">Process</div>
-      <h2 class="stripe-title">From scattered tools to a steady system</h2>
-      <p class="stripe-sub">
-        The shape is simple: understand your current week, fix the biggest leaks, then refine once real leads run through.
-      </p>
-    </div>
-
-    <div class="step-list">
-      <div class="step">
-        <div class="step-head">
-          <div class="step-badge">1</div>
-          <div class="step-title">Map what already exists</div>
-        </div>
-        <div class="step-meta">One short call and a few screenshots.</div>
-        <p>
-          We walk through how leads arrive today and where they fall off. The outcome is a clear picture of your tools and a small list of places Talos can help first.
-        </p>
-      </div>
-
-      <div class="step">
-        <div class="step-head">
-          <div class="step-badge">2</div>
-          <div class="step-title">Build the first slice</div>
-        </div>
-        <div class="step-meta">Usually intake, first reply, and basic tagging.</div>
-        <p>
-          Talos is wired between your tools to fix those leaks. You approve the language and timing before anything goes live.
-        </p>
-      </div>
-
-      <div class="step">
-        <div class="step-head">
-          <div class="step-badge">3</div>
-          <div class="step-title">Tune and extend</div>
-        </div>
-        <div class="step-meta">Adjustments over weeks, not one big launch.</div>
-        <p>
-          As leads move through, we adjust pacing, trim steps that feel heavy, and add new automations only where they clearly help.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EXAMPLE FLOWS -->
-<section class="stripe-alt">
-  <div class="stripe-inner">
-    <div class="stripe-header">
-      <div class="stripe-label">Example flows</div>
-      <h2 class="stripe-title">What this looks like in real days</h2>
-      <p class="stripe-sub">
-        These aren’t scripts to copy — just snapshots of how Talos usually shows up in an agent’s week.
-      </p>
-    </div>
-
-    <div class="example-list">
-      <div class="example">
-        <div class="example-label">New portal inquiry</div>
-        <div class="example-title">From “just came in” to organized lead</div>
-        <ul class="example-steps">
-          <li>Lead arrives from a portal and lands in your CRM with source and price range tagged.</li>
-          <li>A short, human reply goes out in your voice with one or two simple questions.</li>
-          <li>If they reply, the automation steps back. If they don’t, Talos schedules a gentle follow-up.</li>
-        </ul>
-      </div>
-
-      <div class="example">
-        <div class="example-label">Open house signup</div>
-        <div class="example-title">From sign-in sheet to clear next steps</div>
-        <ul class="example-steps">
-          <li>Attendees are added to your CRM the same day with basic notes attached.</li>
-          <li>Everyone receives a brief thank-you and a useful link or recap.</li>
-          <li>Hot leads are flagged for a call; others move into a light nurture path.</li>
-        </ul>
-      </div>
-
-      <div class="example">
-        <div class="example-label">Long-term nurture</div>
-        <div class="example-title">Staying present without hovering</div>
-        <ul class="example-steps">
-          <li>“Someday” buyers are grouped by timeline instead of one big bucket.</li>
-          <li>Every so often, they receive a small, relevant check-in that still sounds like you.</li>
-          <li>Any reply moves them into a more active follow-up flow; silence does not trigger a barrage.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="stripe-final">
-  <div class="stripe-final-inner">
-    <div>
-      <div class="final-text-main">Curious what this would look like with your tools?</div>
-      <div class="final-text-sub">
-        In a short conversation, we can sketch your current stack, point out the biggest friction points, and outline a first Talos build that fits how you already work.
-      </div>
-    </div>
-
-    <div class="final-actions">
-      <a href="contact.html">
-        <button class="btn btn-primary">Start with a simple inquiry</button>
-      </a>
-      <a href="demo.html">
-        <button class="btn btn-ghost">Watch the demo first</button>
-      </a>
-    </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <footer class="footer">
   <div>© <span id="year"></span> Daedalus Systems</div>
