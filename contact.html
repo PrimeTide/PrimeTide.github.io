@@ -202,7 +202,7 @@
 
     .contact-header {
       max-width: 640px;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .contact-label {
@@ -229,11 +229,11 @@
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
       gap: 1.8rem;
-      align-items: flex-start;  /* both columns start at top */
-      margin-top: 0.6rem;
+      align-items: flex-start;
+      margin-top: 0.4rem;
     }
 
-    /* LEFT COLUMN – EXPECTATIONS */
+    /* LEFT COLUMN – HEADER + EXPECTATIONS */
     .contact-notes {
       font-size: 0.9rem;
       line-height: 1.7;
@@ -281,7 +281,7 @@
       border: 1px solid var(--border-soft);
       padding: 1.4rem 1.3rem 1.3rem;
       box-shadow: 0 14px 30px rgba(0,0,0,0.06);
-      align-self: flex-start; /* keep it at the top of the grid row */
+      align-self: flex-start;
     }
 
     .contact-card-title {
@@ -517,18 +517,18 @@
 <main>
   <section class="contact-shell">
     <div class="contact-inner">
-      <header class="contact-header">
-        <div class="contact-label">Contact</div>
-        <h1 class="contact-title">Start with a simple inquiry</h1>
-        <p class="contact-sub">
-          This form is for agents and small teams who are considering a Talos build and want to understand what it might look like in their world.
-          A short note is enough — we can fill in the details together.
-        </p>
-      </header>
-
       <div class="contact-grid">
-        <!-- LEFT: CONTEXT -->
+        <!-- LEFT: HEADER + CONTEXT -->
         <section class="contact-notes">
+          <header class="contact-header">
+            <div class="contact-label">Contact</div>
+            <h1 class="contact-title">Start with a simple inquiry</h1>
+            <p class="contact-sub">
+              This form is for agents and small teams who are considering a Talos build and want to understand what it might look like in their world.
+              A short note is enough — we can fill in the details together.
+            </p>
+          </header>
+
           <div class="contact-notes-block">
             <div class="contact-notes-title">Good uses for this form</div>
             <p class="contact-notes-sub">
