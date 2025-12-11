@@ -240,6 +240,28 @@
       color: var(--text-dark);
     }
 
+    /* New boxed layout for left column */
+    .contact-context {
+      background: #F9F6F2;
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      padding: 1.2rem 1.4rem 1rem 1.7rem;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.04);
+      position: relative;
+    }
+
+    .contact-context::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      bottom: 12px;
+      width: 3px;
+      border-radius: 999px;
+      background: var(--steel-blue);
+      opacity: 0.95;
+    }
+
     .contact-notes-block {
       margin-bottom: 1.1rem;
     }
@@ -520,42 +542,44 @@
       <div class="contact-grid">
         <!-- LEFT: HEADER + CONTEXT -->
         <section class="contact-notes">
-          <header class="contact-header">
-            <div class="contact-label">Contact</div>
-            <h1 class="contact-title">Start with a simple inquiry</h1>
-            <p class="contact-sub">
-              This form is for agents and small teams who are considering a Talos build and want to understand what it might look like in their world.
-              A short note is enough — we can fill in the details together.
-            </p>
-          </header>
+          <div class="contact-context">
+            <header class="contact-header">
+              <div class="contact-label">Contact</div>
+              <h1 class="contact-title">Start with a simple inquiry</h1>
+              <p class="contact-sub">
+                This form is for agents and small teams who are considering a Talos build and want to understand what it might look like in their world.
+                A short note is enough — we can fill in the details together.
+              </p>
+            </header>
 
-          <div class="contact-notes-block">
-            <div class="contact-notes-title">Good uses for this form</div>
-            <p class="contact-notes-sub">
-              A few examples of the kinds of questions that fit well here:
+            <div class="contact-notes-block">
+              <div class="contact-notes-title">Good uses for this form</div>
+              <p class="contact-notes-sub">
+                A few examples of the kinds of questions that fit well here:
+              </p>
+              <ul class="contact-list">
+                <li>“Leads are slipping between my website, inbox, and CRM — can Talos help?”</li>
+                <li>“I’m on Follow Up Boss now. What would a Starter or Core System build actually change?”</li>
+                <li>“Our small team is juggling too many tools. Where would you begin?”</li>
+              </ul>
+            </div>
+
+            <div class="contact-notes-block">
+              <div class="contact-notes-title">What happens after you send this</div>
+              <p class="contact-notes-sub">
+                The usual flow is quiet and straightforward:
+              </p>
+              <ul class="contact-list">
+                <li>You receive a short reply within one business day.</li>
+                <li>If it looks like a fit, we’ll offer a 15–30 minute call window.</li>
+                <li>From there, you’ll get a clear written outline of options — no hard sell.</li>
+              </ul>
+            </div>
+
+            <p class="contact-small">
+              If you prefer, you can also start with a specific question about tools you already use, rather than a full project scope.
             </p>
-            <ul class="contact-list">
-              <li>“Leads are slipping between my website, inbox, and CRM — can Talos help?”</li>
-              <li>“I’m on Follow Up Boss now. What would a Starter or Core System build actually change?”</li>
-              <li>“Our small team is juggling too many tools. Where would you begin?”</li>
-            </ul>
           </div>
-
-          <div class="contact-notes-block">
-            <div class="contact-notes-title">What happens after you send this</div>
-            <p class="contact-notes-sub">
-              The usual flow is quiet and straightforward:
-            </p>
-            <ul class="contact-list">
-              <li>You receive a short reply within one business day.</li>
-              <li>If it looks like a fit, we’ll offer a 15–30 minute call window.</li>
-              <li>From there, you’ll get a clear written outline of options — no hard sell.</li>
-            </ul>
-          </div>
-
-          <p class="contact-small">
-            If you prefer, you can also start with a specific question about tools you already use, rather than a full project scope.
-          </p>
         </section>
 
         <!-- RIGHT: FORM -->
