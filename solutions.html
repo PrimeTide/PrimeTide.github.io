@@ -29,14 +29,13 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text-dark);
-      position: relative;
-      overflow-x: hidden;
       background: var(--bg-light);
+      overflow-x: hidden;
     }
 
     a { text-decoration: none; color: inherit; }
 
-    /* HEADER */
+    /* TOP BAR (copied style from main site) */
     .top-bar {
       max-width: 1120px;
       margin: 0 auto;
@@ -47,7 +46,11 @@
       gap: 1rem;
     }
 
-    .logo-row { display: flex; align-items: center; gap: 0.75rem; }
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
 
     .logo-mark {
       position: relative;
@@ -70,7 +73,10 @@
       color: var(--dark-iron);
     }
 
-    .logo-text-sub { font-size: 0.75rem; color: var(--text-muted); }
+    .logo-text-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
 
     .nav-links {
       display: flex;
@@ -127,191 +133,89 @@
       background: rgba(80,113,139,0.08);
     }
 
-    /* Menu toggle (mobile) */
-    .menu-toggle {
-      display: none;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      padding: 0.4rem 0.9rem;
-      font-size: 0.85rem;
-      background: #F8F3EB;
-      cursor: pointer;
-      white-space: nowrap;
-      align-items: center;
-      gap: 0.4rem;
+    /* PAGE WRAPPER */
+    main {
+      border-top: 1px solid var(--border-soft);
     }
 
-    .menu-toggle:hover {
-      background: #F2E8DC;
+    .section {
+      padding: 3rem 1.4rem;
     }
 
-    .menu-icon {
-      width: 14px;
-      height: 10px;
-      position: relative;
-    }
-
-    .menu-icon::before,
-    .menu-icon::after,
-    .menu-icon span {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 1.5px;
-      background: var(--dark-iron);
-      border-radius: 999px;
-      transform-origin: center;
-      transition: transform 160ms ease, opacity 160ms ease;
-    }
-
-    .menu-icon::before { top: 0; }
-    .menu-icon::after { bottom: 0; }
-    .menu-icon span {
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .top-bar.is-open .menu-icon::before {
-      transform: translateY(4px) rotate(45deg);
-    }
-
-    .top-bar.is-open .menu-icon::after {
-      transform: translateY(-4px) rotate(-45deg);
-    }
-
-    .top-bar.is-open .menu-icon span {
-      opacity: 0;
-    }
-
-    /* HERO – DARK, COMPACT, UTILITY */
-    .hero-stripe {
-      background:
-        linear-gradient(135deg, rgba(80,113,139,0.5), rgba(80,36,30,0.55)),
-        var(--bg-dark);
-      color: var(--text-light);
-      padding: 2.4rem 1.4rem 2.2rem;
-      position: relative;
-      overflow: hidden;
-      border-top: 1px solid rgba(0,0,0,0.7);
-      border-bottom: 1px solid rgba(0,0,0,0.7);
-    }
-
-    .hero-stripe::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(22, 12, 12, 0.4) 0%,
-          rgba(22, 12, 12, 0.16) 18%,
-          transparent 40%,
-          transparent 60%,
-          rgba(22, 12, 12, 0.16) 82%,
-          rgba(22, 12, 12, 0.4) 100%
-        );
-    }
-
-    .hero-inner {
-      position: relative;
-      max-width: 960px;
+    .section-inner {
+      max-width: 1120px;
       margin: 0 auto;
+    }
+
+    /* HERO – NEW APPROACH */
+    .solutions-hero {
+      background:
+        radial-gradient(circle at 0 0, rgba(80,113,139,0.18), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(80,36,30,0.16), transparent 55%),
+        var(--bg-mid);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .solutions-hero-inner {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 1.6rem;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      gap: 2rem;
       align-items: flex-start;
     }
 
-    .hero-main {
-      max-width: 32rem;
-    }
-
-    .hero-eyebrow {
+    .eyebrow {
       font-size: 0.78rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(250,245,238,0.78);
-      margin-bottom: 0.45rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
     }
 
     .hero-title {
-      font-size: 1.5rem;
-      line-height: 1.16;
-      margin-bottom: 0.4rem;
+      font-size: clamp(1.9rem, 3vw, 2.3rem);
+      line-height: 1.15;
+      color: var(--dark-iron);
+      margin-bottom: 0.7rem;
     }
 
-    .hero-title span { color: var(--bright-bronze); }
+    .hero-title span {
+      color: var(--bright-bronze);
+    }
 
     .hero-body {
-      font-size: 0.93rem;
-      color: rgba(250,245,238,0.9);
-      margin-bottom: 0.9rem;
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      max-width: 34rem;
+    }
+
+    .hero-list {
+      list-style: none;
+      display: grid;
+      gap: 0.55rem;
+      font-size: 0.9rem;
+    }
+
+    .hero-list li {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+
+    .hero-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      margin-top: 0.4rem;
+      background: var(--bright-bronze);
+      box-shadow: 0 0 0 4px rgba(206,118,35,0.18);
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 0.7rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .hero-meta {
-      font-size: 0.8rem;
-      color: rgba(250,245,238,0.75);
-    }
-
-    .hero-side {
-      background: rgba(249,246,242,0.06);
-      border-radius: 14px;
-      border: 1px solid rgba(227,217,204,0.35);
-      padding: 0.9rem 1rem 0.8rem;
-      font-size: 0.83rem;
-      line-height: 1.6;
-      box-shadow: 0 14px 26px rgba(0,0,0,0.25);
-    }
-
-    .hero-side-label {
-      font-size: 0.74rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: rgba(250,245,238,0.78);
-      margin-bottom: 0.35rem;
-    }
-
-    .hero-map-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.4rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-map-item {
-      border-radius: 10px;
-      padding: 0.4rem 0.45rem;
-      border: 1px solid rgba(250,245,238,0.18);
-      background: radial-gradient(circle at 0 0, rgba(250,245,238,0.18), transparent 60%);
-      font-size: 0.78rem;
-    }
-
-    .hero-map-label {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: rgba(250,245,238,0.85);
-      margin-bottom: 0.1rem;
-    }
-
-    .hero-map-sub {
-      font-size: 0.78rem;
-      color: rgba(250,245,238,0.8);
-    }
-
-    .hero-side-note {
-      font-size: 0.8rem;
-      color: rgba(250,245,238,0.78);
-      margin-top: 0.3rem;
+      margin-top: 1.3rem;
     }
 
     .btn {
@@ -324,53 +228,92 @@
       transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
     }
 
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+    .btn-primary {
+      background: var(--steel-blue);
+      color: #FDF8F0;
     }
 
-    .btn-primary { background: #FAF5EE; color: #321916; }
-    .btn-primary:hover { background: #F4E5CF; }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+      background: #436479;
+    }
 
     .btn-ghost {
       background: transparent;
-      color: #FAF5EE;
-      border: 1px solid rgba(255,255,255,0.6);
+      color: var(--steel-blue);
+      border: 1px solid rgba(80,113,139,0.4);
     }
 
     .btn-ghost:hover {
-      background: rgba(250,245,238,0.08);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+      background: rgba(80,113,139,0.05);
     }
 
-    /* GENERIC STRIPES */
-    .stripe {
-      padding: 3rem 1.4rem;
-      border-top: 1px solid var(--border-soft);
+    .hero-side-card {
+      background: #F9F6F2;
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      padding: 1.1rem 1.2rem;
+      box-shadow:
+        0 16px 28px rgba(0, 0, 0, 0.14);
+      font-size: 0.86rem;
+    }
+
+    .hero-side-label {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .hero-side-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-side-item {
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      padding: 0.5rem 0.55rem 0.45rem;
       background:
-        radial-gradient(circle at 0 20%, rgba(80,36,30,0.06), transparent 60%),
-        radial-gradient(circle at 100% 80%, rgba(80,113,139,0.06), transparent 60%),
-        var(--bg-light);
+        radial-gradient(circle at 0 0, rgba(80,113,139,0.07), transparent 60%),
+        #FBF7F2;
     }
 
-    .stripe-alt {
-      padding: 3rem 1.4rem;
-      background:
-        radial-gradient(circle at 0 30%, rgba(97, 85, 118, 0.12), transparent 60%),
-        radial-gradient(circle at 100% 70%, rgba(178, 135, 112, 0.12), transparent 60%),
-        var(--bg-mid);
-      border-top: 1px solid var(--border-soft);
+    .hero-side-item-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--steel-blue);
+      margin-bottom: 0.15rem;
     }
 
-    .stripe-inner {
-      max-width: 960px;
-      margin: 0 auto;
+    .hero-side-item-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
     }
 
-    .stripe-header {
-      margin-bottom: 1.4rem;
+    .hero-side-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
     }
 
-    .stripe-label {
+    .hero-side-note strong {
+      color: var(--dark-iron);
+      font-weight: 550;
+    }
+
+    /* SECTION HEADERS */
+    .section-header {
+      margin-bottom: 1.6rem;
+    }
+
+    .section-label {
       font-size: 0.78rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
@@ -378,166 +321,143 @@
       margin-bottom: 0.5rem;
     }
 
-    .stripe-title {
-      font-size: 1.3rem;
+    .section-title {
+      font-size: 1.25rem;
       color: var(--dark-iron);
       margin-bottom: 0.3rem;
     }
 
-    .stripe-sub {
+    .section-body {
       font-size: 0.9rem;
       color: var(--text-muted);
-      max-width: 30rem;
+      max-width: 34rem;
     }
 
-    /* CARD GRID */
-    .card-grid {
+    /* SOLUTION COLUMNS */
+    .columns-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.1rem;
     }
 
-    .card {
+    .solution-card {
       background: #F9F6F2;
-      border-radius: 14px;
+      border-radius: 16px;
       border: 1px solid var(--border-soft);
-      padding: 1rem 1.1rem 0.95rem;
-      font-size: 0.9rem;
-      line-height: 1.6;
+      padding: 1rem 1.1rem 1rem;
+      font-size: 0.88rem;
     }
 
-    .card-title-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-    }
-
-    .card-title {
-      font-size: 0.98rem;
+    .solution-card-title {
+      font-size: 0.96rem;
       font-weight: 550;
       color: var(--dark-iron);
+      margin-bottom: 0.4rem;
     }
 
-    .pill {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      padding: 0.15rem 0.5rem;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,0.06);
-      background: #F3EBDF;
+    .solution-card-sub {
+      font-size: 0.82rem;
       color: var(--text-muted);
-      white-space: nowrap;
+      margin-bottom: 0.35rem;
     }
 
-    .card-list {
-      margin-top: 0.4rem;
+    .solution-list {
+      font-size: 0.85rem;
+      color: var(--text-dark);
       padding-left: 1.1rem;
     }
 
-    .card-list li {
-      margin-bottom: 0.25rem;
+    .solution-list li {
+      margin-bottom: 0.2rem;
     }
 
-    /* STEPS / TIMELINE */
-    .step-list {
+    /* IMAGE PLACEHOLDER BLOCKS */
+    .image-row {
+      margin-top: 2.2rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.1rem;
-      margin-top: 0.4rem;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1.2rem;
+      align-items: stretch;
     }
 
-    .step {
-      background: #F9F6F2;
-      border-radius: 14px;
-      border: 1px solid var(--border-soft);
-      padding: 0.9rem 1rem 0.9rem;
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    .step-head {
+    .image-placeholder {
+      border-radius: 18px;
+      border: 1px dashed rgba(80, 36, 30, 0.35);
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(244,239,231,0.85),
+          rgba(244,239,231,0.85) 6px,
+          rgba(241,236,228,1) 6px,
+          rgba(241,236,228,1) 12px
+        );
+      padding: 1.4rem 1.2rem;
       display: flex;
-      align-items: center;
-      gap: 0.6rem;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .image-placeholder-title {
+      font-size: 0.9rem;
+      font-weight: 550;
+      color: var(--dark-iron);
       margin-bottom: 0.3rem;
     }
 
-    .step-badge {
-      width: 24px;
-      height: 24px;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 550;
-      background: #F3EBDF;
-      color: var(--dark-iron);
+    .image-placeholder-note {
+      font-size: 0.83rem;
     }
 
-    .step-title {
-      font-weight: 550;
-      color: var(--dark-iron);
-      font-size: 0.95rem;
-    }
-
-    .step-meta {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 0.25rem;
-    }
-
-    /* EXAMPLE FLOWS */
-    .example-list {
+    /* FLOW CARDS */
+    .flow-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.1rem;
     }
 
-    .example {
+    .flow-card {
       background: #F9F6F2;
-      border-radius: 14px;
+      border-radius: 16px;
       border: 1px solid var(--border-soft);
-      padding: 0.95rem 1rem 0.9rem;
-      font-size: 0.88rem;
-      line-height: 1.6;
+      padding: 0.95rem 1.05rem 0.9rem;
+      font-size: 0.86rem;
     }
 
-    .example-label {
-      font-size: 0.78rem;
+    .flow-label {
+      font-size: 0.76rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--text-muted);
       margin-bottom: 0.2rem;
     }
 
-    .example-title {
+    .flow-title {
+      font-size: 0.95rem;
       font-weight: 550;
       color: var(--dark-iron);
       margin-bottom: 0.35rem;
-      font-size: 0.95rem;
     }
 
-    .example-steps {
+    .flow-steps {
       padding-left: 1.1rem;
     }
 
-    .example-steps li {
-      margin-bottom: 0.22rem;
+    .flow-steps li {
+      margin-bottom: 0.2rem;
     }
 
-    /* FINAL CTA */
-    .stripe-final {
+    /* CTA STRIPE */
+    .cta-stripe {
       background: var(--bg-dark);
       color: var(--text-light);
-      padding: 2.7rem 1.4rem 2.3rem;
-      border-top: 1px solid rgba(0,0,0,0.6);
+      padding: 2.6rem 1.4rem 2.3rem;
+      border-top: 1px solid rgba(0,0,0,0.7);
+      margin-top: 1rem;
     }
 
-    .stripe-final-inner {
+    .cta-inner {
       max-width: 900px;
       margin: 0 auto;
       display: flex;
@@ -547,21 +467,65 @@
       align-items: center;
     }
 
-    .final-text-main {
+    .cta-main {
+      max-width: 30rem;
+      font-size: 0.94rem;
+    }
+
+    .cta-title {
       font-size: 1.08rem;
       font-weight: 550;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.25rem;
     }
 
-    .final-text-sub {
+    .cta-body {
       font-size: 0.9rem;
-      color: rgba(250,245,238,0.82);
-      max-width: 28rem;
+      color: rgba(250,245,238,0.85);
     }
 
-    .final-actions { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
 
-    /* FOOTER */
+    .btn-light {
+      background: #FAF5EE;
+      color: #321916;
+      border-radius: 999px;
+      padding: 0.65rem 1.6rem;
+      font-size: 0.9rem;
+      border: none;
+      font-weight: 550;
+      cursor: pointer;
+      transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+    }
+
+    .btn-light:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+      background: #F4E5CF;
+    }
+
+    .btn-outline-light {
+      background: transparent;
+      color: #FAF5EE;
+      border-radius: 999px;
+      padding: 0.65rem 1.6rem;
+      font-size: 0.9rem;
+      border: 1px solid rgba(250,245,238,0.7);
+      font-weight: 550;
+      cursor: pointer;
+      transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+    }
+
+    .btn-outline-light:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+      background: rgba(250,245,238,0.06);
+    }
+
+    /* FOOTER (copied pattern) */
     .footer {
       max-width: 1120px;
       margin: 0 auto;
@@ -573,59 +537,44 @@
       flex-wrap: wrap;
     }
 
-    /* MOBILE */
-    @media (max-width: 900px) {
-      .hero-inner {
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .solutions-hero-inner {
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .hero-main {
-        max-width: none;
+      .hero-side-card {
+        max-width: 420px;
+      }
+
+      .columns-3,
+      .flow-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .image-row {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
     @media (max-width: 720px) {
       .top-bar {
-        grid-template-columns: auto auto;
-        align-items: center;
-        row-gap: 0.75rem;
-      }
-
-      .logo-row {
-        justify-content: flex-start;
-      }
-
-      .menu-toggle {
-        display: inline-flex;
-        justify-self: end;
-      }
-
-      .nav-links,
-      .top-cta {
-        grid-column: 1 / -1;
-        width: 100%;
+        grid-template-columns: auto;
+        row-gap: 0.8rem;
       }
 
       .nav-links {
-        display: none;
-        flex-wrap: nowrap;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.4rem;
+        justify-self: flex-start;
+        flex-wrap: wrap;
       }
 
       .top-cta {
-        display: none;
-        justify-content: center;
-        text-align: center;
+        justify-self: flex-start;
       }
 
-      .top-bar.is-open .nav-links {
-        display: flex;
-      }
-
-      .top-bar.is-open .top-cta {
-        display: inline-flex;
+      .columns-3,
+      .flow-grid {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
@@ -642,7 +591,7 @@
     </div>
   </div>
 
-  <nav class="nav-links" id="primary-nav">
+  <nav class="nav-links">
     <a href="index.html" class="nav-link">Overview</a>
     <a href="solutions.html" class="nav-link is-active">Solutions</a>
     <a href="packages.html" class="nav-link">Packages</a>
@@ -652,241 +601,232 @@
   </nav>
 
   <button class="top-cta">Begin a conversation</button>
-
-  <button
-    class="menu-toggle"
-    type="button"
-    aria-expanded="false"
-    aria-controls="primary-nav"
-    aria-label="Toggle navigation"
-  >
-    Menu
-    <span class="menu-icon">
-      <span></span>
-    </span>
-  </button>
 </header>
 
 <main>
-  <!-- HERO – DARK, COMPACT -->
-  <section class="hero-stripe">
-    <div class="hero-inner">
-      <div class="hero-main">
-        <div class="hero-eyebrow">Hands-on automation for real estate</div>
+  <!-- HERO: Purpose of the page -->
+  <section class="section solutions-hero">
+    <div class="section-inner solutions-hero-inner">
+      <div>
+        <div class="eyebrow">Solutions overview</div>
         <h1 class="hero-title">
-          What Talos actually does
-          <span>between your tools</span>.
+          Clear view of what Talos does
+          <span>inside your existing tools.</span>
         </h1>
         <p class="hero-body">
-          On this page, “solutions” means something simple: the specific, repeatable work Talos takes over while you stay focused on people, not plumbing.
+          <!-- Placeholder: high-level one-liner about the role of Talos on this page.
+               Example: “Use this space to explain, in two short sentences, what kind of
+               work Talos takes over and why this matters for a solo agent or small team.” -->
+          [Placeholder: Brief explanation of the kinds of tasks Talos handles and the outcome this page will walk through.]
         </p>
 
-        <div class="hero-actions">
-          <a href="demo.html">
-            <button class="btn btn-primary">Watch a system in motion</button>
-          </a>
-          <a href="packages.html">
-            <button class="btn btn-ghost">See how it’s packaged</button>
-          </a>
-        </div>
+        <ul class="hero-list">
+          <li>
+            <div class="hero-bullet"></div>
+            <div>[Placeholder: Quick benefit bullet — e.g. fewer manual follow-ups, fewer lost leads.]</div>
+          </li>
+          <li>
+            <div class="hero-bullet"></div>
+            <div>[Placeholder: Quick benefit bullet — e.g. systems aligned with your current tools.]</div>
+          </li>
+          <li>
+            <div class="hero-bullet"></div>
+            <div>[Placeholder: Quick benefit bullet — e.g. calm, predictable workflows instead of ad-hoc scrambling.]</div>
+          </li>
+        </ul>
 
-        <div class="hero-meta">
-          Most builds start with intake and first response, then grow into follow-up and light operations once the basics feel steady.
+        <div class="hero-actions">
+          <a href="packages.html">
+            <button class="btn btn-primary">Placeholder primary CTA</button>
+          </a>
+          <a href="demo.html">
+            <button class="btn btn-ghost">Placeholder secondary CTA</button>
+          </a>
         </div>
       </div>
 
-      <aside class="hero-side">
-        <div class="hero-side-label">Where Talos lives day to day</div>
-        <div class="hero-map-grid">
-          <div class="hero-map-item">
-            <div class="hero-map-label">Intake</div>
-            <div class="hero-map-sub">Forms, portals, inbox → one clean entry in your CRM.</div>
+      <aside class="hero-side-card">
+        <div class="hero-side-label">Placeholder: “At a glance” block</div>
+        <div class="hero-side-grid">
+          <div class="hero-side-item">
+            <div class="hero-side-item-label">Intake</div>
+            <div class="hero-side-item-sub">
+              [Placeholder: short line about how new leads are captured.]
+            </div>
           </div>
-          <div class="hero-map-item">
-            <div class="hero-map-label">Follow-up</div>
-            <div class="hero-map-sub">First replies, light check-ins, and simple next steps.</div>
+          <div class="hero-side-item">
+            <div class="hero-side-item-label">Follow-up</div>
+            <div class="hero-side-item-sub">
+              [Placeholder: short line about how Talos supports early follow-up.]
+            </div>
           </div>
-          <div class="hero-map-item">
-            <div class="hero-map-label">Operations</div>
-            <div class="hero-map-sub">Tags, routing, and quiet calendar support.</div>
+          <div class="hero-side-item">
+            <div class="hero-side-item-label">Operations</div>
+            <div class="hero-side-item-sub">
+              [Placeholder: short line about cleanup, tagging, and routing.]
+            </div>
           </div>
         </div>
-        <div class="hero-side-note">
-          You do not log into “Talos.” It runs between tools you already trust — especially your CRM.
-        </div>
+        <p class="hero-side-note">
+          [Placeholder: one calm sentence clarifying that Talos runs between existing tools,
+          not as a new platform. You can mention CRMs here when we write final copy.]
+        </p>
       </aside>
     </div>
   </section>
 
-  <!-- WHAT WE ACTUALLY AUTOMATE -->
-  <section class="stripe">
-    <div class="stripe-inner">
-      <div class="stripe-header">
-        <div class="stripe-label">What Talos handles</div>
-        <h2 class="stripe-title">The quiet work that moves leads forward</h2>
-        <p class="stripe-sub">
-          These are the pieces Talos usually takes off your plate while you stay in charge of key conversations and decisions.
+  <!-- SECTION: Main solution categories -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Solution pillars</div>
+        <h2 class="section-title">Placeholder heading for your main solution categories</h2>
+        <p class="section-body">
+          [Placeholder: 2–3 short sentences describing how you group your work
+          (for example: by lead intake, follow-up, and operations). This should set up the three cards below.]
         </p>
       </div>
 
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-title-row">
-            <div class="card-title">Lead intake & first response</div>
-            <div class="pill">Front door</div>
-          </div>
-          <p>
-            New inquiries are caught, answered, and organized — without copy-paste.
+      <div class="columns-3">
+        <article class="solution-card">
+          <h3 class="solution-card-title">Placeholder: column title (e.g. Lead intake)</h3>
+          <p class="solution-card-sub">
+            [Placeholder: one-sentence description of what lives in this bucket.]
           </p>
-          <ul class="card-list">
-            <li>Website and portal leads pushed into your CRM.</li>
-            <li>Short, warm first responses in your tone.</li>
-            <li>Simple tags for source and basic intent.</li>
+          <ul class="solution-list">
+            <li>[Placeholder bullet – specific type of automation or task.]</li>
+            <li>[Placeholder bullet – another example.]</li>
+            <li>[Placeholder bullet – optional third item.]</li>
           </ul>
-        </div>
+        </article>
 
-        <div class="card">
-          <div class="card-title-row">
-            <div class="card-title">Follow-up & nurturing</div>
-            <div class="pill">Middle</div>
-          </div>
-          <p>
-            Follow-up becomes a calm rhythm instead of a pile of overdue tasks.
+        <article class="solution-card">
+          <h3 class="solution-card-title">Placeholder: column title (e.g. Follow-up rhythm)</h3>
+          <p class="solution-card-sub">
+            [Placeholder: one-sentence description of this bucket.]
           </p>
-          <ul class="card-list">
-            <li>Light check-ins for “not yet” and long-term leads.</li>
-            <li>Automatic pauses when a conversation is active.</li>
-            <li>Daily lists that show who actually needs you.</li>
+          <ul class="solution-list">
+            <li>[Placeholder bullet – example of follow-up support.]</li>
+            <li>[Placeholder bullet – another example.]</li>
+            <li>[Placeholder bullet – optional third item.]</li>
           </ul>
-        </div>
+        </article>
 
-        <div class="card">
-          <div class="card-title-row">
-            <div class="card-title">Back-end cleanup & operations</div>
-            <div class="pill">Back end</div>
-          </div>
-          <p>
-            The tools you already pay for stop working against each other.
+        <article class="solution-card">
+          <h3 class="solution-card-title">Placeholder: column title (e.g. Back-end operations)</h3>
+          <p class="solution-card-sub">
+            [Placeholder: one-sentence description of back-end/cleanup work.]
           </p>
-          <ul class="card-list">
-            <li>De-duped contacts and tidier pipelines.</li>
-            <li>Basic calendar confirmations for key events.</li>
-            <li>Simple views that highlight bottlenecks.</li>
+          <ul class="solution-list">
+            <li>[Placeholder bullet – example of cleanup/tagging.]</li>
+            <li>[Placeholder bullet – example of routing or calendar flows.]</li>
+            <li>[Placeholder bullet – optional third item.]</li>
           </ul>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- PROCESS -->
-  <section class="stripe-alt">
-    <div class="stripe-inner">
-      <div class="stripe-header">
-        <div class="stripe-label">Process</div>
-        <h2 class="stripe-title">From scattered tools to a steady system</h2>
-        <p class="stripe-sub">
-          The shape is simple: understand your current week, fix the biggest leaks, then refine once real leads run through.
+  <!-- SECTION: Visual system map + image suggestion -->
+  <section class="section" style="background: var(--bg-mid); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft);">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">System map</div>
+        <h2 class="section-title">Placeholder heading for “how tools connect”</h2>
+        <p class="section-body">
+          [Placeholder: 2–3 sentences describing how Talos connects website forms, CRMs, messaging tools,
+          and calendar into a single flow. This is where you talk about integration without naming every platform.]
         </p>
       </div>
 
-      <div class="step-list">
-        <div class="step">
-          <div class="step-head">
-            <div class="step-badge">1</div>
-            <div class="step-title">Map what already exists</div>
-          </div>
-          <div class="step-meta">One short call and a few screenshots.</div>
-          <p>
-            We walk through how leads arrive today and where they fall off. The outcome is a clear picture of your tools and a small list of places Talos can help first.
+      <div class="image-row">
+        <div class="image-placeholder">
+          <div class="image-placeholder-title">Image placeholder: simple system diagram</div>
+          <p class="image-placeholder-note">
+            Suggested visual: a minimal diagram showing arrows from<br>
+            <strong>Lead sources → Talos → CRM / Inbox / Calendar</strong>.<br><br>
+            Style idea: soft lines, small labeled nodes, using your palette
+            (steel blue for CRM, bronze for Talos, clay for lead sources).
+            Keep it quiet and diagram-like, not “SaaS dashboard.”
           </p>
         </div>
 
-        <div class="step">
-          <div class="step-head">
-            <div class="step-badge">2</div>
-            <div class="step-title">Build the first slice</div>
-          </div>
-          <div class="step-meta">Usually intake, first reply, and basic tagging.</div>
-          <p>
-            Talos is wired between your tools to fix those leaks. You approve the language and timing before anything goes live.
-          </p>
-        </div>
-
-        <div class="step">
-          <div class="step-head">
-            <div class="step-badge">3</div>
-            <div class="step-title">Tune and extend</div>
-          </div>
-          <div class="step-meta">Adjustments over weeks, not one big launch.</div>
-          <p>
-            As leads move through, we adjust pacing, trim steps that feel heavy, and add new automations only where they clearly help.
+        <div class="image-placeholder">
+          <div class="image-placeholder-title">Optional second visual or screenshot</div>
+          <p class="image-placeholder-note">
+            Suggested visual: a cropped screenshot of a cleaned-up pipeline or task list
+            that represents “after Talos,” with personal data blurred.<br><br>
+            You can also use this block for an icon-style illustration of Talos
+            as a workshop tool, if you prefer illustration over UI.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EXAMPLE FLOWS -->
-  <section class="stripe">
-    <div class="stripe-inner">
-      <div class="stripe-header">
-        <div class="stripe-label">Example flows</div>
-        <h2 class="stripe-title">What this looks like in real days</h2>
-        <p class="stripe-sub">
-          These aren’t scripts to copy — just snapshots of how Talos usually shows up in an agent’s week.
+  <!-- SECTION: Example flows / day-in-the-life -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Example flows</div>
+        <h2 class="section-title">Placeholder heading for “what this looks like in practice”</h2>
+        <p class="section-body">
+          [Placeholder: 2–3 short sentences explaining that the cards below are snapshots
+          of how Talos behaves in real scenarios (e.g. new portal leads, open houses, nurture).]
         </p>
       </div>
 
-      <div class="example-list">
-        <div class="example">
-          <div class="example-label">New portal inquiry</div>
-          <div class="example-title">From “just came in” to organized lead</div>
-          <ul class="example-steps">
-            <li>Lead arrives from a portal and lands in your CRM with source and price range tagged.</li>
-            <li>A short, human reply goes out in your voice with one or two simple questions.</li>
-            <li>If they reply, the automation steps back. If they don’t, Talos schedules a gentle follow-up.</li>
+      <div class="flow-grid">
+        <article class="flow-card">
+          <div class="flow-label">Scenario one</div>
+          <h3 class="flow-title">[Placeholder: short title for a common lead scenario]</h3>
+          <ul class="flow-steps">
+            <li>[Placeholder step – what triggers the automation.]</li>
+            <li>[Placeholder step – how Talos responds / routes.]</li>
+            <li>[Placeholder step – what you see in your CRM or inbox.]</li>
           </ul>
-        </div>
+        </article>
 
-        <div class="example">
-          <div class="example-label">Open house signup</div>
-          <div class="example-title">From sign-in sheet to clear next steps</div>
-          <ul class="example-steps">
-            <li>Attendees are added to your CRM the same day with basic notes attached.</li>
-            <li>Everyone receives a brief thank-you and a useful link or recap.</li>
-            <li>Hot leads are flagged for a call; others move into a light nurture path.</li>
+        <article class="flow-card">
+          <div class="flow-label">Scenario two</div>
+          <h3 class="flow-title">[Placeholder: short title for a follow-up scenario]</h3>
+          <ul class="flow-steps">
+            <li>[Placeholder step – where the lead is in the process.]</li>
+            <li>[Placeholder step – what Talos sends or schedules.]</li>
+            <li>[Placeholder step – how you step in when needed.]</li>
           </ul>
-        </div>
+        </article>
 
-        <div class="example">
-          <div class="example-label">Long-term nurture</div>
-          <div class="example-title">Staying present without hovering</div>
-          <ul class="example-steps">
-            <li>“Someday” buyers are grouped by timeline instead of one big bucket.</li>
-            <li>Every so often, they receive a small, relevant check-in that still sounds like you.</li>
-            <li>Any reply moves them into a more active follow-up flow; silence does not trigger a barrage.</li>
+        <article class="flow-card">
+          <div class="flow-label">Scenario three</div>
+          <h3 class="flow-title">[Placeholder: short title for a long-term nurture scenario]</h3>
+          <ul class="flow-steps">
+            <li>[Placeholder step – how long-term leads are grouped.]</li>
+            <li>[Placeholder step – how light touchpoints are spaced.]</li>
+            <li>[Placeholder step – what happens when they become active again.]</li>
           </ul>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- FINAL CTA – DARK -->
-  <section class="stripe-final">
-    <div class="stripe-final-inner">
-      <div>
-        <div class="final-text-main">Curious what this would look like with your tools?</div>
-        <div class="final-text-sub">
-          In a short conversation, we can sketch your current stack, point out the biggest friction points, and outline a first Talos build that fits how you already work.
+  <!-- FINAL CTA -->
+  <section class="cta-stripe">
+    <div class="cta-inner">
+      <div class="cta-main">
+        <div class="cta-title">[Placeholder: final question or prompt about their current systems]</div>
+        <div class="cta-body">
+          [Placeholder: 2–3 calm sentences describing what happens if they reach out from here.
+          Focus on mapping their current tools and identifying one or two simple places to begin.]
         </div>
       </div>
 
-      <div class="final-actions">
+      <div class="cta-actions">
         <a href="contact.html">
-          <button class="btn btn-primary">Start with a simple inquiry</button>
+          <button class="btn-light">Placeholder primary CTA</button>
         </a>
         <a href="demo.html">
-          <button class="btn btn-ghost">Watch the demo first</button>
+          <button class="btn-outline-light">Placeholder: watch demo / see example</button>
         </a>
       </div>
     </div>
@@ -900,27 +840,6 @@
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
-
-  // Mobile nav toggle
-  const topBar = document.querySelector('.top-bar');
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelectorAll('.nav-links a');
-
-  if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-      const isOpen = topBar.classList.toggle('is-open');
-      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if (topBar.classList.contains('is-open')) {
-          topBar.classList.remove('is-open');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    });
-  }
 </script>
 
 </body>
