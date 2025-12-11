@@ -290,7 +290,7 @@
         var(--bg-light);
       border-top: 1px solid var(--border-soft);
       border-bottom: 1px solid var(--border-soft);
-      position: relative;
+      position: relative; /* for vignette overlay */
     }
 
     .stripe-inner { max-width: 900px; margin: 0 auto; }
@@ -352,7 +352,7 @@
         radial-gradient(circle at 0 30%, rgba(97, 85, 118, 0.12), transparent 60%),
         radial-gradient(circle at 100% 70%, rgba(178, 135, 112, 0.12), transparent 60%),
         var(--bg-mid);
-      position: relative;
+      position: relative; /* for vignette overlay */
     }
 
     .soft-grid {
@@ -436,62 +436,25 @@
         );
     }
 
-    /* SIDE RAILS – dual-line crafted rails only on middle light sections */
-    .stripe-mid::after,
-    .stripe-soft::after {
+    /* SECTION VIGNETTE – soft parchment focus on middle light bands */
+    .stripe-mid::before,
+    .stripe-soft::before {
       content: "";
       position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      inset: 0;
       pointer-events: none;
-
-      background-image:
-        /* Left outer iron rail */
-        linear-gradient(
-          to bottom,
-          rgba(80,36,30,0),
-          rgba(80,36,30,0.40),
-          rgba(80,36,30,0)
+      background:
+        radial-gradient(
+          circle at left center,
+          rgba(80, 36, 30, 0.11),
+          transparent 55%
         ),
-        /* Left inner bronze rail */
-        linear-gradient(
-          to bottom,
-          rgba(206,118,35,0),
-          rgba(206,118,35,0.55),
-          rgba(206,118,35,0)
-        ),
-        /* Right outer iron rail */
-        linear-gradient(
-          to bottom,
-          rgba(80,36,30,0),
-          rgba(80,36,30,0.40),
-          rgba(80,36,30,0)
-        ),
-        /* Right inner bronze rail */
-        linear-gradient(
-          to bottom,
-          rgba(206,118,35,0),
-          rgba(206,118,35,0.55),
-          rgba(206,118,35,0)
+        radial-gradient(
+          circle at right center,
+          rgba(80, 36, 30, 0.11),
+          transparent 55%
         );
-
-      background-repeat: no-repeat;
-
-      background-position:
-        5% 0,
-        calc(5% + 3px) 0,
-        95% 0,
-        calc(95% - 3px) 0;
-
-      background-size:
-        3px 100%,
-        2px 100%,
-        3px 100%,
-        2px 100%;
-
-      z-index: 0;
+      opacity: 0.85;
     }
 
     /* ===== MOBILE NAV TOGGLE ===== */
@@ -541,10 +504,10 @@
         display: inline-flex;
       }
 
-      /* Hide rails on small screens */
-      .stripe-mid::after,
-      .stripe-soft::after {
-        display: none;
+      /* Tone down vignette on very small screens */
+      .stripe-mid::before,
+      .stripe-soft::before {
+        opacity: 0.5;
       }
     }
   </style>
