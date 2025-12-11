@@ -290,6 +290,7 @@
         var(--bg-light);
       border-top: 1px solid var(--border-soft);
       border-bottom: 1px solid var(--border-soft);
+      position: relative;
     }
 
     .stripe-inner { max-width: 900px; margin: 0 auto; }
@@ -351,6 +352,7 @@
         radial-gradient(circle at 0 30%, rgba(97, 85, 118, 0.12), transparent 60%),
         radial-gradient(circle at 100% 70%, rgba(178, 135, 112, 0.12), transparent 60%),
         var(--bg-mid);
+      position: relative;
     }
 
     .soft-grid {
@@ -434,6 +436,27 @@
         );
     }
 
+    /* SIDE RAILS – subtle vertical frame */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        rgba(80,36,30,0),
+        rgba(80,36,30,0.28),
+        rgba(80,36,30,0)
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before { left: 5%; }
+    body::after  { right: 5%; }
+
     /* ===== MOBILE NAV TOGGLE ===== */
     @media (max-width: 720px) {
       .top-bar {
@@ -479,6 +502,12 @@
 
       .top-bar.is-open .top-cta {
         display: inline-flex;
+      }
+
+      /* Hide rails on small screens */
+      body::before,
+      body::after {
+        display: none;
       }
     }
   </style>
