@@ -35,7 +35,7 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* TOP BAR (copied style from main site) */
+    /* HEADER (copied from index) */
     .top-bar {
       max-width: 1120px;
       margin: 0 auto;
@@ -118,6 +118,8 @@
       opacity: 1;
     }
 
+    .nav-links { justify-self: end; }
+
     .top-cta {
       border-radius: 999px;
       border: 1px solid var(--steel-blue);
@@ -133,7 +135,7 @@
       background: rgba(80,113,139,0.08);
     }
 
-    /* PAGE WRAPPER */
+    /* GENERIC LAYOUT */
     main {
       border-top: 1px solid var(--border-soft);
     }
@@ -143,172 +145,10 @@
     }
 
     .section-inner {
-      max-width: 1120px;
+      max-width: 960px;
       margin: 0 auto;
     }
 
-    /* HERO – NEW APPROACH */
-    .solutions-hero {
-      background:
-        radial-gradient(circle at 0 0, rgba(80,113,139,0.18), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(80,36,30,0.16), transparent 55%),
-        var(--bg-mid);
-      border-bottom: 1px solid var(--border-soft);
-    }
-
-    .solutions-hero-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
-      gap: 2rem;
-      align-items: flex-start;
-    }
-
-    .eyebrow {
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-title {
-      font-size: clamp(1.9rem, 3vw, 2.3rem);
-      line-height: 1.15;
-      color: var(--dark-iron);
-      margin-bottom: 0.7rem;
-    }
-
-    .hero-title span {
-      color: var(--bright-bronze);
-    }
-
-    .hero-body {
-      font-size: 0.96rem;
-      color: var(--text-muted);
-      margin-bottom: 1.2rem;
-      max-width: 34rem;
-    }
-
-    .hero-list {
-      list-style: none;
-      display: grid;
-      gap: 0.55rem;
-      font-size: 0.9rem;
-    }
-
-    .hero-list li {
-      display: flex;
-      gap: 0.5rem;
-      align-items: flex-start;
-    }
-
-    .hero-bullet {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      margin-top: 0.4rem;
-      background: var(--bright-bronze);
-      box-shadow: 0 0 0 4px rgba(206,118,35,0.18);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-top: 1.3rem;
-    }
-
-    .btn {
-      border-radius: 999px;
-      padding: 0.65rem 1.6rem;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border: none;
-      font-weight: 550;
-      transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
-    }
-
-    .btn-primary {
-      background: var(--steel-blue);
-      color: #FDF8F0;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
-      background: #436479;
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--steel-blue);
-      border: 1px solid rgba(80,113,139,0.4);
-    }
-
-    .btn-ghost:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-      background: rgba(80,113,139,0.05);
-    }
-
-    .hero-side-card {
-      background: #F9F6F2;
-      border-radius: 18px;
-      border: 1px solid var(--border-soft);
-      padding: 1.1rem 1.2rem;
-      box-shadow:
-        0 16px 28px rgba(0, 0, 0, 0.14);
-      font-size: 0.86rem;
-    }
-
-    .hero-side-label {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--text-muted);
-      margin-bottom: 0.35rem;
-    }
-
-    .hero-side-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.5rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .hero-side-item {
-      border-radius: 12px;
-      border: 1px solid var(--border-soft);
-      padding: 0.5rem 0.55rem 0.45rem;
-      background:
-        radial-gradient(circle at 0 0, rgba(80,113,139,0.07), transparent 60%),
-        #FBF7F2;
-    }
-
-    .hero-side-item-label {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--steel-blue);
-      margin-bottom: 0.15rem;
-    }
-
-    .hero-side-item-sub {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .hero-side-note {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .hero-side-note strong {
-      color: var(--dark-iron);
-      font-weight: 550;
-    }
-
-    /* SECTION HEADERS */
     .section-header {
       margin-bottom: 1.6rem;
     }
@@ -322,7 +162,7 @@
     }
 
     .section-title {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       color: var(--dark-iron);
       margin-bottom: 0.3rem;
     }
@@ -333,131 +173,346 @@
       max-width: 34rem;
     }
 
-    /* SOLUTION COLUMNS */
-    .columns-3 {
+    /* HERO – DARK FRAME, SIMPLE LAYOUT */
+    .hero-stripe {
+      background:
+        linear-gradient(135deg, rgba(80,113,139,0.5), rgba(80,36,30,0.55)),
+        var(--bg-dark);
+      color: var(--text-light);
+      padding: 2.6rem 1.4rem 2.4rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(0,0,0,0.7);
+    }
+
+    .hero-stripe::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(22, 12, 12, 0.4) 0%,
+          rgba(22, 12, 12, 0.16) 18%,
+          transparent 40%,
+          transparent 60%,
+          rgba(22, 12, 12, 0.16) 82%,
+          rgba(22, 12, 12, 0.4) 100%
+        );
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.1rem;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+      gap: 1.8rem;
+      align-items: flex-start;
     }
 
-    .solution-card {
-      background: #F9F6F2;
+    .hero-main {
+      max-width: 34rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(250,245,238,0.8);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title {
+      font-size: 1.7rem;
+      line-height: 1.15;
+      margin-bottom: 0.55rem;
+    }
+
+    .hero-title span {
+      color: var(--bright-bronze);
+    }
+
+    .hero-body {
+      font-size: 0.93rem;
+      color: rgba(250,245,238,0.9);
+      margin-bottom: 1rem;
+    }
+
+    .hero-list {
+      list-style: none;
+      font-size: 0.86rem;
+      color: rgba(250,245,238,0.86);
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .hero-list li {
+      display: flex;
+      gap: 0.45rem;
+      align-items: flex-start;
+    }
+
+    .hero-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      margin-top: 0.4rem;
+      background: var(--bright-bronze);
+      box-shadow: 0 0 0 4px rgba(206,118,35,0.2);
+    }
+
+    .hero-side {
+      background: rgba(249,246,242,0.06);
       border-radius: 16px;
-      border: 1px solid var(--border-soft);
-      padding: 1rem 1.1rem 1rem;
-      font-size: 0.88rem;
-    }
-
-    .solution-card-title {
-      font-size: 0.96rem;
-      font-weight: 550;
-      color: var(--dark-iron);
-      margin-bottom: 0.4rem;
-    }
-
-    .solution-card-sub {
+      border: 1px solid rgba(227,217,204,0.4);
+      padding: 1rem 1.1rem 0.9rem;
       font-size: 0.82rem;
-      color: var(--text-muted);
+      line-height: 1.6;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+    }
+
+    .hero-side-label {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(250,245,238,0.8);
       margin-bottom: 0.35rem;
     }
 
-    .solution-list {
-      font-size: 0.85rem;
-      color: var(--text-dark);
-      padding-left: 1.1rem;
-    }
-
-    .solution-list li {
-      margin-bottom: 0.2rem;
-    }
-
-    /* IMAGE PLACEHOLDER BLOCKS */
-    .image-row {
-      margin-top: 2.2rem;
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 1.2rem;
-      align-items: stretch;
-    }
-
-    .image-placeholder {
-      border-radius: 18px;
-      border: 1px dashed rgba(80, 36, 30, 0.35);
-      background:
-        repeating-linear-gradient(
-          135deg,
-          rgba(244,239,231,0.85),
-          rgba(244,239,231,0.85) 6px,
-          rgba(241,236,228,1) 6px,
-          rgba(241,236,228,1) 12px
-        );
-      padding: 1.4rem 1.2rem;
+    .hero-side-row {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: rgba(250,245,238,0.85);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-side-note {
+      font-size: 0.8rem;
+      color: rgba(250,245,238,0.78);
+      margin-top: 0.3rem;
+    }
+
+    .hero-side-note strong {
+      font-weight: 550;
+    }
+
+    /* QUICK SUMMARY – 3 NARROW COLUMNS (ONLY ONCE) */
+    .summary-strip {
+      background: var(--bg-mid);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+      font-size: 0.85rem;
+    }
+
+    .summary-item {
+      padding-right: 0.6rem;
+    }
+
+    .summary-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .summary-title {
+      font-size: 0.96rem;
+      font-weight: 550;
+      color: var(--dark-iron);
+      margin-bottom: 0.25rem;
+    }
+
+    .summary-body {
       font-size: 0.86rem;
       color: var(--text-muted);
     }
 
-    .image-placeholder-title {
+    /* WHAT WE AUTOMATE – VERTICAL TABLE STYLE */
+    .automation-section .section-body {
+      max-width: 40rem;
+    }
+
+    .automation-table {
+      margin-top: 1.4rem;
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      background: #F9F6F2;
+      padding: 1.1rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      font-size: 0.88rem;
+    }
+
+    .automation-row {
+      display: grid;
+      grid-template-columns: 0.9fr 1.8fr;
+      gap: 1rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .automation-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .automation-label {
+      font-weight: 550;
+      color: var(--dark-iron);
       font-size: 0.9rem;
+    }
+
+    .automation-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
+    .automation-list {
+      padding-left: 1.1rem;
+    }
+
+    .automation-list li {
+      margin-bottom: 0.18rem;
+    }
+
+    /* HOW WE FIT AROUND YOUR WEEK – TWO COLUMN TEXT */
+    .fit-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 1.6rem;
+      font-size: 0.9rem;
+    }
+
+    .fit-block-title {
       font-weight: 550;
       color: var(--dark-iron);
       margin-bottom: 0.3rem;
     }
 
-    .image-placeholder-note {
-      font-size: 0.83rem;
+    .fit-block-body {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
     }
 
-    /* FLOW CARDS */
-    .flow-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.1rem;
-    }
-
-    .flow-card {
-      background: #F9F6F2;
-      border-radius: 16px;
-      border: 1px solid var(--border-soft);
-      padding: 0.95rem 1.05rem 0.9rem;
+    .fit-list {
+      padding-left: 1.1rem;
       font-size: 0.86rem;
     }
 
-    .flow-label {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-muted);
+    .fit-list li {
       margin-bottom: 0.2rem;
     }
 
-    .flow-title {
-      font-size: 0.95rem;
+    /* PROCESS – LINEAR 3-STEP TIMELINE */
+    .process-section {
+      background: var(--bg-mid);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .process-steps {
+      margin-top: 1.4rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+      font-size: 0.88rem;
+    }
+
+    .process-step {
+      background: #F9F6F2;
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      padding: 0.95rem 1rem 0.9rem;
+    }
+
+    .process-step-head {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .process-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 550;
+      background: #F3EBDF;
+      color: var(--dark-iron);
+    }
+
+    .process-title {
       font-weight: 550;
       color: var(--dark-iron);
-      margin-bottom: 0.35rem;
+      font-size: 0.95rem;
     }
 
-    .flow-steps {
-      padding-left: 1.1rem;
+    .process-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
     }
 
-    .flow-steps li {
-      margin-bottom: 0.2rem;
+    .process-body {
+      font-size: 0.86rem;
+      color: var(--text-muted);
     }
 
-    /* CTA STRIPE */
-    .cta-stripe {
+    /* OPTIONAL IMAGE / DIAGRAM PLACEHOLDER */
+    .diagram-section {
+      padding-top: 2.4rem;
+    }
+
+    .diagram-block {
+      border-radius: 18px;
+      border: 1px dashed rgba(80,36,30,0.4);
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(244,239,231,0.9),
+          rgba(244,239,231,0.9) 6px,
+          rgba(241,236,228,1) 6px,
+          rgba(241,236,228,1) 12px
+        );
+      padding: 1.3rem 1.2rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .diagram-title {
+      font-size: 0.92rem;
+      font-weight: 550;
+      color: var(--dark-iron);
+      margin-bottom: 0.3rem;
+    }
+
+    /* FINAL CTA – DARK FOOTER BAND */
+    .stripe-final {
       background: var(--bg-dark);
       color: var(--text-light);
-      padding: 2.6rem 1.4rem 2.3rem;
+      padding: 2.7rem 1.4rem 2.3rem;
       border-top: 1px solid rgba(0,0,0,0.7);
-      margin-top: 1rem;
     }
 
-    .cta-inner {
+    .stripe-final-inner {
       max-width: 900px;
       margin: 0 auto;
       display: flex;
@@ -467,65 +522,61 @@
       align-items: center;
     }
 
-    .cta-main {
-      max-width: 30rem;
-      font-size: 0.94rem;
-    }
-
-    .cta-title {
+    .final-text-main {
       font-size: 1.08rem;
       font-weight: 550;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
     }
 
-    .cta-body {
+    .final-text-sub {
       font-size: 0.9rem;
       color: rgba(250,245,238,0.85);
+      max-width: 28rem;
     }
 
-    .cta-actions {
+    .final-actions {
       display: flex;
-      flex-wrap: wrap;
       gap: 0.7rem;
+      flex-wrap: wrap;
     }
 
-    .btn-light {
-      background: #FAF5EE;
-      color: #321916;
+    .btn-final-primary {
       border-radius: 999px;
       padding: 0.65rem 1.6rem;
       font-size: 0.9rem;
+      cursor: pointer;
       border: none;
       font-weight: 550;
-      cursor: pointer;
+      background: #FAF5EE;
+      color: #321916;
       transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
     }
 
-    .btn-light:hover {
+    .btn-final-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
       background: #F4E5CF;
     }
 
-    .btn-outline-light {
-      background: transparent;
-      color: #FAF5EE;
+    .btn-final-secondary {
       border-radius: 999px;
       padding: 0.65rem 1.6rem;
       font-size: 0.9rem;
+      cursor: pointer;
       border: 1px solid rgba(250,245,238,0.7);
       font-weight: 550;
-      cursor: pointer;
+      background: transparent;
+      color: #FAF5EE;
       transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
     }
 
-    .btn-outline-light:hover {
+    .btn-final-secondary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
       background: rgba(250,245,238,0.06);
     }
 
-    /* FOOTER (copied pattern) */
+    /* FOOTER (copied) */
     .footer {
       max-width: 1120px;
       margin: 0 auto;
@@ -538,21 +589,24 @@
     }
 
     /* RESPONSIVE */
-    @media (max-width: 960px) {
-      .solutions-hero-inner {
+    @media (max-width: 900px) {
+      .hero-inner {
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .hero-side-card {
-        max-width: 420px;
+      .summary-grid {
+        grid-template-columns: minmax(0, 1fr);
       }
 
-      .columns-3,
-      .flow-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .automation-row {
+        grid-template-columns: minmax(0, 1fr);
       }
 
-      .image-row {
+      .process-steps {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .fit-grid {
         grid-template-columns: minmax(0, 1fr);
       }
     }
@@ -565,16 +619,10 @@
 
       .nav-links {
         justify-self: flex-start;
-        flex-wrap: wrap;
       }
 
       .top-cta {
         justify-self: flex-start;
-      }
-
-      .columns-3,
-      .flow-grid {
-        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
@@ -604,229 +652,299 @@
 </header>
 
 <main>
-  <!-- HERO: Purpose of the page -->
-  <section class="section solutions-hero">
-    <div class="section-inner solutions-hero-inner">
-      <div>
-        <div class="eyebrow">Solutions overview</div>
+  <!-- HERO: What this page is for -->
+  <section class="hero-stripe">
+    <div class="hero-inner">
+      <div class="hero-main">
+        <div class="hero-eyebrow">Solutions</div>
         <h1 class="hero-title">
-          Clear view of what Talos does
-          <span>inside your existing tools.</span>
+          How Talos carries the <span>quiet work</span> between your tools.
         </h1>
         <p class="hero-body">
-          <!-- Placeholder: high-level one-liner about the role of Talos on this page.
-               Example: “Use this space to explain, in two short sentences, what kind of
-               work Talos takes over and why this matters for a solo agent or small team.” -->
-          [Placeholder: Brief explanation of the kinds of tasks Talos handles and the outcome this page will walk through.]
+          The Overview page speaks to why this workshop exists. Here, we stay practical.
+          This is where Talos fits into a real agent’s week, and which parts of the work it quietly takes on.
         </p>
 
         <ul class="hero-list">
           <li>
-            <div class="hero-bullet"></div>
-            <div>[Placeholder: Quick benefit bullet — e.g. fewer manual follow-ups, fewer lost leads.]</div>
+            <div class="hero-dot"></div>
+            <div>Clarify which parts of your workflow Talos can safely automate, and which are always human.</div>
           </li>
           <li>
-            <div class="hero-bullet"></div>
-            <div>[Placeholder: Quick benefit bullet — e.g. systems aligned with your current tools.]</div>
+            <div class="hero-dot"></div>
+            <div>Show how your forms, inbox, calendar, and CRM begin to behave like one system instead of four.</div>
           </li>
           <li>
-            <div class="hero-bullet"></div>
-            <div>[Placeholder: Quick benefit bullet — e.g. calm, predictable workflows instead of ad-hoc scrambling.]</div>
+            <div class="hero-dot"></div>
+            <div>Give a simple picture of what changes first if we decide to work together.</div>
           </li>
         </ul>
-
-        <div class="hero-actions">
-          <a href="packages.html">
-            <button class="btn btn-primary">Placeholder primary CTA</button>
-          </a>
-          <a href="demo.html">
-            <button class="btn btn-ghost">Placeholder secondary CTA</button>
-          </a>
-        </div>
       </div>
 
-      <aside class="hero-side-card">
-        <div class="hero-side-label">Placeholder: “At a glance” block</div>
-        <div class="hero-side-grid">
-          <div class="hero-side-item">
-            <div class="hero-side-item-label">Intake</div>
-            <div class="hero-side-item-sub">
-              [Placeholder: short line about how new leads are captured.]
-            </div>
-          </div>
-          <div class="hero-side-item">
-            <div class="hero-side-item-label">Follow-up</div>
-            <div class="hero-side-item-sub">
-              [Placeholder: short line about how Talos supports early follow-up.]
-            </div>
-          </div>
-          <div class="hero-side-item">
-            <div class="hero-side-item-label">Operations</div>
-            <div class="hero-side-item-sub">
-              [Placeholder: short line about cleanup, tagging, and routing.]
-            </div>
-          </div>
+      <aside class="hero-side">
+        <div class="hero-side-label">At a glance</div>
+        <div class="hero-side-row">
+          <span>Who it’s for</span>
+          <span>Solo agents · Small teams</span>
+        </div>
+        <div class="hero-side-row">
+          <span>What it changes</span>
+          <span>Intake · Follow-up · Light ops</span>
+        </div>
+        <div class="hero-side-row">
+          <span>What stays yours</span>
+          <span>Conversations · Advice · Strategy</span>
         </div>
         <p class="hero-side-note">
-          [Placeholder: one calm sentence clarifying that Talos runs between existing tools,
-          not as a new platform. You can mention CRMs here when we write final copy.]
+          Talos is not another platform to log into. It sits between tools you already trust, with language and timing
+          tuned to how you prefer to work.
         </p>
       </aside>
     </div>
   </section>
 
-  <!-- SECTION: Main solution categories -->
-  <section class="section">
-    <div class="section-inner">
-      <div class="section-header">
-        <div class="section-label">Solution pillars</div>
-        <h2 class="section-title">Placeholder heading for your main solution categories</h2>
-        <p class="section-body">
-          [Placeholder: 2–3 short sentences describing how you group your work
-          (for example: by lead intake, follow-up, and operations). This should set up the three cards below.]
+  <!-- QUICK SUMMARY STRIP -->
+  <section class="section summary-strip">
+    <div class="section-inner summary-grid">
+      <div class="summary-item">
+        <div class="summary-label">Scope</div>
+        <div class="summary-title">Workflow, not software</div>
+        <p class="summary-body">
+          We don’t replace your CRM or website. We repair the handoffs and gaps around them so leads stop slipping through.
         </p>
       </div>
 
-      <div class="columns-3">
-        <article class="solution-card">
-          <h3 class="solution-card-title">Placeholder: column title (e.g. Lead intake)</h3>
-          <p class="solution-card-sub">
-            [Placeholder: one-sentence description of what lives in this bucket.]
-          </p>
-          <ul class="solution-list">
-            <li>[Placeholder bullet – specific type of automation or task.]</li>
-            <li>[Placeholder bullet – another example.]</li>
-            <li>[Placeholder bullet – optional third item.]</li>
-          </ul>
-        </article>
+      <div class="summary-item">
+        <div class="summary-label">Starting point</div>
+        <div class="summary-title">One clear improvement</div>
+        <p class="summary-body">
+          Most first builds focus on new inquiries and first responses. Once that feels steady, we expand carefully.
+        </p>
+      </div>
 
-        <article class="solution-card">
-          <h3 class="solution-card-title">Placeholder: column title (e.g. Follow-up rhythm)</h3>
-          <p class="solution-card-sub">
-            [Placeholder: one-sentence description of this bucket.]
-          </p>
-          <ul class="solution-list">
-            <li>[Placeholder bullet – example of follow-up support.]</li>
-            <li>[Placeholder bullet – another example.]</li>
-            <li>[Placeholder bullet – optional third item.]</li>
-          </ul>
-        </article>
-
-        <article class="solution-card">
-          <h3 class="solution-card-title">Placeholder: column title (e.g. Back-end operations)</h3>
-          <p class="solution-card-sub">
-            [Placeholder: one-sentence description of back-end/cleanup work.]
-          </p>
-          <ul class="solution-list">
-            <li>[Placeholder bullet – example of cleanup/tagging.]</li>
-            <li>[Placeholder bullet – example of routing or calendar flows.]</li>
-            <li>[Placeholder bullet – optional third item.]</li>
-          </ul>
-        </article>
+      <div class="summary-item">
+        <div class="summary-label">Ongoing</div>
+        <div class="summary-title">Quiet refinement</div>
+        <p class="summary-body">
+          As leads move through, we tune timing, tone, and routing. No big relaunches, just small, steady adjustments.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- SECTION: Visual system map + image suggestion -->
-  <section class="section" style="background: var(--bg-mid); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft);">
+  <!-- WHAT WE ACTUALLY AUTOMATE -->
+  <section class="section automation-section">
     <div class="section-inner">
       <div class="section-header">
-        <div class="section-label">System map</div>
-        <h2 class="section-title">Placeholder heading for “how tools connect”</h2>
+        <div class="section-label">What Talos handles</div>
+        <h2 class="section-title">The specific work that moves quietly in the background</h2>
         <p class="section-body">
-          [Placeholder: 2–3 sentences describing how Talos connects website forms, CRMs, messaging tools,
-          and calendar into a single flow. This is where you talk about integration without naming every platform.]
+          Talos focuses on work that is repeatable, predictable, and easier for a system to manage than a tired agent
+          at the end of a long day. You stay in charge of judgment calls and real conversations.
         </p>
       </div>
 
-      <div class="image-row">
-        <div class="image-placeholder">
-          <div class="image-placeholder-title">Image placeholder: simple system diagram</div>
-          <p class="image-placeholder-note">
-            Suggested visual: a minimal diagram showing arrows from<br>
-            <strong>Lead sources → Talos → CRM / Inbox / Calendar</strong>.<br><br>
-            Style idea: soft lines, small labeled nodes, using your palette
-            (steel blue for CRM, bronze for Talos, clay for lead sources).
-            Keep it quiet and diagram-like, not “SaaS dashboard.”
+      <div class="automation-table">
+        <div class="automation-row">
+          <div>
+            <div class="automation-label">Lead intake</div>
+            <div class="automation-note">New names becoming real, organized records.</div>
+          </div>
+          <div>
+            <ul class="automation-list">
+              <li>Website and portal inquiries pushed into your CRM with basic source and tags.</li>
+              <li>Simple checks to prevent obvious duplicates from cluttering your database.</li>
+              <li>Clear fields for how they found you and what they’re hoping to do.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="automation-row">
+          <div>
+            <div class="automation-label">First response</div>
+            <div class="automation-note">Fast, calm replies that sound like you.</div>
+          </div>
+          <div>
+            <ul class="automation-list">
+              <li>Short, human messages that acknowledge the inquiry and set an expectation for next steps.</li>
+              <li>Simple branching: immediate response vs. “after hours” pacing when you prefer slower evenings.</li>
+              <li>Automatic pause whenever you’ve already replied yourself.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="automation-row">
+          <div>
+            <div class="automation-label">Light follow-up</div>
+            <div class="automation-note">Staying present without hovering.</div>
+          </div>
+          <div>
+            <ul class="automation-list">
+              <li>Gentle check-ins for “not yet” buyers and sellers over days, weeks, or months.</li>
+              <li>Daily lists in your CRM that highlight who actually needs attention today.</li>
+              <li>Automatic removal from sequences when a real conversation opens up.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="automation-row">
+          <div>
+            <div class="automation-label">Back-end hygiene</div>
+            <div class="automation-note">Less clutter, clearer next steps.</div>
+          </div>
+          <div>
+            <ul class="automation-list">
+              <li>Basic cleanup of tags, stages, and duplicate records.</li>
+              <li>Routing rules so certain sources or price ranges land where they belong.</li>
+              <li>Simple calendar confirmations for consult calls and key milestones.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TALOS FITS AROUND YOUR WEEK -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">How it feels in practice</div>
+        <h2 class="section-title">Where the system steps in, and where it steps back</h2>
+        <p class="section-body">
+          The goal is not to automate your whole business. The goal is to remove the pieces that pull you out of real
+          work with people.
+        </p>
+      </div>
+
+      <div class="fit-grid">
+        <div>
+          <div class="fit-block-title">Work Talos is well suited for</div>
+          <p class="fit-block-body">
+            Simple, repeatable tasks that follow a clear pattern and don’t require nuance from call to call.
+          </p>
+          <ul class="fit-list">
+            <li>Catching and logging every new inquiry, even during showings.</li>
+            <li>Sending a short “I saw this” message when leads first reach out.</li>
+            <li>Light check-ins for long-term prospects with no urgency.</li>
+            <li>Cleaning up obvious data issues in the background.</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="fit-block-title">Work that stays in your hands</div>
+          <p class="fit-block-body">
+            Conversations where tone, judgment, and local expertise matter more than speed.
+          </p>
+          <ul class="fit-list">
+            <li>Advising on offers, pricing, and negotiation strategy.</li>
+            <li>Any message where someone shares something personal or sensitive.</li>
+            <li>Nuanced back-and-forth with active buyers and sellers.</li>
+            <li>Decisions about which relationships to lean into next.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS – HOW A BUILD UNFOLDS -->
+  <section class="section process-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-label">Process</div>
+        <h2 class="section-title">From scattered tools to a steady first build</h2>
+        <p class="section-body">
+          A “solution” here is not a pre-built template. It’s a small, intentional set of automations tuned to your
+          current tools and your way of working.
+        </p>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="process-step-head">
+            <div class="process-badge">1</div>
+            <div class="process-title">Map your current week</div>
+          </div>
+          <div class="process-meta">One short call, a few screenshots, no homework.</div>
+          <p class="process-body">
+            We walk through how leads arrive today, where you spend manual effort, and where opportunities are lost or
+            delayed. The outcome is a simple sketch of your tools and the biggest leaks.
           </p>
         </div>
 
-        <div class="image-placeholder">
-          <div class="image-placeholder-title">Optional second visual or screenshot</div>
-          <p class="image-placeholder-note">
-            Suggested visual: a cropped screenshot of a cleaned-up pipeline or task list
-            that represents “after Talos,” with personal data blurred.<br><br>
-            You can also use this block for an icon-style illustration of Talos
-            as a workshop tool, if you prefer illustration over UI.
+        <div class="process-step">
+          <div class="process-step-head">
+            <div class="process-badge">2</div>
+            <div class="process-title">Design a small, specific change</div>
+          </div>
+          <div class="process-meta">Usually focused on intake and first response.</div>
+          <p class="process-body">
+            Together we choose one narrow slice to improve first. You approve the language and timing before anything
+            goes live, and we keep the rest of your systems untouched.
+          </p>
+        </div>
+
+        <div class="process-step">
+          <div class="process-step-head">
+            <div class="process-badge">3</div>
+            <div class="process-title">Run, observe, refine</div>
+          </div>
+          <div class="process-meta">Adjustments over weeks, not one big launch.</div>
+          <p class="process-body">
+            Once real leads run through the new flow, we tune pacing, adjust messages, and decide together whether to
+            extend Talos into follow-up or operations next.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION: Example flows / day-in-the-life -->
-  <section class="section">
+  <!-- OPTIONAL DIAGRAM PLACEHOLDER -->
+  <section class="section diagram-section">
     <div class="section-inner">
       <div class="section-header">
-        <div class="section-label">Example flows</div>
-        <h2 class="section-title">Placeholder heading for “what this looks like in practice”</h2>
+        <div class="section-label">Optional visual</div>
+        <h2 class="section-title">A simple map of where Talos sits</h2>
         <p class="section-body">
-          [Placeholder: 2–3 short sentences explaining that the cards below are snapshots
-          of how Talos behaves in real scenarios (e.g. new portal leads, open houses, nurture).]
+          If you choose to, this is a good place for a single diagram that shows your tools and where Talos lives
+          between them.
         </p>
       </div>
 
-      <div class="flow-grid">
-        <article class="flow-card">
-          <div class="flow-label">Scenario one</div>
-          <h3 class="flow-title">[Placeholder: short title for a common lead scenario]</h3>
-          <ul class="flow-steps">
-            <li>[Placeholder step – what triggers the automation.]</li>
-            <li>[Placeholder step – how Talos responds / routes.]</li>
-            <li>[Placeholder step – what you see in your CRM or inbox.]</li>
-          </ul>
-        </article>
-
-        <article class="flow-card">
-          <div class="flow-label">Scenario two</div>
-          <h3 class="flow-title">[Placeholder: short title for a follow-up scenario]</h3>
-          <ul class="flow-steps">
-            <li>[Placeholder step – where the lead is in the process.]</li>
-            <li>[Placeholder step – what Talos sends or schedules.]</li>
-            <li>[Placeholder step – how you step in when needed.]</li>
-          </ul>
-        </article>
-
-        <article class="flow-card">
-          <div class="flow-label">Scenario three</div>
-          <h3 class="flow-title">[Placeholder: short title for a long-term nurture scenario]</h3>
-          <ul class="flow-steps">
-            <li>[Placeholder step – how long-term leads are grouped.]</li>
-            <li>[Placeholder step – how light touchpoints are spaced.]</li>
-            <li>[Placeholder step – what happens when they become active again.]</li>
-          </ul>
-        </article>
+      <div class="diagram-block">
+        <div class="diagram-title">Suggested graphic idea</div>
+        <p>
+          A calm, minimal diagram with:
+        </p>
+        <ul class="fit-list" style="margin-top: 0.4rem;">
+          <li>Lead sources on the left (website, portals, referrals).</li>
+          <li>Talos as a small node in the center, in bright bronze.</li>
+          <li>Your CRM, inbox, and calendar on the right in steel blue and clay.</li>
+        </ul>
+        <p style="margin-top: 0.6rem;">
+          Style note: keep it diagram-like and understated. No fake dashboards, no heavy gradients — just a clear
+          picture of how information moves.
+        </p>
       </div>
     </div>
   </section>
 
   <!-- FINAL CTA -->
-  <section class="cta-stripe">
-    <div class="cta-inner">
-      <div class="cta-main">
-        <div class="cta-title">[Placeholder: final question or prompt about their current systems]</div>
-        <div class="cta-body">
-          [Placeholder: 2–3 calm sentences describing what happens if they reach out from here.
-          Focus on mapping their current tools and identifying one or two simple places to begin.]
+  <section class="stripe-final">
+    <div class="stripe-final-inner">
+      <div>
+        <div class="final-text-main">Want to see where Talos would help first?</div>
+        <div class="final-text-sub">
+          A short conversation is usually enough to spot one or two places where a small system would make your week
+          feel calmer. From there, we can decide whether it’s worth a first build.
         </div>
       </div>
 
-      <div class="cta-actions">
+      <div class="final-actions">
         <a href="contact.html">
-          <button class="btn-light">Placeholder primary CTA</button>
+          <button class="btn-final-primary">Share your current setup</button>
         </a>
         <a href="demo.html">
-          <button class="btn-outline-light">Placeholder: watch demo / see example</button>
+          <button class="btn-final-secondary">Watch a working example</button>
         </a>
       </div>
     </div>
