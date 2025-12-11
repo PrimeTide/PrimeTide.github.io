@@ -259,7 +259,6 @@
       color: var(--text-dark);
     }
 
-    /* New boxed layout for left column */
     .contact-context {
       background: #F9F6F2;
       border-radius: 16px;
@@ -432,26 +431,25 @@
       margin-top: 0.7rem;
     }
 
-    /* FINAL STRIPE – OPTIONAL NOTE */
-.stripe-final {
-  background: var(--dark-iron);       /* dark bronze-style band */
-  color: var(--text-light);           /* light text on dark */
-  padding: 1.8rem 1.4rem 1.9rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.35);
-}
+    /* FINAL STRIPE – MATCH OVERVIEW PAGE COLORS */
+    .stripe-final {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      padding: 2.7rem 1.4rem 2.3rem;
+    }
 
-.stripe-final-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  font-size: 0.86rem;
-  color: var(--text-light);           /* ensure inner text stays light */
-  line-height: 1.6;
-}
+    .stripe-final-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: rgba(250,245,238,0.9); /* similar to final-text-sub on index */
+    }
 
-.stripe-final-strong {
-  font-weight: 550;
-  color: var(--bright-bronze);        /* “Not urgent?” in bronze accent */
-}
+    .stripe-final-strong {
+      font-weight: 550;
+      color: var(--bright-bronze);
+    }
 
     /* FOOTER */
     .footer {
@@ -688,7 +686,8 @@
   <section class="stripe-final">
     <div class="stripe-final-inner">
       <span class="stripe-final-strong">Not urgent?</span>
-      It’s completely fine to reach out even if you’re months away from making changes. A brief conversation now often prevents rushed decisions later when things get busy.
+      It’s completely fine to reach out even if you’re months away from making changes.
+      A brief conversation now often prevents rushed decisions later when things get busy.
     </div>
   </section>
 </main>
